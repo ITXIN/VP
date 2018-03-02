@@ -8,12 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABBFC120493DA000B60A5F /* AppDelegate.swift */; };
-		8FABBFC420493DA000B60A5F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABBFC320493DA000B60A5F /* ViewController.swift */; };
 		8FABBFC720493DA000B60A5F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FABBFC520493DA000B60A5F /* Main.storyboard */; };
 		8FABBFC920493DA000B60A5F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8FABBFC820493DA000B60A5F /* Assets.xcassets */; };
 		8FABBFCC20493DA000B60A5F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8FABBFCA20493DA000B60A5F /* LaunchScreen.storyboard */; };
 		8FABBFD720493DA000B60A5F /* VideoProjectTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABBFD620493DA000B60A5F /* VideoProjectTests.swift */; };
 		8FABBFE220493DA000B60A5F /* VideoProjectUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABBFE120493DA000B60A5F /* VideoProjectUITests.swift */; };
+		8FABBFF7204942AC00B60A5F /* VPBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABBFF6204942AC00B60A5F /* VPBaseViewController.swift */; };
 		8FEA97EBB2A45EC9089BF341 /* Pods_VideoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,7 +39,6 @@
 		725EE43B67C34B6B4CFB94ED /* Pods-VideoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoProject/Pods-VideoProject.release.xcconfig"; sourceTree = "<group>"; };
 		8FABBFBE20493DA000B60A5F /* VideoProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VideoProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FABBFC120493DA000B60A5F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8FABBFC320493DA000B60A5F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		8FABBFC620493DA000B60A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8FABBFC820493DA000B60A5F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8FABBFCB20493DA000B60A5F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -50,6 +49,7 @@
 		8FABBFDD20493DA000B60A5F /* VideoProjectUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VideoProjectUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8FABBFE120493DA000B60A5F /* VideoProjectUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoProjectUITests.swift; sourceTree = "<group>"; };
 		8FABBFE320493DA000B60A5F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8FABBFF6204942AC00B60A5F /* VPBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseViewController.swift; sourceTree = "<group>"; };
 		94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -121,8 +121,8 @@
 		8FABBFC020493DA000B60A5F /* VideoProject */ = {
 			isa = PBXGroup;
 			children = (
+				8FABBFEF2049416B00B60A5F /* Classes */,
 				8FABBFC120493DA000B60A5F /* AppDelegate.swift */,
-				8FABBFC320493DA000B60A5F /* ViewController.swift */,
 				8FABBFC520493DA000B60A5F /* Main.storyboard */,
 				8FABBFC820493DA000B60A5F /* Assets.xcassets */,
 				8FABBFCA20493DA000B60A5F /* LaunchScreen.storyboard */,
@@ -147,6 +147,62 @@
 				8FABBFE320493DA000B60A5F /* Info.plist */,
 			);
 			path = VideoProjectUITests;
+			sourceTree = "<group>";
+		};
+		8FABBFEF2049416B00B60A5F /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8FABBFF02049416B00B60A5F /* Base */,
+				8FABBFF12049416B00B60A5F /* Business */,
+				8FABBFF22049416B00B60A5F /* Tools */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8FABBFF02049416B00B60A5F /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				8FABBFF32049422E00B60A5F /* Controller */,
+				8FABBFF42049422E00B60A5F /* Model */,
+				8FABBFF52049422E00B60A5F /* View */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		8FABBFF12049416B00B60A5F /* Business */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Business;
+			sourceTree = "<group>";
+		};
+		8FABBFF22049416B00B60A5F /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Tools;
+			sourceTree = "<group>";
+		};
+		8FABBFF32049422E00B60A5F /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				8FABBFF6204942AC00B60A5F /* VPBaseViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8FABBFF42049422E00B60A5F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8FABBFF52049422E00B60A5F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -354,8 +410,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8FABBFC420493DA000B60A5F /* ViewController.swift in Sources */,
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
+				8FABBFF7204942AC00B60A5F /* VPBaseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
