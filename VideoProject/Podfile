@@ -8,4 +8,5 @@ target 'VideoProject' do
 	pod 'SVProgressHUD'
 	pod 'MJRefresh'
 	pod 'BMPlayer'
+    pod 'SnapKit'
 end

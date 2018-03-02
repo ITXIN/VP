@@ -1,5 +1,5 @@
 //
-//  VPBaseViewController.swift
+//  VPNewsVideoViewController.swift
 //  VideoProject
 //
 //  Created by avazuholding on 2018/3/2.
@@ -8,37 +8,14 @@
 
 import UIKit
 
-class VPBaseViewController: UIViewController {
-    var bgView:UIView!
-    
+class VPNewsVideoViewController: VPBaseTableViewController {
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.initSubviews()
-        self.setupSubviewsLayout()
     }
 
-    
-    func initSubviews() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.white
-        
-        self.bgView = {
-            let view =  UIView.init()
-            self.view.addSubview(view)
-            return view
-        }()
-        
-    }
-    func setupSubviewsLayout() {
-//        self.bgView.snp.makeConstraints { (make) in
-//            make.edges.equalTo(self.view)
-//        }
-        self.bgView.snp.makeConstraints {
-            $0.edges.equalTo(self.view)
-        }
-    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
