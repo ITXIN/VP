@@ -1,0 +1,11 @@
+platform:ios,'10.0'
+
+target 'VideoProject' do
+	use_frameworks!
+	pod 'SwiftyJSON'
+	pod 'Alamofire'
+	pod 'HandyJSON','~>4.0.0-beta.1'
+	pod 'SVProgressHUD'
+	pod 'MJRefresh'
+	pod 'BMPlayer'
+end
