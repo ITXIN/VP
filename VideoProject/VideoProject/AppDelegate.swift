@@ -24,7 +24,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func setupAppConfiger() {
         if #available(iOS 11, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
+        }else{
+            
         }
+       
     }
 //    - (void)setupConfig{
 //    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];

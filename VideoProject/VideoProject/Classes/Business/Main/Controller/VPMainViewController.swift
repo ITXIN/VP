@@ -23,7 +23,7 @@ class VPMainViewController: UITabBarController {
         var imagesNormalArr = ["tab_order_nor","tab_user_nor","tab_data_nor","tab_mine_nor"]
         let imagesSeletedArr = ["tab_order_pre","tab_user_pre","tab_data_pre","tab_mine_pre"]
         let tabBarTitlesArr = ["订单管理","用户管理","数据统计","个人中心"]
-        let vcArr = [VPBaseViewController(),VPBaseViewController(),VPBaseViewController(),VPBaseViewController(),]
+        let vcArr = [VPNewsVideoViewController(),VPBaseViewController(),VPBaseViewController(),VPBaseViewController(),]
         for i  in 0...3 {
             let vc = vcArr[i]
             vc.title = tabBarTitlesArr[i]

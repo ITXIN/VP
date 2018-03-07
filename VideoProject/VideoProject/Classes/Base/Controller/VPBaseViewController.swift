@@ -13,16 +13,20 @@ class VPBaseViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        self.view.backgroundColor = UIColor.white
+        self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         self.initSubviews()
         self.setupSubviewsLayout()
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon_navigation_back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarButtonBackAction))
     }
 
+    @objc func leftBarButtonBackAction() {
+        self.navigationController?.popViewController(animated: true)
+    }
     
     func initSubviews() {
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.view.backgroundColor = UIColor.white
         
         self.bgView = {
             let view =  UIView.init()
@@ -39,6 +43,17 @@ class VPBaseViewController: UIViewController {
             $0.edges.equalTo(self.view)
         }
     }
+    
+    func popToViewController(_ controller:UIViewController) {
+        for vc in (self.navigationController?.viewControllers)! {
+            let kind = vc.isKind(of: VPBaseViewController.self )
+            if (kind){
+                self.navigationController?.popToViewController(vc, animated: true)
+            }
+        }
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

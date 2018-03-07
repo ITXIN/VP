@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import SnapKit
 import MJRefresh
+import BMPlayer
 /*
  * 增加宏定义NSLog输出函数
  */
