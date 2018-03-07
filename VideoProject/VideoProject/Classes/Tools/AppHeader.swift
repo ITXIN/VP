@@ -11,6 +11,8 @@ import UIKit
 import SnapKit
 import MJRefresh
 import BMPlayer
+import HandyJSON
+import Alamofire
 /*
  * 增加宏定义NSLog输出函数
  */

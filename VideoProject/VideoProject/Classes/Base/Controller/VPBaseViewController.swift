@@ -8,20 +8,37 @@
 
 import UIKit
 
-class VPBaseViewController: UIViewController {
+class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
     var bgView:UIView!
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+       
         self.view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
         self.initSubviews()
         self.setupSubviewsLayout()
-        self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon_navigation_back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarButtonBackAction))
+        let count:Int = (self.navigationController?.viewControllers.count)!
+        if(count > 1){
+            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon_navigation_back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarButtonBackAction))
+        }
     }
 
+    func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
+        let count:Int = (self.navigationController?.viewControllers.count)!
+        if (count > 1) {
+            return true
+        }else{
+            return false
+        }
+
+    }
+    
     @objc func leftBarButtonBackAction() {
         self.navigationController?.popViewController(animated: true)
     }

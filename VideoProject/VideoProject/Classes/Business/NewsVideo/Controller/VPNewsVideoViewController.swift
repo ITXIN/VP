@@ -11,7 +11,7 @@ import BMPlayer
 class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,UITableViewDataSource {
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     
-
+  var newsVideoModelArr = [VPNewsVideoModel]()
     /// 播放器
     lazy var player: BMPlayer = BMPlayer(customControlView: VPNewsCustomPlayerView())
     override func viewDidLoad() {
@@ -36,6 +36,15 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
             self.dataArr.removeAllObjects()
             for _  in 0...num+1 {
                 self.dataArr.add("new")
+            }
+            VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
+//                print(videoModelArr)
+                self.newsVideoModelArr = videoModelArr
+                
+                for newsVideoModel in  self.newsVideoModelArr {
+                    print(newsVideoModel)
+                    
+                }
             }
             
         }
@@ -70,6 +79,18 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
         
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath)
         cell.textLabel?.text = (self.dataArr[indexPath.row] as! String)
+        
+        if indexPath.row == 0 {
+            cell.contentView.addSubview(self.player)
+            self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: "http://v3-tt.ixigua.com/9325834736e521a2efabdc45c866dd36/5a9f90c1/video/m/220ac6a882370064859a56e930649beddb3115507710000c2ddaa8468dc/")!))
+            self.player.snp.makeConstraints {
+                $0.edges.equalTo(cell.contentView)
+                
+            }
+            self.player.play()
+        }
+        
+        
         return cell
     }
 
@@ -80,6 +101,12 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
     }
     
 }
+
+extension VPShotVideoViewController{
+    
+}
+
+
 
 extension VPNewsVideoViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {

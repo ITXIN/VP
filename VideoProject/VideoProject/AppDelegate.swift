@@ -29,19 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
        
     }
-//    - (void)setupConfig{
-//    [[UINavigationBar appearance] setBackgroundImage:[[UIImage alloc] init] forBarMetrics:UIBarMetricsDefault];
-//    [[UINavigationBar appearance] setShadowImage:[[UIImage alloc] init]];
-//    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
-//    if (@available(iOS 11.0, *)) {
-//    [[UIScrollView appearance] setContentInsetAdjustmentBehavior:UIScrollViewContentInsetAdjustmentNever];
-//    }
-//
-//    [[UINavigationBar appearance] setTitleTextAttributes:@{
-//    NSForegroundColorAttributeName:[UIColor sbyMainTextColor],
-//    NSFontAttributeName:[UIFont sfRegularFontWithSize:18]
-//    }];
-//    }
 
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.

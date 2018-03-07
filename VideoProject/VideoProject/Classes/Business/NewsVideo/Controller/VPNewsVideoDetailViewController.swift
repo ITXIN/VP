@@ -14,6 +14,27 @@ class VPNewsVideoDetailViewController: VPBaseViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let testBtn:UIButton = {
+            let btn =  UIButton.init(type: UIButtonType.custom)
+            self.bgView.addSubview(btn)
+            btn.setTitle("test", for: UIControlState.normal)
+            btn.setTitleColor(UIColor.red, for: UIControlState.normal)
+//            btn.snp.makeConstraints {
+//                $0.edges.equalTo(self.view)
+//            }
+            btn.snp.makeConstraints{
+                $0.center.equalTo(self.bgView)
+            }
+            btn.addTarget(self, action:#selector(action), for: UIControlEvents.touchUpInside)
+            
+            return btn
+        }()
+    }
+    @objc func action(){
+        let baseVC = VPShotVideoViewController()
+        self.navigationController?.pushViewController(baseVC, animated: true)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -21,7 +42,9 @@ class VPNewsVideoDetailViewController: VPBaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
-
+    override func leftBarButtonBackAction() {
+        self.navigationController?.popToRootViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 

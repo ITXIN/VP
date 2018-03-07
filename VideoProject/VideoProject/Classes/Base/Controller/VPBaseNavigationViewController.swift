@@ -8,8 +8,8 @@
 
 import UIKit
 
-class VPBaseNavigationViewController: UINavigationController,UINavigationControllerDelegate {
-
+class VPBaseNavigationViewController: UINavigationController,UINavigationControllerDelegate,UIGestureRecognizerDelegate {
+   
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -28,6 +28,8 @@ class VPBaseNavigationViewController: UINavigationController,UINavigationControl
         self.navigationBar.setBackgroundImage(UIImage.getImageWithColor(color: UIColor.vpThemColor(), rect: CGRect.init(x: 0, y: 0, width: 1, height: 1)), for: UIBarMetrics.default)
         
     }
+    
+    //delegate
     override var preferredStatusBarStyle: UIStatusBarStyle{
         return (self.topViewController?.preferredStatusBarStyle)!
     }
