@@ -37,7 +37,7 @@ extension VPNetworkManagerProtocol{
                       "tt_from": "pull",
                       "iid": iid] as [String: Any]
         
-        print(params)
+       
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -50,6 +50,8 @@ extension VPNetworkManagerProtocol{
                 guard let datas = json["data"].array else {
                     return
                 }
+//                 print(datas)
+//                VPLog(datas)
                 completionHandler(pullTime,datas.flatMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
                 }))
             }

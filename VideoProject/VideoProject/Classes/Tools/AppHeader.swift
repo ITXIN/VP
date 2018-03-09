@@ -13,21 +13,22 @@ import MJRefresh
 import BMPlayer
 import HandyJSON
 import Alamofire
+import SDWebImage
+import SVProgressHUD
+import RxSwift
+import RxCocoa
+
 /*
  * 增加宏定义NSLog输出函数
  */
-func LPLog<T>(_ messsage : T, file : String = #file, funcName : String = #function, lineNum : Int = #line) {
-    
+func VPLog<T>(_ messsage : T, file : String = #file, funcName : String = #function, lineNum : Int = #line) {
     #if DEBUG
-        
         let fileName = (file as NSString).lastPathComponent
         
         print("\(fileName):(\(lineNum))****\(messsage)")
     #else  //发布阶段
         print(...)
     #endif
-    
-    
 }
 
 

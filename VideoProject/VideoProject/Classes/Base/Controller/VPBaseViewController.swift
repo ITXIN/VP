@@ -23,10 +23,13 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
         // Do any additional setup after loading the view.
         self.initSubviews()
         self.setupSubviewsLayout()
-        let count:Int = (self.navigationController?.viewControllers.count)!
-        if(count > 1){
-            self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon_navigation_back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarButtonBackAction))
+        if ((self.navigationController?.viewControllers) != nil) {
+            let count:Int = (self.navigationController?.viewControllers.count)!
+            if(count > 1){
+                self.navigationItem.leftBarButtonItem = UIBarButtonItem.init(image: UIImage.init(named: "icon_navigation_back"), style: UIBarButtonItemStyle.plain, target: self, action: #selector(leftBarButtonBackAction))
+            }
         }
+        
     }
 
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {

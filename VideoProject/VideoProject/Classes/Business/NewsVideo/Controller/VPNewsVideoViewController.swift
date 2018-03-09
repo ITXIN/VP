@@ -8,16 +8,18 @@
 
 import UIKit
 import BMPlayer
+import RxSwift
+import RxCocoa
 class VPNewsVideoViewController: VPBaseTableViewController {
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
-    
-  var newsVideoModelArr = [VPNewsVideoModel]()
+    private lazy var disposeBag = DisposeBag()
+    var newsVideoModelArr = [VPNewsVideoModel]()
     /// 播放器
     lazy var player: BMPlayer = BMPlayer(customControlView: VPNewsCustomPlayerView())
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bgView.backgroundColor = UIColor.yellow
-
+        
         // Do any additional setup after loading the view.
     }
     override func initSubviews() {
@@ -25,31 +27,46 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         self.player.delegate = self
         
         for i in 0...10 {
-            self.dataArr.add(String(i))
+            //            self.dataArr.add(String(i))
         }
         self.tableView.delegate = self
         self.tableView.dataSource = self
-         self.tableViewRegisterClass(cellClass: UITableViewCell.self, identifier: newsVideoCellIdentifier)
+        self.tableViewRegisterClass(cellClass: VPNewsVideoCell.self, identifier: newsVideoCellIdentifier)
         self.headerRefreshingBlock = {
-            self.dataArr.removeAllObjects()
+            
             VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
-//                print(videoModelArr)
+                //                print(videoModelArr)
                 self.newsVideoModelArr = videoModelArr
-//                var newsVideoModel:VPNewsVideoModel = nil
+                //
                 for  newsVideoModel  in  self.newsVideoModelArr {
-        print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
-//                    self.dataArr.add(newsVideoModel)
-
+                    print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
+                    //                    self.dataArr.add(newsVideoModel)
+                    
                 }
                 self.tableView.reloadData()
             }
             
         }
         
-       
+        
     }
     
-  
+    // MARK: - ---------------------------------- addPlayer  ----------------------------------
+    func addPlayer(on cell:VPNewsVideoCell) {
+            VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
+                UIView.animate(withDuration: 0.2, animations: {
+                    cell.bgView.addSubview(self.player)
+                    let playurl = response.video_list.video_1.mainURL
+                    self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+                    self.player.snp.makeConstraints {
+                        $0.edges.equalTo(cell.bgView)
+                    }
+                })
+               
+            })
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -72,35 +89,42 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 260
+        return CGFloat(kScreenWidth)*0.67
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let vpVideoDetailVC = VPNewsVideoDetailViewController()
-        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
+//        let vpVideoDetailVC = VPNewsVideoDetailViewController()
+//        vpVideoDetailVC.modalTransitionStyle = .coverVertical
+//        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath)
+        let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
         if self.newsVideoModelArr.count > 0 {
             let newsVideoModel = self.newsVideoModelArr[indexPath.row]
-            cell.textLabel?.text = newsVideoModel.abstract
-            if indexPath.row == 0 {
-                cell.contentView.addSubview(self.player)
-                VPNetworkManager.parseVideoRealURL(video_id: newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
-                    let playurl = response.video_list.video_1.mainURL
-                    print("response",playurl)
-                    self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+            cell.newsVideoModel = newsVideoModel
+            cell.videoPlayHudBtn.rx.tap
+                .subscribe(onNext: { [weak self] in
+                    VPLog("play")
+//                    if self!.player.isPlaying{
+//                        self?.player.pause()
+//                        self?.player.removeFromSuperview()
+//                    }
+//                    self?.addPlayer(on: cell)
+                    let vpVideoDetailVC = VPNewsVideoDetailViewController()
+                    vpVideoDetailVC.modalTransitionStyle = .coverVertical
+//                    self?.present(vpVideoDetailVC, animated: true, completion: {
+//
+//                    })
+                    self?.navigationController?.present(vpVideoDetailVC, animated: true, completion: nil)
+//                    self?.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
                 })
-                
-                self.player.snp.makeConstraints {
-                    $0.edges.equalTo(cell.contentView)
-                }
-            }
+                .disposed(by: disposeBag)
+            
         }
         
         return cell
     }
-
+    
 }
 
 

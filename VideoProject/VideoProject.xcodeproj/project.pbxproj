@@ -28,6 +28,8 @@
 		8FABC00E2049511D00B60A5F /* VPBaseTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABC00D2049511D00B60A5F /* VPBaseTableViewController.swift */; };
 		8FABC0142049557900B60A5F /* VPNewsVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FABC0132049557900B60A5F /* VPNewsVideoViewController.swift */; };
 		8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB341C4204E71B800622EE5 /* VPNewsCustomPlayerView.swift */; };
+		8FC9C6AB205262B200EB7FF1 /* VPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */; };
+		8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9C6AC2052640D00EB7FF1 /* VPNewsVideoCell.swift */; };
 		8FEA97EBB2A45EC9089BF341 /* Pods_VideoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */; };
 /* End PBXBuildFile section */
 
@@ -80,6 +82,8 @@
 		8FABC00D2049511D00B60A5F /* VPBaseTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseTableViewController.swift; sourceTree = "<group>"; };
 		8FABC0132049557900B60A5F /* VPNewsVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoViewController.swift; sourceTree = "<group>"; };
 		8FB341C4204E71B800622EE5 /* VPNewsCustomPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsCustomPlayerView.swift; sourceTree = "<group>"; };
+		8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseTableViewCell.swift; sourceTree = "<group>"; };
+		8FC9C6AC2052640D00EB7FF1 /* VPNewsVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoCell.swift; sourceTree = "<group>"; };
 		94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -279,6 +283,7 @@
 		8FABBFF52049422E00B60A5F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -359,6 +364,7 @@
 			isa = PBXGroup;
 			children = (
 				8FB341C4204E71B800622EE5 /* VPNewsCustomPlayerView.swift */,
+				8FC9C6AC2052640D00EB7FF1 /* VPNewsVideoCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -509,6 +515,9 @@
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
+				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -520,6 +529,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -575,9 +587,11 @@
 				8FABBFF92049448A00B60A5F /* VPBaseNavigationViewController.swift in Sources */,
 				8FA95439204FB6D200072999 /* VPShotVideoViewController.swift in Sources */,
 				8FA9543C204FCBDD00072999 /* VPNetworkManager.swift in Sources */,
+				8FC9C6AB205262B200EB7FF1 /* VPBaseTableViewCell.swift in Sources */,
 				8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */,
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
+				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
 				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,
 				8FABC0142049557900B60A5F /* VPNewsVideoViewController.swift in Sources */,
 				8FA9543E204FCE0E00072999 /* VPNewsVideoModel.swift in Sources */,

@@ -9,4 +9,7 @@ target 'VideoProject' do
 	pod 'MJRefresh'
 	pod 'BMPlayer'
     pod 'SnapKit'
+    pod 'SDWebImage'
+    pod 'RxSwift'
+    pod 'RxCocoa'
 end

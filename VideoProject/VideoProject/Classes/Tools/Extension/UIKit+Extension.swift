@@ -15,7 +15,8 @@ extension UIColor{
         return RGB(130, G: 130, B: 130)
     }
     class func vpThemColor() -> UIColor {
-        return RGB(77, G: 139, B: 217)
+//        return RGB(77, G: 139, B: 217)
+        return RGB(196, G: 73, B: 67)
     }
     class func vpGrayLineColor() -> UIColor {
         return RGB(230, G: 230, B: 230)
@@ -26,7 +27,10 @@ extension UIColor{
     class func vpBlackTextColor() -> UIColor {
         return RGB(0, G: 0, B: 0)
     }
-    
+    /// 背景红色
+    class func vpGlobalRedColor() -> UIColor {
+        return RGB(196, G: 73, B: 67)
+    }
     
 }
 
