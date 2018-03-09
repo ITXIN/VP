@@ -58,7 +58,6 @@ class VPBaseTableViewController: VPBaseViewController {
     @objc func headerRefresh(){
         print("下拉刷新")
         self.headerRefreshingBlock!()
-        
         // 结束刷新
         self.tableView.mj_header.endRefreshing()
         self.tableView.reloadData()

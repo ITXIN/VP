@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import zlib
+
 extension UIColor{
     class func vpGrayTextColor() -> UIColor {
         return RGB(130, G: 130, B: 130)
@@ -40,6 +42,33 @@ extension UIImage{
         
     }
 }
+protocol RegisterCellFromNib {}
+
+extension RegisterCellFromNib {
+    
+    static var identifier: String { return "\(self)" }
+    
+    static var nib: UINib? { return UINib(nibName: "\(self)", bundle: nil) }
+}
+
+extension UITableView{
+    
+    func vp_registerCell<T:UITableViewCell>(cell:T.Type) where T:RegisterCellFromNib{
+        if let nib = T.nib {
+            register(nib, forCellReuseIdentifier: T.identifier)
+        }else{
+            register(cell, forCellReuseIdentifier: T.identifier)
+        }
+    }
+    
+    func vp_dequeueReusableCell<T:UITableViewCell>(indexPath:IndexPath) -> T where T:RegisterCellFromNib {
+        return dequeueReusableCell(withIdentifier: T.identifier, for: indexPath) as! T
+    }
+    
+    
+}
+
+
 
 
 

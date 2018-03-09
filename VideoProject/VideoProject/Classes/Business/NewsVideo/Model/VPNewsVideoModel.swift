@@ -9,5 +9,13 @@
 import Foundation
 import HandyJSON
 struct VPNewsVideoModel: HandyJSON {
+    var abstract = ""
+    var display_url = ""
+    var video_detail_info = VideoDetailInfo()
     
 }
+struct VideoDetailInfo:HandyJSON {
+     var video_id: String = ""
+}
+
+

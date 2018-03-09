@@ -13,18 +13,19 @@ import SwiftyJSON
 protocol VPNetworkManagerProtocol {
     
     static func loadNewsVideo(completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
+    static func parseVideoRealURL(video_id:String,completionHandler:@escaping(_ realVideo:RealVideo)->())
 }
 struct VPNetworkManager:VPNetworkManagerProtocol {
     
 }
+
+
 extension VPNetworkManagerProtocol{
+    // MARK: - ---------------------------------- 视频列表 ----------------------------------
     static func loadNewsVideo(completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->()){
       
-        let BASE_URL = "https://is.snssdk.com"
-        let device_id: Int = 6096495334
-        let iid: Int = 5034850950
         let pullTime = Date().timeIntervalSince1970
-        let url = BASE_URL + "/api/news/feed/v75/?"
+        let url = NEWS_VIDEO_BASE_URL + NEWS_VIDEO_LIST_PATH
         let params = ["device_id": device_id,
                       "count": 20,
                       "list_count": 15,
@@ -36,7 +37,7 @@ extension VPNetworkManagerProtocol{
                       "tt_from": "pull",
                       "iid": iid] as [String: Any]
         
-        
+        print(params)
         Alamofire.request(url, parameters: params).responseJSON { (response) in
             guard response.result.isSuccess else {
                 return
@@ -51,15 +52,44 @@ extension VPNetworkManagerProtocol{
                 }
                 completionHandler(pullTime,datas.flatMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
                 }))
-                
-                
+            }
+        }
+    }
+    
+    // MARK: - ---------------------------------- 视频地址请求 ----------------------------------
+    static func parseVideoRealURL(video_id:String,completionHandler:@escaping(_ realVideo:RealVideo)->()){
+        
+        let r = arc4random()
+        let url :NSString = "/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)" as NSString
+        let data: NSData = url.data(using: String.Encoding.utf8.rawValue)! as NSData
+        
+        var crc32:UInt64 = UInt64(data.getCRC32())
+        if crc32 < 0 {
+            crc32 += 0x100000000
+        }
+        // 拼接 url
+//        let realURL = "https://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
+        let realURL = NEWS_VIDEO_BASE_URL+NEWS_VIDEO_REAL_PLAY_PATH+"\(video_id)?r=\(r)&s=\(crc32)"
+        Alamofire.request(realURL).responseJSON { (response) in
+            
+            guard response.result.isSuccess else{return}
+            
+            if let value = response.result.value {
+                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
             }
             
         }
         
         
         
+        
+    
+        
+        
     }
+    
+    
+    
     
 }
 

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */; };
+		8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E3942051284C00E7AB20 /* NSData+CRC32.m */; };
 		8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */; };
 		8FA95439204FB6D200072999 /* VPShotVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */; };
 		8FA9543C204FCBDD00072999 /* VPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */; };
@@ -49,6 +51,10 @@
 /* Begin PBXFileReference section */
 		127DD9C7B48AAF2EAF3D07A5 /* Pods-VideoProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoProject/Pods-VideoProject.debug.xcconfig"; sourceTree = "<group>"; };
 		725EE43B67C34B6B4CFB94ED /* Pods-VideoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoProject/Pods-VideoProject.release.xcconfig"; sourceTree = "<group>"; };
+		8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoPlayModel.swift; sourceTree = "<group>"; };
+		8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoProject-Bridging-Header.h"; sourceTree = "<group>"; };
+		8F37E3932051284C00E7AB20 /* NSData+CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
+		8F37E3942051284C00E7AB20 /* NSData+CRC32.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
 		8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoDetailViewController.swift; sourceTree = "<group>"; };
 		8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShotVideoViewController.swift; sourceTree = "<group>"; };
 		8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNetworkManager.swift; sourceTree = "<group>"; };
@@ -281,6 +287,9 @@
 			isa = PBXGroup;
 			children = (
 				8FABC00320494A5C00B60A5F /* UIKit+Extension.swift */,
+				8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */,
+				8F37E3932051284C00E7AB20 /* NSData+CRC32.h */,
+				8F37E3942051284C00E7AB20 /* NSData+CRC32.m */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -341,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				8FA9543D204FCE0E00072999 /* VPNewsVideoModel.swift */,
+				8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -568,8 +578,10 @@
 				8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */,
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
+				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,
 				8FABC0142049557900B60A5F /* VPNewsVideoViewController.swift in Sources */,
 				8FA9543E204FCE0E00072999 /* VPNewsVideoModel.swift in Sources */,
+				8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */,
 				8FABC00A20494D0600B60A5F /* VPMainViewController.swift in Sources */,
 				8FABC00420494A5C00B60A5F /* UIKit+Extension.swift in Sources */,
 				8FABBFF7204942AC00B60A5F /* VPBaseViewController.swift in Sources */,
@@ -748,6 +760,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "12576d4b-3571-47cf-b02b-f8e88fed0956";
 				PROVISIONING_PROFILE_SPECIFIER = test_dev_pro;
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoProject/Classes/Tools/Extension/VideoProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -768,6 +781,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "12576d4b-3571-47cf-b02b-f8e88fed0956";
 				PROVISIONING_PROFILE_SPECIFIER = test_dev_pro;
+				SWIFT_OBJC_BRIDGING_HEADER = "VideoProject/Classes/Tools/Extension/VideoProject-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

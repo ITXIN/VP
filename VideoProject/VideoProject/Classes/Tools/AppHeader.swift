@@ -62,3 +62,9 @@ let  kStatusBarAndNavigationBarHeight = (kiPhoneX ? 88.0 : 64.0)
 // Status bar & navigation bar &Tabbar height.
 let  kStatusBarAndNavigationBarAndTabbarHeightHeight = CGFloat(kTabbarHeight+kStatusBarAndNavigationBarHeight)
 
+
+let NEWS_VIDEO_BASE_URL = "https://is.snssdk.com"
+let NEWS_VIDEO_LIST_PATH = "/api/news/feed/v75/?"
+let NEWS_VIDEO_REAL_PLAY_PATH = "/video/urls/v/1/toutiao/mp4/"
+let device_id: Int = 6096495334
+let iid: Int = 5034850950

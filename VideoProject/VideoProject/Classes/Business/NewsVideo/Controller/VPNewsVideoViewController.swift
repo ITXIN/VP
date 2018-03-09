@@ -8,7 +8,7 @@
 
 import UIKit
 import BMPlayer
-class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,UITableViewDataSource {
+class VPNewsVideoViewController: VPBaseTableViewController {
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     
   var newsVideoModelArr = [VPNewsVideoModel]()
@@ -31,20 +31,17 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
         self.tableView.dataSource = self
          self.tableViewRegisterClass(cellClass: UITableViewCell.self, identifier: newsVideoCellIdentifier)
         self.headerRefreshingBlock = {
-            var num = arc4random()%10
-            num = 15
             self.dataArr.removeAllObjects()
-            for _  in 0...num+1 {
-                self.dataArr.add("new")
-            }
             VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
 //                print(videoModelArr)
                 self.newsVideoModelArr = videoModelArr
-                
-                for newsVideoModel in  self.newsVideoModelArr {
-                    print(newsVideoModel)
-                    
+//                var newsVideoModel:VPNewsVideoModel = nil
+                for  newsVideoModel  in  self.newsVideoModelArr {
+        print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
+//                    self.dataArr.add(newsVideoModel)
+
                 }
+                self.tableView.reloadData()
             }
             
         }
@@ -52,13 +49,22 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
        
     }
     
+  
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
     
-    
-    
+}
+
+
+
+// MARK: - ---------------------------------- VPNewsVideoViewController UITableviewDelegate datasource ----------------------------------
+extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     //UITableviewDelegate
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return self.dataArr.count
+        return self.newsVideoModelArr.count
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -69,45 +75,36 @@ class VPNewsVideoViewController: VPBaseTableViewController,UITableViewDelegate,U
         return 260
     }
     
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vpVideoDetailVC = VPNewsVideoDetailViewController()
-        
         self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath)
-        cell.textLabel?.text = (self.dataArr[indexPath.row] as! String)
-        
-        if indexPath.row == 0 {
-            cell.contentView.addSubview(self.player)
-            self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: "http://v3-tt.ixigua.com/9325834736e521a2efabdc45c866dd36/5a9f90c1/video/m/220ac6a882370064859a56e930649beddb3115507710000c2ddaa8468dc/")!))
-            self.player.snp.makeConstraints {
-                $0.edges.equalTo(cell.contentView)
+        if self.newsVideoModelArr.count > 0 {
+            let newsVideoModel = self.newsVideoModelArr[indexPath.row]
+            cell.textLabel?.text = newsVideoModel.abstract
+            if indexPath.row == 0 {
+                cell.contentView.addSubview(self.player)
+                VPNetworkManager.parseVideoRealURL(video_id: newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
+                    let playurl = response.video_list.video_1.mainURL
+                    print("response",playurl)
+                    self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+                })
                 
+                self.player.snp.makeConstraints {
+                    $0.edges.equalTo(cell.contentView)
+                }
             }
-            self.player.play()
         }
-        
         
         return cell
     }
 
-  
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-}
-
-extension VPShotVideoViewController{
-    
 }
 
 
-
+// MARK: - ---------------------------------- BMPlayerDelegate ----------------------------------
 extension VPNewsVideoViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
@@ -128,8 +125,6 @@ extension VPNewsVideoViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
         
     }
-    
-    
     
 }
 
