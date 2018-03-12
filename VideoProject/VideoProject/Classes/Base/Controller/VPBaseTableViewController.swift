@@ -12,8 +12,9 @@ typealias VPRefreshComponentRefreshingBlock = ()->Void
 
 class VPBaseTableViewController: VPBaseViewController {
     var _headerRefreshingBlock:VPRefreshComponentRefreshingBlock?
-    var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
+    var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     let header = MJRefreshNormalHeader()
+    let footer = MJRefreshAutoNormalFooter()
     var dataArr:NSMutableArray!
     
     lazy var tableView:UITableView  = ({ () -> UITableView in
@@ -39,6 +40,7 @@ class VPBaseTableViewController: VPBaseViewController {
         self.view.frame = frame
         
     }
+    
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
             _headerRefreshingBlock = newValue
@@ -54,6 +56,21 @@ class VPBaseTableViewController: VPBaseViewController {
             return _headerRefreshingBlock
         }
     }
+    var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?{
+        set{
+          _footerRefreshingBlock = newValue
+            if (self.footerRefreshingBlock != nil) {
+                self.tableView.mj_footer = self.footer
+                footer.beginRefreshing(completionBlock: {
+                    self.footLoadMoreData()
+                })
+            }
+        }
+        get{
+           return _footerRefreshingBlock
+        }
+    }
+    
     // 顶部刷新
     @objc func headerRefresh(){
         print("下拉刷新")
@@ -74,6 +91,21 @@ class VPBaseTableViewController: VPBaseViewController {
         }
         
     }
+    
+    // 加载更多
+    @objc func footLoadMoreData(){
+        print("加载更多")
+        self.footerRefreshingBlock!()
+        // 结束刷新
+        self.tableView.mj_footer.endRefreshing()
+        self.tableView.reloadData()
+        DispatchQueue.main.async {
+
+        }
+        
+    }
+    
+    
     override func initSubviews() {
         super.initSubviews()
         self.dataArr = NSMutableArray.init()

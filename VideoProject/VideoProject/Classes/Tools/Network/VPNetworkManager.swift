@@ -9,7 +9,7 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
-
+import SVProgressHUD
 protocol VPNetworkManagerProtocol {
     
     static func loadNewsVideo(completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
@@ -37,8 +37,9 @@ extension VPNetworkManagerProtocol{
                       "tt_from": "pull",
                       "iid": iid] as [String: Any]
         
-       
+       SVProgressHUD.show()
         Alamofire.request(url, parameters: params).responseJSON { (response) in
+            SVProgressHUD.dismiss()
             guard response.result.isSuccess else {
                 return
             }
@@ -72,8 +73,9 @@ extension VPNetworkManagerProtocol{
         // 拼接 url
 //        let realURL = "https://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
         let realURL = NEWS_VIDEO_BASE_URL+NEWS_VIDEO_REAL_PLAY_PATH+"\(video_id)?r=\(r)&s=\(crc32)"
+        SVProgressHUD.show()
         Alamofire.request(realURL).responseJSON { (response) in
-            
+            SVProgressHUD.dismiss()
             guard response.result.isSuccess else{return}
             
             if let value = response.result.value {

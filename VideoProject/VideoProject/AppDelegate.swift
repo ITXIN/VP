@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import SVProgressHUD
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -22,6 +22,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     func setupAppConfiger() {
+        SVProgressHUD.setForegroundColor(.white)
+        SVProgressHUD.setMinimumDismissTimeInterval(1.5)
+        SVProgressHUD.setBackgroundColor(RGB(0, G: 0, B: 0))
+        SVProgressHUD.setDefaultAnimationType(.native)
+        SVProgressHUD.setDefaultMaskType(.black)
         if #available(iOS 11, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         }else{
@@ -29,7 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
        
     }
-
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.

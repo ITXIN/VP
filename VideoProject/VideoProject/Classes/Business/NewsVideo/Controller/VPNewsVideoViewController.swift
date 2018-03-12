@@ -35,15 +35,16 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         self.headerRefreshingBlock = {
             
             VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
-                //                print(videoModelArr)
+                
                 self.newsVideoModelArr = videoModelArr
-                //
-                for  newsVideoModel  in  self.newsVideoModelArr {
-                    print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
-                    //                    self.dataArr.add(newsVideoModel)
-                    
-                }
+//                for  newsVideoModel  in  self.newsVideoModelArr {
+//                    print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
+//
+//
+//                }
                 self.tableView.reloadData()
+                
+               
             }
             
         }
@@ -53,18 +54,32 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {
-            VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
-                UIView.animate(withDuration: 0.2, animations: {
-                    cell.bgView.addSubview(self.player)
-                    let playurl = response.video_list.video_1.mainURL
-                    self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
-                    self.player.snp.makeConstraints {
-                        $0.edges.equalTo(cell.bgView)
-                    }
-                })
-               
+        VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
+            UIView.animate(withDuration: 0.2, animations: {
+                cell.bgView.addSubview(self.player)
+                let playurl = response.video_list.video_1.mainURL
+                self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+                self.player.snp.makeConstraints {
+                    $0.edges.equalTo(cell.bgView)
+                }
             })
+            
+        })
     }
+    
+    // MARK: - ----------------------------------  ----------------------------------
+    
+    static var lastOffset = 0
+    
+    func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        var contentOffsetY = scrollView.contentOffset.y
+        
+        
+    }
+    
+    
+    
+    
     
     
     override func didReceiveMemoryWarning() {
@@ -93,9 +108,9 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        let vpVideoDetailVC = VPNewsVideoDetailViewController()
-//        vpVideoDetailVC.modalTransitionStyle = .coverVertical
-//        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
+        //        let vpVideoDetailVC = VPNewsVideoDetailViewController()
+        //        vpVideoDetailVC.modalTransitionStyle = .coverVertical
+        //        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
@@ -105,18 +120,17 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
             cell.videoPlayHudBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
                     VPLog("play")
-//                    if self!.player.isPlaying{
-//                        self?.player.pause()
-//                        self?.player.removeFromSuperview()
-//                    }
-//                    self?.addPlayer(on: cell)
+                    //                    if self!.player.isPlaying{
+                    //                        self?.player.pause()
+                    //                        self?.player.removeFromSuperview()
+                    //                    }
+                    //                    self?.addPlayer(on: cell)
+                    
+                    
                     let vpVideoDetailVC = VPNewsVideoDetailViewController()
+                    vpVideoDetailVC.index = 0
                     vpVideoDetailVC.modalTransitionStyle = .coverVertical
-//                    self?.present(vpVideoDetailVC, animated: true, completion: {
-//
-//                    })
-                    self?.navigationController?.present(vpVideoDetailVC, animated: true, completion: nil)
-//                    self?.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
+                    self?.navigationController?.present(vpVideoDetailVC, animated: false, completion: nil)
                 })
                 .disposed(by: disposeBag)
             
