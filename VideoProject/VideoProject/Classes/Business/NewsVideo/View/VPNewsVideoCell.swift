@@ -96,7 +96,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.videoPreImage.snp.makeConstraints {
-            $0.top.equalTo(0)
+            $0.bottom.equalTo(0)
             $0.leading.trailing.equalTo(self.bgView)
             $0.height.equalTo(187)
         }
@@ -109,13 +109,13 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             $0.right.equalTo(-10)
         }
         self.avatarIcon.snp.makeConstraints {
-            $0.bottom.equalTo(-50)
+            $0.top.equalTo(10)
             $0.left.equalTo(10)
             $0.size.equalTo(CGSize.init(width: 45, height: 45))
         }
         self.avatarNameLab.snp.makeConstraints {
-            $0.top.equalTo(self.avatarIcon.snp.bottom).offset(10)
-            $0.left.equalTo(self.avatarIcon)
+            $0.centerY.equalTo(self.avatarIcon)
+            $0.left.equalTo(self.avatarIcon.snp.right).offset(10)
         }
         self.followBtn.snp.makeConstraints {
             $0.centerY.equalTo(self.avatarNameLab)

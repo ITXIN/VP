@@ -63,10 +63,10 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
                 $0.size.equalTo(CGSize.init(width: 30, height: 30))
             }
             
-//            btn.addTarget(self, action:#selector(action), for: UIControlEvents.touchUpInside)
-            btn.rx.tap.subscribe({_ in
-                self.dismiss(animated: false, completion: nil)
-            }).dispose()
+            btn.addTarget(self, action:#selector(action), for: UIControlEvents.touchUpInside)
+//            btn.rx.tap.subscribe({_ in
+//                self.dismiss(animated: false, completion: nil)
+//            }).dispose()
             return btn
         }()
         
@@ -100,7 +100,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
                 let playurl = response.video_list.video_1.mainURL
                 self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
                 self.player.snp.makeConstraints {
-                    $0.edges.equalTo(cell.bgView)
+                    $0.edges.equalTo(cell.videoPreImage)
                 }
                
             })
