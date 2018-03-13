@@ -42,7 +42,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
 //
 //
 //                }
-                self.tableView.reloadData()
+                self.headerEndRefreshing()
                 
                
             }

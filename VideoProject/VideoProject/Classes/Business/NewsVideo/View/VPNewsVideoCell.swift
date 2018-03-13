@@ -38,35 +38,12 @@ class VPNewsVideoCell: VPBaseTableViewCell {
     }
     override func initSubviews() {
         super.initSubviews()
-        self.videoPreImage = {
-            let img =  UIImageView.init()
-            self.bgView.addSubview(img)
-            img.contentMode = .scaleToFill
-            img.backgroundColor = UIColor.yellow
-            return img
-        }()
-        self.videoPlayHudBtn = {
-            let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
-            btn.setBackgroundImage(UIImage.init(named: "titlebar_shadow_20x64_"), for: .normal)
-            btn.setImage(UIImage.init(named: "video_play_icon_44x44_"), for: .normal)
-//            btn.layer.cornerRadius = 45/2;
-//            btn.layer.masksToBounds = true
-//            btn.backgroundColor = UIColor.vpGrayBgColor()
-            return btn
-        }()
-        self.titleLab = ({ () -> UILabel in
-            let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
-            lab.textColor = UIColor.white
-            lab.font = UIFont.systemFont(ofSize: 14)
-            return lab
-            }())
+        
         
         self.avatarIcon = {
             let btn =  UIButton.init(type: UIButtonType.custom)
             self.bgView.addSubview(btn)
-            btn.layer.cornerRadius = 45/2;
+            btn.layer.cornerRadius = 30/2;
             btn.layer.masksToBounds = true
             btn.backgroundColor = UIColor.vpGrayBgColor()
             return btn
@@ -76,7 +53,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             let lab =  UILabel.init()
             self.bgView.addSubview(lab)
             lab.textColor = UIColor.vpGrayTextColor()
-            lab.font = UIFont.systemFont(ofSize: 13)
+            lab.font = UIFont.systemFont(ofSize: 15)
             return lab
             }())
         
@@ -90,28 +67,40 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             btn.setImage(UIImage.init(named: "video_add_24x24_"), for: .normal)
             return btn
         }()
+        self.videoPreImage = {
+            let img =  UIImageView.init()
+            self.bgView.addSubview(img)
+            img.contentMode = .scaleToFill
+            img.backgroundColor = UIColor.yellow
+            return img
+        }()
+        self.videoPlayHudBtn = {
+            let btn =  UIButton.init(type: UIButtonType.custom)
+            self.bgView.addSubview(btn)
+            btn.setBackgroundImage(UIImage.init(named: "titlebar_shadow_20x64_"), for: .normal)
+            btn.setImage(UIImage.init(named: "video_play_icon_44x44_"), for: .normal)
+            //            btn.layer.cornerRadius = 45/2;
+            //            btn.layer.masksToBounds = true
+            //            btn.backgroundColor = UIColor.vpGrayBgColor()
+            return btn
+        }()
+        self.titleLab = ({ () -> UILabel in
+            let lab =  UILabel.init()
+            self.bgView.addSubview(lab)
+            lab.textColor = UIColor.white
+            lab.font = UIFont.boldSystemFont(ofSize: 14)
+            return lab
+            }())
         
     }
     
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
-        self.videoPreImage.snp.makeConstraints {
-            $0.bottom.equalTo(0)
-            $0.leading.trailing.equalTo(self.bgView)
-            $0.height.equalTo(187)
-        }
-        self.videoPlayHudBtn.snp.makeConstraints {
-            $0.edges.equalTo(self.videoPreImage)
-        }
-        self.titleLab.snp.makeConstraints {
-            $0.top.equalTo(10)
-            $0.left.equalTo(10)
-            $0.right.equalTo(-10)
-        }
+        
         self.avatarIcon.snp.makeConstraints {
             $0.top.equalTo(10)
             $0.left.equalTo(10)
-            $0.size.equalTo(CGSize.init(width: 45, height: 45))
+            $0.size.equalTo(CGSize.init(width: 30, height: 30))
         }
         self.avatarNameLab.snp.makeConstraints {
             $0.centerY.equalTo(self.avatarIcon)
@@ -119,6 +108,19 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         }
         self.followBtn.snp.makeConstraints {
             $0.centerY.equalTo(self.avatarNameLab)
+            $0.right.equalTo(-10)
+        }
+        self.videoPreImage.snp.makeConstraints {
+            $0.top.equalTo(self.avatarIcon.snp.bottom).offset(10)
+            $0.leading.trailing.equalTo(self.bgView)
+            $0.height.equalTo(187)
+        }
+        self.videoPlayHudBtn.snp.makeConstraints {
+            $0.edges.equalTo(self.videoPreImage)
+        }
+        self.titleLab.snp.makeConstraints {
+            $0.top.equalTo(self.videoPreImage).offset(10)
+            $0.left.equalTo(10)
             $0.right.equalTo(-10)
         }
     }

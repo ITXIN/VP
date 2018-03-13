@@ -35,8 +35,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     }
     override func initSubviews() {
         super.initSubviews()
-        self.player.delegate = self
-        
+//        self.player.delegate = self
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -64,32 +63,38 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
             }
             
             btn.addTarget(self, action:#selector(action), for: UIControlEvents.touchUpInside)
-//            btn.rx.tap.subscribe({_ in
-//                self.dismiss(animated: false, completion: nil)
-//            }).dispose()
+            //            btn.rx.tap.subscribe({_ in
+            //                self.dismiss(animated: false, completion: nil)
+            //            }).dispose()
             return btn
         }()
         
+        self.player.playStateDidChange = {(isPlaying:Bool) in
+            VPLog(isPlaying)
+        }
         
+        VPLog(self.player.gestureRecognizers)
     }
-    
-    
+
     func loadVideoData() {
         VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
-            self.newsVideoModelArr = videoModelArr
-            for  newsVideoModel  in  self.newsVideoModelArr {
-                print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
+            if (self.newsVideoModelArr.count > 0){
+                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
+            }else{
+                self.newsVideoModelArr = videoModelArr
+                
             }
+            VPLog(self.newsVideoModelArr.count)
             
-            
+//            for  newsVideoModel  in  self.newsVideoModelArr {
+//                print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
+//            }
             if (self.index == 0){
                 self.tableView.setContentOffset(CGPoint.init(x: 0, y: -kScreenHeight/2+187/2), animated: true)
             }
-             self.tableView.reloadData()
+            self.footerEndRefreshing()
         }
     }
-    
-    
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {
@@ -102,22 +107,20 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
                 self.player.snp.makeConstraints {
                     $0.edges.equalTo(cell.videoPreImage)
                 }
-               
+                
             })
             
         })
     }
     
     // MARK: - ---------------------------------- UIScrollview ----------------------------------
-    
-    
     @objc func action(){
         //        let baseVC = VPShotVideoViewController()
         self.dismiss(animated: true, completion: nil)
     }
     
     
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -140,7 +143,8 @@ extension VPNewsVideoDetailViewController:UITableViewDelegate,UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(kScreenWidth)*0.67
+        //        return CGFloat(kScreenWidth)*0.67
+        return 20+30+187
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -164,7 +168,6 @@ extension VPNewsVideoDetailViewController:UITableViewDelegate,UITableViewDataSou
                     
                 })
                 .disposed(by: disposeBag)
-            
         }
         
         return cell
@@ -174,17 +177,18 @@ extension VPNewsVideoDetailViewController:UITableViewDelegate,UITableViewDataSou
 
 
 // MARK: - ---------------------------------- BMPlayerDelegate ----------------------------------
+/*
 extension VPNewsVideoDetailViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         VPLog("")
     }
     
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-//        VPLog("")
+        //        VPLog("")
     }
     
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-//        VPLog("")
+        //        VPLog("")
     }
     
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
@@ -196,5 +200,5 @@ extension VPNewsVideoDetailViewController:BMPlayerDelegate{
     }
     
 }
-
+*/
 

@@ -25,9 +25,10 @@ class VPBaseTableViewController: VPBaseViewController {
         self.bgView.addSubview(tableView)
         return tableView
         }())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
     func  tableViewRegisterClass(cellClass:AnyClass,identifier:String) {
@@ -58,16 +59,16 @@ class VPBaseTableViewController: VPBaseViewController {
     }
     var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?{
         set{
-          _footerRefreshingBlock = newValue
+            _footerRefreshingBlock = newValue
             if (self.footerRefreshingBlock != nil) {
                 self.tableView.mj_footer = self.footer
                 footer.beginRefreshing(completionBlock: {
-                    self.footLoadMoreData()
+                    self.footerLoadMoreData()
                 })
             }
         }
         get{
-           return _footerRefreshingBlock
+            return _footerRefreshingBlock
         }
     }
     
@@ -75,10 +76,18 @@ class VPBaseTableViewController: VPBaseViewController {
     @objc func headerRefresh(){
         print("下拉刷新")
         self.headerRefreshingBlock!()
+    }
+    
+    // 加载更多
+    @objc func footerLoadMoreData(){
+        print("加载更多")
+        self.footerRefreshingBlock!()
+    }
+    func headerEndRefreshing() {
         // 结束刷新
-        self.tableView.mj_header.endRefreshing()
-        self.tableView.reloadData()
         DispatchQueue.main.async {
+            self.tableView.mj_header.endRefreshing()
+            self.tableView.reloadData()
             if (self.dataArr.count > self.tableView.visibleCells.count) {
                 if (self.tableView.mj_footer != nil){
                     self.tableView.mj_footer.isHidden = false
@@ -89,20 +98,13 @@ class VPBaseTableViewController: VPBaseViewController {
                 }
             }
         }
-        
     }
-    
-    // 加载更多
-    @objc func footLoadMoreData(){
-        print("加载更多")
-        self.footerRefreshingBlock!()
+    func footerEndRefreshing() {
         // 结束刷新
-        self.tableView.mj_footer.endRefreshing()
-        self.tableView.reloadData()
         DispatchQueue.main.async {
-
+            self.tableView.mj_footer.endRefreshing()
+            self.tableView.reloadData()
         }
-        
     }
     
     
@@ -117,11 +119,11 @@ class VPBaseTableViewController: VPBaseViewController {
             $0.edges.equalTo(self.bgView)
         }
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
 
