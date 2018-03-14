@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */; };
 		8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E3942051284C00E7AB20 /* NSData+CRC32.m */; };
+		8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F96AAD32058CEC800C07004 /* VPRefreshView.swift */; };
 		8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */; };
 		8FA95439204FB6D200072999 /* VPShotVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */; };
 		8FA9543C204FCBDD00072999 /* VPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */; };
@@ -57,6 +58,7 @@
 		8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F37E3932051284C00E7AB20 /* NSData+CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
 		8F37E3942051284C00E7AB20 /* NSData+CRC32.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
+		8F96AAD32058CEC800C07004 /* VPRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPRefreshView.swift; sourceTree = "<group>"; };
 		8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoDetailViewController.swift; sourceTree = "<group>"; };
 		8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShotVideoViewController.swift; sourceTree = "<group>"; };
 		8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNetworkManager.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 			isa = PBXGroup;
 			children = (
 				8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */,
+				8F96AAD32058CEC800C07004 /* VPRefreshView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -592,6 +595,7 @@
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
 				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
+				8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */,
 				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,
 				8FABC0142049557900B60A5F /* VPNewsVideoViewController.swift in Sources */,
 				8FA9543E204FCE0E00072999 /* VPNewsVideoModel.swift in Sources */,

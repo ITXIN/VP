@@ -37,6 +37,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         super.initSubviews()
 //        self.player.delegate = self
         
+        
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewRegisterClass(cellClass: VPNewsVideoCell.self, identifier: newsVideoCellIdentifier)
@@ -44,7 +45,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         //
         //
         //            }
-        self.loadVideoData()
+//        self.loadVideoData()
         self.footerRefreshingBlock = {
             self.loadVideoData()
         }
@@ -71,6 +72,14 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         
         self.player.playStateDidChange = {(isPlaying:Bool) in
             VPLog(isPlaying)
+        }
+        self.player.backBlock = {[unowned self] (isFullScreen) in
+            if isFullScreen {
+               return
+            }else{
+                let  _  = self.navigationController?.popViewController(animated: true)
+                
+            }
         }
         
         VPLog(self.player.gestureRecognizers)

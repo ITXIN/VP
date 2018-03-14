@@ -13,8 +13,8 @@ typealias VPRefreshComponentRefreshingBlock = ()->Void
 class VPBaseTableViewController: VPBaseViewController {
     var _headerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
-    let header = MJRefreshNormalHeader()
-    let footer = MJRefreshAutoNormalFooter()
+    var header: VPRefreshGifHeader!
+    var footer: MJRefreshAutoNormalFooter!
     var dataArr:NSMutableArray!
     
     lazy var tableView:UITableView  = ({ () -> UITableView in
@@ -45,12 +45,13 @@ class VPBaseTableViewController: VPBaseViewController {
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
             _headerRefreshingBlock = newValue
-            if (self.headerRefreshingBlock != nil) {
-                self.header.lastUpdatedTimeLabel.isHidden = true
-                self.tableView.mj_header = self.header
-                header.beginRefreshing(completionBlock: {
+            if (_headerRefreshingBlock != nil) {
+                self.header = VPRefreshGifHeader{
                     self.headerRefresh()
-                })
+                }
+                self.tableView.mj_header = self.header
+                self.header.lastUpdatedTimeLabel.isHidden = true
+     
             }
         }
         get{
@@ -60,11 +61,13 @@ class VPBaseTableViewController: VPBaseViewController {
     var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?{
         set{
             _footerRefreshingBlock = newValue
-            if (self.footerRefreshingBlock != nil) {
-                self.tableView.mj_footer = self.footer
-                footer.beginRefreshing(completionBlock: {
+            if (_footerRefreshingBlock != nil) {
+                
+                self.footer = MJRefreshAutoNormalFooter {
                     self.footerLoadMoreData()
-                })
+                }
+                self.tableView.mj_footer = self.footer
+                self.setupFooterView()
             }
         }
         get{
@@ -88,15 +91,17 @@ class VPBaseTableViewController: VPBaseViewController {
         DispatchQueue.main.async {
             self.tableView.mj_header.endRefreshing()
             self.tableView.reloadData()
-            if (self.dataArr.count > self.tableView.visibleCells.count) {
-                if (self.tableView.mj_footer != nil){
-                    self.tableView.mj_footer.isHidden = false
-                }
-            }else{
-                if (self.tableView.mj_footer != nil){
-                    self.tableView.mj_footer.isHidden = true
-                }
-            }
+           self.setupFooterView()
+            
+//            if (self.dataArr.count > self.tableView.visibleCells.count) {
+//                if (self.tableView.mj_footer != nil){
+//                    self.tableView.mj_footer.isHidden = false
+//                }
+//            }else{
+//                if (self.tableView.mj_footer != nil){
+//                    self.tableView.mj_footer.isHidden = true
+//                }
+//            }
         }
     }
     func footerEndRefreshing() {
@@ -106,7 +111,13 @@ class VPBaseTableViewController: VPBaseViewController {
             self.tableView.reloadData()
         }
     }
-    
+    func setupFooterView() {
+        if(self.tableView.contentSize.height < 200){
+            self.tableView.mj_footer.isHidden = true
+        }else{
+            self.tableView.mj_footer.isHidden = false
+        }
+    }
     
     override func initSubviews() {
         super.initSubviews()
