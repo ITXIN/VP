@@ -14,10 +14,10 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
     var newsVideoModelArr = [VPNewsVideoModel]()
-    var cutomPlayerView = VPNewsCustomPlayerView()
+    var customPlayerView = VPNewsCustomPlayerView()
     
     /// 播放器
-    lazy var player: BMPlayer = BMPlayer(customControlView: cutomPlayerView)
+    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bgView.backgroundColor = UIColor.yellow
@@ -27,14 +27,12 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     override func initSubviews() {
         super.initSubviews()
         self.player.delegate = self
+        self.customPlayerView.delegate = self
+    
         
-//        for i in 0...10 {
-//            //            self.dataArr.add(String(i))
-//        }
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewRegisterClass(cellClass: VPNewsVideoCell.self, identifier: newsVideoCellIdentifier)
-        
         self.headerRefreshingBlock = {
             VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
                 self.newsVideoModelArr = videoModelArr
@@ -42,11 +40,9 @@ class VPNewsVideoViewController: VPBaseTableViewController {
             }
         }
         
-        
         self.footerRefreshingBlock = {
             self.loadVideoData()
         }
-        
         self.tableView.mj_header.beginRefreshing()
         
         
@@ -94,7 +90,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                     let contentview = player.superview?.superview
                     let cell = contentview?.superview as! VPNewsVideoCell
                     let rect = tableView.convert(cell.frame, to: vc.view)
-                    
                     // 判断是否滑出屏幕
                     if (rect.origin.y <= -237) || (rect.origin.y >= kScreenHeight - (tabBarController?.tabBar.frame.size.height)!) {
                         VPLog("滑出屏幕")
@@ -171,9 +166,34 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     
 }
 
+// MARK: - ---------------------------------- BMPlayerControlViewDelegate ----------------------------------
+extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
+    func controlView(controlView: BMPlayerControlView, didChooseDefition index: Int) {
+         VPLog("didChooseDefition")
+    }
+    
+    func controlView(controlView: BMPlayerControlView, slider: UISlider, onSliderEvent event: UIControlEvents) {
+         VPLog("onSliderEvent")
+    }
+    
+    func controlView(controlView: BMPlayerControlView, didPressButton button: UIButton) {
+        
+        VPLog(button)
+        let vpVideoDetailVC = VPNewsVideoFullScreenViewController()
+        vpVideoDetailVC.player = self.player
+        vpVideoDetailVC.customPlayerView = self.customPlayerView
+        
+        //                    vpVideoDetailVC.modalTransitionStyle = .coverVertical
+        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
+        
+    }
+}
+
 
 // MARK: - ---------------------------------- BMPlayerDelegate ----------------------------------
 extension VPNewsVideoViewController:BMPlayerDelegate{
+
+    
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
     }

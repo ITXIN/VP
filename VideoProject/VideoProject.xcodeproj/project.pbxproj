@@ -10,6 +10,7 @@
 		8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */; };
 		8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E3942051284C00E7AB20 /* NSData+CRC32.m */; };
 		8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F96AAD32058CEC800C07004 /* VPRefreshView.swift */; };
+		8F96AAD6205920E400C07004 /* VPNewsVideoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F96AAD5205920E400C07004 /* VPNewsVideoFullScreenViewController.swift */; };
 		8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */; };
 		8FA95439204FB6D200072999 /* VPShotVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */; };
 		8FA9543C204FCBDD00072999 /* VPNetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */; };
@@ -59,6 +60,7 @@
 		8F37E3932051284C00E7AB20 /* NSData+CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
 		8F37E3942051284C00E7AB20 /* NSData+CRC32.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
 		8F96AAD32058CEC800C07004 /* VPRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPRefreshView.swift; sourceTree = "<group>"; };
+		8F96AAD5205920E400C07004 /* VPNewsVideoFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoFullScreenViewController.swift; sourceTree = "<group>"; };
 		8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoDetailViewController.swift; sourceTree = "<group>"; };
 		8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShotVideoViewController.swift; sourceTree = "<group>"; };
 		8FA9543B204FCBDD00072999 /* VPNetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNetworkManager.swift; sourceTree = "<group>"; };
@@ -350,6 +352,7 @@
 			children = (
 				8FABC0132049557900B60A5F /* VPNewsVideoViewController.swift */,
 				8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */,
+				8F96AAD5205920E400C07004 /* VPNewsVideoFullScreenViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -584,6 +587,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F96AAD6205920E400C07004 /* VPNewsVideoFullScreenViewController.swift in Sources */,
 				8FABC00C20494D6100B60A5F /* VPMainTabBar.swift in Sources */,
 				8FABBFFB2049479E00B60A5F /* AppHeader.swift in Sources */,
 				8FABC00E2049511D00B60A5F /* VPBaseTableViewController.swift in Sources */,

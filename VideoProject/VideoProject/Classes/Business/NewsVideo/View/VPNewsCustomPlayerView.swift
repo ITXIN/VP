@@ -11,7 +11,6 @@ import BMPlayer
 class VPNewsCustomPlayerView: BMPlayerControlView {
    
     override func customizeUIComponents() {
-        
         super.customizeUIComponents()
         self.backButton.isHidden = true
         self.titleLabel.textColor = UIColor.white
@@ -24,6 +23,11 @@ class VPNewsCustomPlayerView: BMPlayerControlView {
         }
         
     }
+    override func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+        super.onTapGestureTapped(gesture)
+         UIApplication.shared.isStatusBarHidden = true
+    }
     
+
     
 }
