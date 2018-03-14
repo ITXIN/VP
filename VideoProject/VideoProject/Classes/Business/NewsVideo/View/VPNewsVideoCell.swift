@@ -84,13 +84,14 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             //            btn.backgroundColor = UIColor.vpGrayBgColor()
             return btn
         }()
-        self.titleLab = ({ () -> UILabel in
+        
+        self.titleLab = {
             let lab =  UILabel.init()
             self.bgView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.boldSystemFont(ofSize: 14)
             return lab
-            }())
+        }()
         
     }
     

@@ -9,9 +9,21 @@
 import UIKit
 import BMPlayer
 class VPNewsCustomPlayerView: BMPlayerControlView {
-
+   
     override func customizeUIComponents() {
-        BMPlayerConf.topBarShowInCase = .none
+        
+        super.customizeUIComponents()
+        self.backButton.isHidden = true
+        self.titleLabel.textColor = UIColor.white
+        self.titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        titleLabel.snp.remakeConstraints { (make) in
+            make.left.equalTo(10)
+            make.width.equalTo(kScreenWidth-20)
+            make.top.equalTo(10)
+            make.height.equalTo(20)
+        }
+        
     }
-
+    
+    
 }

@@ -14,8 +14,10 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
     var newsVideoModelArr = [VPNewsVideoModel]()
+    var cutomPlayerView = VPNewsCustomPlayerView()
+    
     /// 播放器
-    lazy var player: BMPlayer = BMPlayer(customControlView: VPNewsCustomPlayerView())
+    lazy var player: BMPlayer = BMPlayer(customControlView: cutomPlayerView)
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bgView.backgroundColor = UIColor.yellow
@@ -65,8 +67,16 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
                 cell.bgView.addSubview(self.player)
+
                 let playurl = response.video_list.video_1.mainURL
-                self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+                let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel.title, cover: nil, subtitle: nil)
+                self.player.setVideo(resource: res)
+                
+                
+//                self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
+//                self.cutomPlayerView.titleLabel.text = cell.newsVideoModel.title
+
+                
                 self.player.snp.makeConstraints {
                     $0.edges.equalTo(cell.videoPreImage)
                 }
