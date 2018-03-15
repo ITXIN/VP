@@ -13,7 +13,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
     /// 播放器
     var player:BMPlayer!
     var customPlayerView:VPNewsCustomPlayerView!
-    var playerBackBlock:((_ player:BMPlayer,_ currentTime:TimeInterval)->Void)?
+    var playerBackBlock:((_ player:BMPlayer,_ currentTime:TimeInterval,_ playerView:BMPlayerControlView)->Void)?
     var curretTime:TimeInterval = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +27,11 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             make.left.equalTo(self.customPlayerView.backButton.snp.right)
             make.centerY.equalTo(self.customPlayerView.backButton)
         }
+//        [[UIDevice currentDevice] setValue:[NSNumber numberWithInteger:UIDeviceOrientationLandscapeLeft] forKey:@"orientation"];
+        
+        let num  = NSNumber.init(value: Int8(UIDeviceOrientation.landscapeLeft.rawValue))
+        
+        UIDevice.current.setValue(num, forKey: "orientation")
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -34,14 +39,15 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
 //        UIApplication.shared.isStatusBarHidden = false
         
-        self.customPlayerView.backButton.isHidden = true
-        self.customPlayerView.titleLabel.snp.remakeConstraints { (make) in
-            make.left.equalTo(10)
-            make.width.equalTo(kScreenWidth-20)
-            make.top.equalTo(10)
-            make.height.equalTo(20)
-        }
-        
+//        self.customPlayerView.backButton.isHidden = true
+//        self.customPlayerView.titleLabel.snp.remakeConstraints { (make) in
+//            make.left.equalTo(10)
+//            make.width.equalTo(kScreenWidth-20)
+//            make.top.equalTo(10)
+//            make.height.equalTo(20)
+//        }
+//
+//        self.customPlayerView.delegate = nil
     }
     override var prefersStatusBarHidden: Bool{
         return true
@@ -57,9 +63,11 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             $0.edges.equalTo(self.bgView)
         }
         self.player.playTimeDidChange = {(currentTime,totalTime )in
-            print(currentTime,totalTime)
+            VPLog(currentTime)
             self.curretTime = currentTime
         }
+        
+        
         
     }
     
@@ -83,7 +91,8 @@ extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
         if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
             switch action {
             case .back,.fullscreen:
-                playerBackBlock?(self.player,self.curretTime)
+//                self.player.pause()
+                playerBackBlock?(self.player,self.curretTime,self.customPlayerView)
 
                 self.dismiss(animated: false, completion: nil)
 
@@ -102,5 +111,4 @@ extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
     
     
 }
-
 

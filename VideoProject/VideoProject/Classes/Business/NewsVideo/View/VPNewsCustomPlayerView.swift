@@ -13,8 +13,10 @@ class VPNewsCustomPlayerView: BMPlayerControlView {
     override func customizeUIComponents() {
         super.customizeUIComponents()
         self.backButton.isHidden = true
+        self.chooseDefitionView.isHidden = true
         self.titleLabel.textColor = UIColor.white
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
+        self.player?.panGesture.isEnabled = false
         titleLabel.snp.remakeConstraints { (make) in
             make.left.equalTo(10)
             make.width.equalTo(kScreenWidth-20)
@@ -23,11 +25,5 @@ class VPNewsCustomPlayerView: BMPlayerControlView {
         }
         
     }
-//    override func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
-//        super.onTapGestureTapped(gesture)
-////         UIApplication.shared.isStatusBarHidden = true
-//    }
-    
 
-    
 }
