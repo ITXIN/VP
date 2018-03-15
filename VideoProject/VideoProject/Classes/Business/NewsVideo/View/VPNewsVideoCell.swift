@@ -71,7 +71,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             let img =  UIImageView.init()
             self.bgView.addSubview(img)
             img.contentMode = .scaleToFill
-            img.backgroundColor = UIColor.yellow
+
             return img
         }()
         self.videoPlayHudBtn = {

@@ -23,10 +23,10 @@ class VPNewsCustomPlayerView: BMPlayerControlView {
         }
         
     }
-    override func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
-        super.onTapGestureTapped(gesture)
-         UIApplication.shared.isStatusBarHidden = true
-    }
+//    override func onTapGestureTapped(_ gesture: UITapGestureRecognizer) {
+//        super.onTapGestureTapped(gesture)
+////         UIApplication.shared.isStatusBarHidden = true
+//    }
     
 
     

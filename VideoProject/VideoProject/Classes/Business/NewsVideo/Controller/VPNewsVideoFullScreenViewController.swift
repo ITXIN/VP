@@ -13,19 +13,20 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
     /// 播放器
     var player:BMPlayer!
     var customPlayerView:VPNewsCustomPlayerView!
+    var playerBackBlock:((_ player:BMPlayer,_ currentTime:TimeInterval)->Void)?
+    var curretTime:TimeInterval = 0.0
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        UIApplication.shared.statusBarOrientation = .landscapeRight
         self.navigationController?.setNavigationBarHidden(true, animated: true)
-//        UIApplication.shared.isStatusBarHidden = true
-        
         self.customPlayerView.backButton.isHidden = false
+        self.player.snp.makeConstraints {
+            $0.edges.equalTo(self.bgView)
+        }
         self.customPlayerView.titleLabel.snp.remakeConstraints { (make) in
             make.left.equalTo(self.customPlayerView.backButton.snp.right)
             make.centerY.equalTo(self.customPlayerView.backButton)
         }
-        self.customPlayerView.isMaskShowing = true
     }
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
@@ -55,6 +56,10 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         self.player.snp.makeConstraints {
             $0.edges.equalTo(self.bgView)
         }
+        self.player.playTimeDidChange = {(currentTime,totalTime )in
+            print(currentTime,totalTime)
+            self.curretTime = currentTime
+        }
         
     }
     
@@ -72,9 +77,21 @@ extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
     }
     
     func controlView(controlView: BMPlayerControlView, didPressButton button: UIButton) {
-        
+        //先实现内部player
+        controlView.player?.controlView(controlView: controlView, didPressButton: button)
         VPLog(button)
-        
+        if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
+            switch action {
+            case .back,.fullscreen:
+                playerBackBlock?(self.player,self.curretTime)
+
+                self.dismiss(animated: false, completion: nil)
+
+            default:
+                print("[Error] unhandled Action")
+            }
+        }
+    
         
     }
     

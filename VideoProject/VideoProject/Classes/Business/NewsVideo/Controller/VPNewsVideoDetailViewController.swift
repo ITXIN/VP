@@ -29,7 +29,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bgView.backgroundColor = UIColor.yellow
+        self.bgView.backgroundColor = UIColor.vpGrayBgColor()
         
         // Do any additional setup after loading the view.
     }
