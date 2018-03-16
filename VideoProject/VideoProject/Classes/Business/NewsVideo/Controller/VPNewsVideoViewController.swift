@@ -14,11 +14,12 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
-    var newsVideoModelArr = [VPNewsVideoModel]()
-    var customPlayerView = VPNewsCustomPlayerView()
+//    var newsVideoModelArr = [VPNewsVideoModel]()
+//    var customPlayerView = VPNewsCustomPlayerView()
+//    var categary = "video"
     
     /// 播放器
-    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
+//    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
     
     var currentCell:VPNewsVideoCell!
     
@@ -34,9 +35,14 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewRegisterClass(cellClass: VPNewsVideoCell.self, identifier: newsVideoCellIdentifier)
+        self.categary = "video"
         self.headerRefreshingBlock = {
-            VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
+            VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
+                if videoModelArr.count > 0{
+                    self.newsVideoModelArr.removeAll()
+                }
                 self.newsVideoModelArr = videoModelArr
+                self.removePlayer()
                 self.headerEndRefreshing()
             }
         }
@@ -44,17 +50,19 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         self.footerRefreshingBlock = {
             self.loadVideoData()
         }
-        self.tableView.mj_header.beginRefreshing()
-     
         
+        self.beginRefreshing()
     }
+    
     func loadVideoData() {
-        VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
+        
+        VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
             if (self.newsVideoModelArr.count > 0){
                 self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
             }else{
                 self.newsVideoModelArr = videoModelArr
             }
+            self.removePlayer()
             self.footerEndRefreshing()
         }
     }
@@ -64,7 +72,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
                 self.currentCell = cell
-               
+                self.removePlayer()
                 cell.bgView.addSubview(self.player)
                 self.player.delegate = self
                 
@@ -111,6 +119,8 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
 }
 
+
+
 // MARK: - ---------------------------------- VPNewsVideoViewController UITableviewDelegate datasource ----------------------------------
 extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -139,8 +149,8 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
                 .subscribe(onNext: { [weak self] in
                     VPLog("play")
                     if self!.player.isPlaying{
-                        self?.player.pause()
-                        self?.player.removeFromSuperview()
+                        self?.removePlayer()
+                        
                     }
                     self?.addPlayer(on: cell)
                 })
@@ -212,16 +222,15 @@ extension VPNewsVideoViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
         VPLog(state)
-        switch state {
-        case .playedToTheEnd:
-            if self.player.isPlaying{
-                self.player.pause()
-                self.player.removeFromSuperview()
-                VPLog("end")
-            }
-        default:
-            print("")
-        }
+//        switch state {
+//        case .playedToTheEnd:
+//            if self.player.isPlaying{
+//                self.removePlayer()
+//                VPLog("end")
+//            }
+//        default:
+//            print("")
+//        }
     }
     
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {

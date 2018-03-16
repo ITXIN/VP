@@ -7,9 +7,17 @@
 //
 
 import UIKit
+import MJRefresh
+typealias VPRefreshComponentRefreshingBlock = ()->Void
 
 class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
     var bgView:UIView!
+    public var _headerRefreshingBlock:VPRefreshComponentRefreshingBlock?
+    public var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
+    public var header: VPRefreshGifHeader!
+    public var footer: MJRefreshAutoNormalFooter!
+    public var dataArr:NSMutableArray!
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true

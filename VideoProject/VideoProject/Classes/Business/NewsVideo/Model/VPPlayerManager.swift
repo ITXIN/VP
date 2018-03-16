@@ -9,6 +9,6 @@
 import UIKit
 import BMPlayer
 open class VPPlayerManager: NSObject {
-    
+    //暂时没有用的文件
 
 }

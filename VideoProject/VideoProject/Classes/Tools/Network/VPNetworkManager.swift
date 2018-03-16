@@ -11,9 +11,11 @@ import Alamofire
 import SwiftyJSON
 import SVProgressHUD
 protocol VPNetworkManagerProtocol {
-    
-    static func loadNewsVideo(completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
+    // MARK: - ---------------------------------- 西瓜视频 ----------------------------------
+    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
     static func parseVideoRealURL(video_id:String,completionHandler:@escaping(_ realVideo:RealVideo)->())
+    
+    
 }
 struct VPNetworkManager:VPNetworkManagerProtocol {
     
@@ -22,14 +24,14 @@ struct VPNetworkManager:VPNetworkManagerProtocol {
 
 extension VPNetworkManagerProtocol{
     // MARK: - ---------------------------------- 视频列表 ----------------------------------
-    static func loadNewsVideo(completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->()){
+    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->()){
       
         let pullTime = Date().timeIntervalSince1970
         let url = NEWS_VIDEO_BASE_URL + NEWS_VIDEO_LIST_PATH
         let params = ["device_id": device_id,
                       "count": 20,
                       "list_count": 15,
-                      "category": "video",
+                      "category": categary,//ugc_video_beauty video
                       "min_behot_time": pullTime,
                       "strict": 0,
                       "detail": 1,

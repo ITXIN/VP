@@ -1,42 +1,35 @@
 //
-//  VPBaseTableViewController.swift
+//  VPBaseCollectionViewController.swift
 //  VideoProject
 //
-//  Created by avazuholding on 2018/3/2.
+//  Created by avazuholding on 2018/3/16.
 //  Copyright © 2018年 icoin. All rights reserved.
 //
 
 import UIKit
 import MJRefresh
-
-
-class VPBaseTableViewController: VPBaseVideoPlayerViewController {
-    lazy var tableView:UITableView  = ({ () -> UITableView in
-        let tableView = UITableView.init(frame: self.view.bounds, style: UITableViewStyle.plain)
-        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        tableView.showsVerticalScrollIndicator = true
-        tableView.backgroundColor = UIColor.clear
-        self.bgView.addSubview(tableView)
-        return tableView
-        }())
+class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
     
+    lazy var collectionView:UICollectionView  = ({ () -> UICollectionView in
+        let flowLayout = UICollectionViewFlowLayout.init()
+        flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
+        //        flowLayout.itemSize = CGSize.init(width: (kScreenWidth-30)/2, height: 200)
+        //        flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
+        
+        let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flowLayout)
+        
+        self.bgView.addSubview(collectionView)
+        return collectionView
+        }())
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Do any additional setup after loading the view.
     }
-    func  tableViewRegisterClass(cellClass:AnyClass,identifier:String) {
-        self.tableView.register(cellClass, forCellReuseIdentifier: identifier)
+
+    func  collectionViewRegisterClass(cellClass:AnyClass,identifier:String) {
+        self.collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
-    //必须设置frame否则偏移
-    func setupTableviewDelegate(delegate:Any ,frame:CGRect) {
-        self.tableView.delegate = (delegate as! UITableViewDelegate)
-        self.tableView.dataSource = (delegate as! UITableViewDataSource)
-        self.view.frame = frame
-        
-    }
-    
-    
     override func initSubviews() {
         super.initSubviews()
         self.dataArr = NSMutableArray.init()
@@ -44,19 +37,19 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
     }
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
-        self.tableView.snp.makeConstraints {
+        self.collectionView.snp.makeConstraints {
             $0.edges.equalTo(self.bgView)
         }
     }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+
 }
 
-extension VPBaseTableViewController{
+
+extension VPBaseCollectionViewController{
     
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
@@ -65,7 +58,7 @@ extension VPBaseTableViewController{
                 self.header = VPRefreshGifHeader{
                     self.headerRefresh()
                 }
-                self.tableView.mj_header = self.header
+                self.collectionView.mj_header = self.header
                 self.header.lastUpdatedTimeLabel.isHidden = true
                 
             }
@@ -82,7 +75,7 @@ extension VPBaseTableViewController{
                 self.footer = MJRefreshAutoNormalFooter {
                     self.footerLoadMoreData()
                 }
-                self.tableView.mj_footer = self.footer
+                self.collectionView.mj_footer = self.footer
                 self.setupFooterView()
             }
         }
@@ -105,41 +98,27 @@ extension VPBaseTableViewController{
     func headerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
-            self.tableView.mj_header?.endRefreshing()
-            self.tableView.reloadData()
+            self.collectionView.mj_header?.endRefreshing()
+            self.collectionView.reloadData()
             self.setupFooterView()
         }
     }
     func footerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
-            self.tableView.mj_footer?.endRefreshing()
-            self.tableView.reloadData()
+            self.collectionView.mj_footer?.endRefreshing()
+            self.collectionView.reloadData()
         }
     }
     func setupFooterView() {
-        if(self.tableView.contentSize.height < 200){
-            self.tableView.mj_footer?.isHidden = true
+        if(self.collectionView.contentSize.height < 200){
+            self.collectionView.mj_footer?.isHidden = true
         }else{
-            self.tableView.mj_footer?.isHidden = false
+            self.collectionView.mj_footer?.isHidden = false
         }
     }
     func beginRefreshing() {
-        self.tableView.mj_header?.beginRefreshing()
+        self.collectionView.mj_header?.beginRefreshing()
     }
     
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

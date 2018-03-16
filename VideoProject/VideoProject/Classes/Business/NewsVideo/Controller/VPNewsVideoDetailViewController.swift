@@ -14,11 +14,11 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
-    var newsVideoModelArr = [VPNewsVideoModel]()
+//    var newsVideoModelArr = [VPNewsVideoModel]()
     var index:NSInteger!
     
     /// 播放器
-    lazy var player: BMPlayer = BMPlayer(customControlView: VPNewsCustomPlayerView())
+//    lazy var player: BMPlayer = BMPlayer(customControlView: VPNewsCustomPlayerView())
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -86,7 +86,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     }
 
     func loadVideoData() {
-        VPNetworkManager.loadNewsVideo { (pull, videoModelArr) in
+        VPNetworkManager.loadNewsVideo(categary:"video") { (pull, videoModelArr) in
             if (self.newsVideoModelArr.count > 0){
                 self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
             }else{
