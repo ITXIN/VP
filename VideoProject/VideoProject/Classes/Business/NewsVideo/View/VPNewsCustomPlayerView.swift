@@ -9,11 +9,11 @@
 import UIKit
 import BMPlayer
 class VPNewsCustomPlayerView: BMPlayerControlView {
-   
+
     override func customizeUIComponents() {
         super.customizeUIComponents()
         self.backButton.isHidden = true
-        self.chooseDefitionView.isHidden = true
+        self.chooseDefitionView.isHidden = true//清晰度
         self.titleLabel.textColor = UIColor.white
         self.titleLabel.font = UIFont.boldSystemFont(ofSize: 14)
         self.player?.panGesture.isEnabled = false

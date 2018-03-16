@@ -11,6 +11,7 @@ import BMPlayer
 import RxSwift
 import RxCocoa
 class VPNewsVideoViewController: VPBaseTableViewController {
+    
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
     var newsVideoModelArr = [VPNewsVideoModel]()
@@ -21,7 +22,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
     var currentCell:VPNewsVideoCell!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bgView.backgroundColor = UIColor.vpGrayBgColor()
@@ -30,7 +30,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     }
     override func initSubviews() {
         super.initSubviews()
-        
         
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -46,12 +45,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
             self.loadVideoData()
         }
         self.tableView.mj_header.beginRefreshing()
-        
-        //        self.player.playStateDidChange = {(isPlaying) in
-        //            VPLog(isPlaying)
-        //        }
-        
-        
+     
         
     }
     func loadVideoData() {
@@ -70,20 +64,18 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
                 self.currentCell = cell
-                self.customPlayerView.replayButton.isHidden = true;
+               
                 cell.bgView.addSubview(self.player)
                 self.player.delegate = self
+                
                 self.customPlayerView.delegate = self
+                self.customPlayerView.replayButton.isHidden = true;
+                self.customPlayerView.chooseDefitionView.isHidden = true
                 
                 let playurl = response.video_list.video_1.mainURL
                 let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel.title, cover: nil, subtitle: nil)
                 self.player.setVideo(resource: res)
             
-                
-                //                self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
-                //                self.cutomPlayerView.titleLabel.text = cell.newsVideoModel.title
-                
-                
                 self.player.snp.makeConstraints {
                     $0.edges.equalTo(cell.videoPreImage)
                 }
@@ -98,8 +90,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         for vc in (navigationController?.viewControllers)! {
             if vc is VPNewsVideoViewController{
                 if player.isPlaying{
-//                    let contentview = player.superview?.superview
-//                    let cell = contentview?.superview as! VPNewsVideoCell
                     let cell = self.currentCell
                     let rect = tableView.convert((cell?.frame)!, to: vc.view)
                     // 判断是否滑出屏幕
@@ -134,13 +124,11 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         //        return CGFloat(kScreenWidth)*0.67
-        return  237 //20+30+187
+        return  237
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //        let vpVideoDetailVC = VPNewsVideoDetailViewController()
-        //        vpVideoDetailVC.modalTransitionStyle = .coverVertical
-        //        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
+       
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
@@ -178,25 +166,28 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
         
          controlView.player?.controlView(controlView: controlView, didPressButton: button)
         
-        
-     
         if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
             switch action {
             case .fullscreen:
+
+                self.player.delegate = nil
+                self.customPlayerView.delegate = nil
                 let vpVideoDetailVC = VPNewsVideoFullScreenViewController()
                 vpVideoDetailVC.modalTransitionStyle = .crossDissolve
                 vpVideoDetailVC.modalPresentationStyle = .fullScreen
                 vpVideoDetailVC.player = self.player
                 vpVideoDetailVC.customPlayerView = self.customPlayerView
+            
                 
-                print("pre",self.currentCell.bgView.subviews)
-                
-                vpVideoDetailVC.playerBackBlock = { (fullScreenPlayer,currentTime,customPlayerView )in
-                    print("after",self.currentCell.bgView.subviews,"cuut",fullScreenPlayer)
+                vpVideoDetailVC.playerBackBlock = { (fullScreenPlayer,currentTime,fullScreenCustomPlayerView)in
+                   
+                    self.player = fullScreenPlayer
+                    self.customPlayerView = fullScreenCustomPlayerView
                     self.currentCell.bgView.addSubview(fullScreenPlayer)
-                    fullScreenPlayer.play()
                     fullScreenPlayer.delegate = self
-                    customPlayerView.delegate = self
+                    fullScreenCustomPlayerView.delegate = self
+                    fullScreenCustomPlayerView.chooseDefitionView.isHidden = true
+                    fullScreenCustomPlayerView.titleLabel.font = UIFont.systemFont(ofSize: 15)
                     fullScreenPlayer.snp.makeConstraints({ (make) in
                         make.edges.equalTo(self.currentCell.videoPreImage)
                     })
@@ -204,15 +195,17 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                 }
                 
                 self.navigationController?.present(vpVideoDetailVC, animated: true, completion: nil)
+                
             default:
-                print("[Error] unhandled Action")
+                
+                
+                VPLog("[Error] unhandled Action")
             }
         }
       
     
     }
 }
-
 
 // MARK: - ---------------------------------- BMPlayerDelegate ----------------------------------
 extension VPNewsVideoViewController:BMPlayerDelegate{
@@ -224,6 +217,7 @@ extension VPNewsVideoViewController:BMPlayerDelegate{
             if self.player.isPlaying{
                 self.player.pause()
                 self.player.removeFromSuperview()
+                VPLog("end")
             }
         default:
             print("")
@@ -231,19 +225,20 @@ extension VPNewsVideoViewController:BMPlayerDelegate{
     }
     
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-        
+//            print("loadedTimeDidChange",totalDuration)
     }
     
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-        
+//        print("playTimeDidChange",currentTime)
     }
     
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-        VPLog(playing)
+//        VPLog(playing)
+//        player.play()
     }
     
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
-        VPLog(isFullscreen)
+//        VPLog(isFullscreen)
     }
     
 }

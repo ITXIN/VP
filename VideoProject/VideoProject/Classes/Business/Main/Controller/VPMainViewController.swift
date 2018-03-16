@@ -21,10 +21,10 @@ class VPMainViewController: UITabBarController {
         self.tabBar.backgroundImage = UIImage.getImageWithColor(color: UIColor.white,rect: CGRect.init(x: 0, y: 0, width: 1, height: 1 ))
         let navigationsArr = NSMutableArray()
         
-        var imagesNormalArr = ["video_tabbar_32x32_","video_tabbar_32x32_","video_tabbar_32x32_","video_tabbar_32x32_"]
+        var imagesNormalArr = ["video_tabbar_32x32_","huoshan_tabbar_32x32_","video_tabbar_32x32_","video_tabbar_32x32_"]
         
-        let imagesSeletedArr = ["video_tabbar_press_32x32_","video_tabbar_press_32x32_","video_tabbar_press_32x32_","video_tabbar_press_32x32_"]
-        let tabBarTitlesArr = ["视频","视频","视频","个人中心"]
+        let imagesSeletedArr = ["video_tabbar_press_32x32_","huoshan_tabbar_press_32x32_","video_tabbar_press_32x32_","video_tabbar_press_32x32_"]
+        let tabBarTitlesArr = ["西瓜视频","小视频","视频","个人中心"]
         let vcArr = [VPNewsVideoViewController(),VPBaseViewController(),VPBaseViewController(),VPBaseViewController(),]
         for i  in 0...3 {
             let vc = vcArr[i]
