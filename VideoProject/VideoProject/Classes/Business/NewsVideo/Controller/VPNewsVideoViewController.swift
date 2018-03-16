@@ -14,13 +14,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
     let newsVideoCellIdentifier = "newsVideoCellIdentifier"
     private lazy var disposeBag = DisposeBag()
-//    var newsVideoModelArr = [VPNewsVideoModel]()
-//    var customPlayerView = VPNewsCustomPlayerView()
-//    var categary = "video"
-    
-    /// 播放器
-//    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
-    
     var currentCell:VPNewsVideoCell!
     
     override func viewDidLoad() {
@@ -110,6 +103,10 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 }
             }
         }
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        VPLog("viewWillTransition")
     }
     
     override func didReceiveMemoryWarning() {

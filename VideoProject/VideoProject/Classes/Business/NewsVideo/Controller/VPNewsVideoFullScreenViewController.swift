@@ -82,6 +82,9 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             
         })
     }
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        VPLog("viewWillTransition")
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

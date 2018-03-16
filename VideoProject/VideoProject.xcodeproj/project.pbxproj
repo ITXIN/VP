@@ -12,6 +12,9 @@
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
 		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
+		8F92892B205BDA3F006ED0BC /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92892A205BDA3F006ED0BC /* Emoji.swift */; };
+		8F928931205BDB52006ED0BC /* VPUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */; };
+		8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */; };
 		8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F96AAD32058CEC800C07004 /* VPRefreshView.swift */; };
 		8F96AAD6205920E400C07004 /* VPNewsVideoFullScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F96AAD5205920E400C07004 /* VPNewsVideoFullScreenViewController.swift */; };
 		8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */; };
@@ -65,6 +68,9 @@
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		8F92892A205BDA3F006ED0BC /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPUserInfoModel.swift; sourceTree = "<group>"; };
+		8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
 		8F96AAD32058CEC800C07004 /* VPRefreshView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPRefreshView.swift; sourceTree = "<group>"; };
 		8F96AAD5205920E400C07004 /* VPNewsVideoFullScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoFullScreenViewController.swift; sourceTree = "<group>"; };
 		8FA95432204F928D00072999 /* VPNewsVideoDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoDetailViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +144,38 @@
 				725EE43B67C34B6B4CFB94ED /* Pods-VideoProject.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		8F92892C205BDB27006ED0BC /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				8F92892D205BDB27006ED0BC /* Controller */,
+				8F92892E205BDB27006ED0BC /* Model */,
+				8F92892F205BDB27006ED0BC /* View */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		8F92892D205BDB27006ED0BC /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		8F92892E205BDB27006ED0BC /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8F92892F205BDB27006ED0BC /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		8FA95434204FB6BC00072999 /* ShortVideo */ = {
@@ -256,6 +294,7 @@
 		8FABBFF12049416B00B60A5F /* Business */ = {
 			isa = PBXGroup;
 			children = (
+				8F92892C205BDB27006ED0BC /* Mine */,
 				8FA95434204FB6BC00072999 /* ShortVideo */,
 				8FABC00F2049554400B60A5F /* NewsVideo */,
 				8FABC00520494CDF00B60A5F /* Main */,
@@ -308,6 +347,8 @@
 				8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */,
 				8F37E3932051284C00E7AB20 /* NSData+CRC32.h */,
 				8F37E3942051284C00E7AB20 /* NSData+CRC32.m */,
+				8F92892A205BDA3F006ED0BC /* Emoji.swift */,
+				8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -612,9 +653,12 @@
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
 				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
 				8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */,
+				8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */,
 				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,
 				8FABC0142049557900B60A5F /* VPNewsVideoViewController.swift in Sources */,
+				8F92892B205BDA3F006ED0BC /* Emoji.swift in Sources */,
 				8FA9543E204FCE0E00072999 /* VPNewsVideoModel.swift in Sources */,
+				8F928931205BDB52006ED0BC /* VPUserInfoModel.swift in Sources */,
 				8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */,
 				8FABC00A20494D0600B60A5F /* VPMainViewController.swift in Sources */,
 				8FABC00420494A5C00B60A5F /* UIKit+Extension.swift in Sources */,
