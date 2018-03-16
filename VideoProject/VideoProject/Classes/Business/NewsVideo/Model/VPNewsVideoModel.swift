@@ -68,6 +68,12 @@ struct FirstFrameImage: HandyJSON {
     var height: Int = 0
 }
 
+/// 图片的类型
+enum ImageType: Int, HandyJSONEnum {
+    case normal = 1     // 一般图片
+    case gif = 2        // gif 图
+}
+
 struct SmallVideoAction: HandyJSON {
     var bury_count = 0
     var buryCount: String { return bury_count.convertString() }
