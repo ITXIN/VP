@@ -66,7 +66,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
             btn.layer.masksToBounds = true
             btn.snp.makeConstraints{
                 $0.left.equalTo(10)
-                $0.top.equalTo(kStatusBarHeight)
+                $0.top.equalTo(kStatusBarHeight-10)
                 $0.size.equalTo(CGSize.init(width: 30, height: 30))
             }
             btn.addTarget(self, action: #selector(backRootVC), for: .touchUpInside)
@@ -82,7 +82,15 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            
+//            if (kiPhoneX){
+//              $0.top.equalTo(kNavigationBarHeight)
+//                $0.left.equalTo(0)
+//                $0.right.equalTo(0)
+//                $0.bottom.equalTo(0)
+//            }else{
+              $0.edges.equalTo(self.bgView)
+//            }
         }
     }
     
@@ -121,7 +129,7 @@ extension VPShortVideoPlayerViewController{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let  offset  = Int(scrollView.contentOffset.x/kScreenWidth)
         print("offset",offset)
-        self.setupPlayer(index: offset)
+//        self.setupPlayer(index: offset)
     }
     
     
