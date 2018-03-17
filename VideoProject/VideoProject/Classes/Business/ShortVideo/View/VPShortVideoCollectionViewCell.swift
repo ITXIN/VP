@@ -33,8 +33,8 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         videoPreImage = {
             let img =  UIImageView.init()
             self.bgView.addSubview(img)
-            img.contentMode = .scaleToFill
-            
+            img.contentMode = .scaleAspectFill
+            img.layer.masksToBounds = true
             return img
         }()
         titleLab = ({ () -> UILabel in
@@ -65,12 +65,31 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         
     }
     
+    func setupPlayerSubviewsLayout()  {
+        videoPreImage.snp.remakeConstraints {
+            $0.edges.equalTo(self.bgView)
+        }
+    
+        titleLab.snp.remakeConstraints {
+            $0.top.equalTo(kStatusBarAndNavigationBarHeight+100)
+            $0.left.equalTo(15)
+            $0.right.equalTo(-15)
+        }
+        playCountLab.snp.remakeConstraints {
+            $0.top.equalTo(self.titleLab.snp.bottom).offset(10)
+            $0.left.equalTo(self.titleLab)
+        }
+        diggCountLab.snp.remakeConstraints {
+            $0.left.equalTo(self.playCountLab)
+            $0.top.equalTo(playCountLab.snp.bottom).offset(10)
+        }
+    }
+    
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         videoPreImage.snp.makeConstraints {
             $0.edges.equalTo(self.bgView)
         }
-
         playCountLab.snp.makeConstraints {
             $0.bottom.equalTo(-15)
             $0.left.equalTo(15)

@@ -65,11 +65,12 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
     
     //UICollectionDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let smallVieo = self.newsVideoModelArr[indexPath.row]
+//        let smallVieo = self.newsVideoModelArr[indexPath.row]
         let playVC = VPShortVideoPlayerViewController()
-        playVC.smallVideo = smallVieo
-        self.navigationController?.pushViewController(playVC, animated: true)
-        
+        playVC.newsVideoModelArr = self.newsVideoModelArr
+        playVC.scrooToIndex = indexPath
+//        self.navigationController?.pushViewController(playVC, animated: true)
+        self.present(playVC, animated: true, completion: nil)
         
     }
     
