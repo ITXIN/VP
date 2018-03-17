@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */; };
 		8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E3942051284C00E7AB20 /* NSData+CRC32.m */; };
+		8F40572E205CB26F00963936 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F40572B205CB26F00963936 /* emoji_mapping.plist */; };
+		8F40572F205CB26F00963936 /* emoji_sort.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F40572C205CB26F00963936 /* emoji_sort.plist */; };
+		8F405730205CB26F00963936 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F40572D205CB26F00963936 /* emojis.plist */; };
+		8F405732205CB3A400963936 /* VPBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405731205CB3A400963936 /* VPBaseCollectionViewCell.swift */; };
+		8F405734205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */; };
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
 		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
@@ -65,6 +70,11 @@
 		8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoProject-Bridging-Header.h"; sourceTree = "<group>"; };
 		8F37E3932051284C00E7AB20 /* NSData+CRC32.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSData+CRC32.h"; sourceTree = "<group>"; };
 		8F37E3942051284C00E7AB20 /* NSData+CRC32.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSData+CRC32.m"; sourceTree = "<group>"; };
+		8F40572B205CB26F00963936 /* emoji_mapping.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_mapping.plist; sourceTree = "<group>"; };
+		8F40572C205CB26F00963936 /* emoji_sort.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; path = emoji_sort.plist; sourceTree = "<group>"; };
+		8F40572D205CB26F00963936 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
+		8F405731205CB3A400963936 /* VPBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewCell.swift; sourceTree = "<group>"; };
+		8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +156,16 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		8F40572A205CB26F00963936 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				8F40572B205CB26F00963936 /* emoji_mapping.plist */,
+				8F40572C205CB26F00963936 /* emoji_sort.plist */,
+				8F40572D205CB26F00963936 /* emojis.plist */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
 		8F92892C205BDB27006ED0BC /* Mine */ = {
 			isa = PBXGroup;
 			children = (
@@ -206,6 +226,7 @@
 		8FA95437204FB6BC00072999 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -274,6 +295,7 @@
 		8FABBFEF2049416B00B60A5F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				8F40572A205CB26F00963936 /* Resource */,
 				8FABBFF02049416B00B60A5F /* Base */,
 				8FABBFF12049416B00B60A5F /* Business */,
 				8FABBFF22049416B00B60A5F /* Tools */,
@@ -336,6 +358,7 @@
 			children = (
 				8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */,
 				8F96AAD32058CEC800C07004 /* VPRefreshView.swift */,
+				8F405731205CB3A400963936 /* VPBaseCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -536,7 +559,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F40572E205CB26F00963936 /* emoji_mapping.plist in Resources */,
 				8FABBFCC20493DA000B60A5F /* LaunchScreen.storyboard in Resources */,
+				8F40572F205CB26F00963936 /* emoji_sort.plist in Resources */,
+				8F405730205CB26F00963936 /* emojis.plist in Resources */,
 				8FABBFC920493DA000B60A5F /* Assets.xcassets in Resources */,
 				8FABBFC720493DA000B60A5F /* Main.storyboard in Resources */,
 			);
@@ -648,10 +674,12 @@
 				8FC9C6AB205262B200EB7FF1 /* VPBaseTableViewCell.swift in Sources */,
 				8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */,
 				8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */,
+				8F405734205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift in Sources */,
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
 				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
+				8F405732205CB3A400963936 /* VPBaseCollectionViewCell.swift in Sources */,
 				8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */,
 				8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */,
 				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,

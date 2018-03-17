@@ -26,11 +26,9 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         flowLayout.sectionInset = UIEdgeInsetsMake(10, 10, 10, 10)
         
         collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flowLayout)
-        
         collectionView.delegate = self
         collectionView.dataSource = self
-
-        self.collectionViewRegisterClass(cellClass: UICollectionViewCell.self, identifier: shortVideoCellIdentifier)
+        self.collectionViewRegisterClass(cellClass: VPShortVideoCollectionViewCell.self, identifier: shortVideoCellIdentifier)
         self.bgView.addSubview(collectionView)
         self.collectionView.backgroundColor = UIColor.vpGrayBgColor()
         
@@ -80,8 +78,10 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shortVideoCellIdentifier, for: indexPath)
-        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shortVideoCellIdentifier, for: indexPath) as! VPShortVideoCollectionViewCell
+        cell.smallVideo = self.newsVideoModelArr[indexPath.row]
+        
+//        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
         return cell
         
     }
