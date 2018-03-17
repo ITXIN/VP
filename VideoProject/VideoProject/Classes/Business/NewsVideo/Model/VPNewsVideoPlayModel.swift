@@ -24,6 +24,10 @@ struct Video:HandyJSON {
         let decodeData = Data.init(base64Encoded: main_url, options: Data.Base64DecodingOptions(rawValue:0))
         return String(data:decodeData!,encoding:.utf8)!
     }
+    var play_addr = PlayAddr()
     
-    
+}
+struct PlayAddr: HandyJSON {
+    var uri: String = ""
+    var url_list = [String]()
 }

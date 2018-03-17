@@ -24,7 +24,8 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     }
     override func initSubviews() {
         super.initSubviews()
-        
+        customPlayerView = VPNewsCustomPlayerView()
+        player = BMPlayer(customControlView: customPlayerView)
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableViewRegisterClass(cellClass: VPNewsVideoCell.self, identifier: newsVideoCellIdentifier)
@@ -183,7 +184,7 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                 vpVideoDetailVC.modalTransitionStyle = .crossDissolve
                 vpVideoDetailVC.modalPresentationStyle = .fullScreen
                 vpVideoDetailVC.player = self.player
-                vpVideoDetailVC.customPlayerView = self.customPlayerView
+                vpVideoDetailVC.customPlayerView = self.customPlayerView as! VPNewsCustomPlayerView!
             
                 
                 vpVideoDetailVC.playerBackBlock = { (fullScreenPlayer,currentTime,fullScreenCustomPlayerView)in

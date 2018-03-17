@@ -14,6 +14,8 @@
 		8F405730205CB26F00963936 /* emojis.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F40572D205CB26F00963936 /* emojis.plist */; };
 		8F405732205CB3A400963936 /* VPBaseCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405731205CB3A400963936 /* VPBaseCollectionViewCell.swift */; };
 		8F405734205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */; };
+		8F405736205CBB0700963936 /* VPShortVideoCustomPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405735205CBB0700963936 /* VPShortVideoCustomPlayerView.swift */; };
+		8F405738205CBC6400963936 /* VPShortVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405737205CBC6400963936 /* VPShortVideoPlayerViewController.swift */; };
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
 		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
@@ -75,6 +77,8 @@
 		8F40572D205CB26F00963936 /* emojis.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = emojis.plist; sourceTree = "<group>"; };
 		8F405731205CB3A400963936 /* VPBaseCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoCollectionViewCell.swift; sourceTree = "<group>"; };
+		8F405735205CBB0700963936 /* VPShortVideoCustomPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoCustomPlayerView.swift; sourceTree = "<group>"; };
+		8F405737205CBC6400963936 /* VPShortVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -212,6 +216,7 @@
 			isa = PBXGroup;
 			children = (
 				8FA95438204FB6D200072999 /* VPShotVideoViewController.swift */,
+				8F405737205CBC6400963936 /* VPShortVideoPlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 			isa = PBXGroup;
 			children = (
 				8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */,
+				8F405735205CBB0700963936 /* VPShortVideoCustomPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -668,6 +674,7 @@
 				8FABBFFB2049479E00B60A5F /* AppHeader.swift in Sources */,
 				8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */,
 				8FABC00E2049511D00B60A5F /* VPBaseTableViewController.swift in Sources */,
+				8F405736205CBB0700963936 /* VPShortVideoCustomPlayerView.swift in Sources */,
 				8FABBFF92049448A00B60A5F /* VPBaseNavigationViewController.swift in Sources */,
 				8FA95439204FB6D200072999 /* VPShotVideoViewController.swift in Sources */,
 				8FA9543C204FCBDD00072999 /* VPNetworkManager.swift in Sources */,
@@ -678,6 +685,7 @@
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
+				8F405738205CBC6400963936 /* VPShortVideoPlayerViewController.swift in Sources */,
 				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
 				8F405732205CB3A400963936 /* VPBaseCollectionViewCell.swift in Sources */,
 				8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */,

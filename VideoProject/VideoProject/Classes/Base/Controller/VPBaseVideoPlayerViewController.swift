@@ -11,11 +11,11 @@ import BMPlayer
 class VPBaseVideoPlayerViewController: VPBaseViewController {
 
     var newsVideoModelArr = [VPNewsVideoModel]()
-    var customPlayerView = VPNewsCustomPlayerView()
+    var customPlayerView:BMPlayerControlView!
     var categary = "video"
     /// 播放器
-    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
-    
+//    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
+    var player:BMPlayer!
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -23,8 +23,8 @@ class VPBaseVideoPlayerViewController: VPBaseViewController {
     }
     //删除播放器
     func removePlayer() {
-        self.player.pause()
-        self.player.removeFromSuperview()
+        self.player?.pause()
+        self.player?.removeFromSuperview()
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

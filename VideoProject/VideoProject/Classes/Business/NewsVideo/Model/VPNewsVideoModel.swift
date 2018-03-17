@@ -54,6 +54,7 @@ struct SmallVideo: HandyJSON {
      var large_image_list = [LargeImage]()
      var first_frame_image_list = [FirstFrameImage]()
     var action = SmallVideoAction()
+    var video = Video()
 }
 struct FirstFrameImage: HandyJSON {
     var uri: String = ""
