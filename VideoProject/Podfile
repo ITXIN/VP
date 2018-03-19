@@ -12,4 +12,5 @@ target 'VideoProject' do
     pod 'SDWebImage'
     pod 'RxSwift'
     pod 'RxCocoa'
+    pod 'lottie-ios'
 end

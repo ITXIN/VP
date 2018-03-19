@@ -25,7 +25,7 @@ class VPMainViewController: UITabBarController {
         
         let imagesSeletedArr = ["video_tabbar_press_32x32_","huoshan_tabbar_press_32x32_","video_tabbar_press_32x32_","video_tabbar_press_32x32_"]
         let tabBarTitlesArr = ["西瓜视频","小视频","视频","个人中心"]
-        let vcArr = [VPNewsVideoViewController(),VPShotVideoViewController(),VPBaseViewController(),VPBaseViewController(),]
+        let vcArr = [VPNewsVideoViewController(),VPShotVideoViewController(),VPMineViewController(),VPBaseViewController(),]
         for i  in 0...3 {
             let vc = vcArr[i]
             vc.title = tabBarTitlesArr[i]

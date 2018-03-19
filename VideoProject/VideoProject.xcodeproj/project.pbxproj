@@ -16,6 +16,8 @@
 		8F405734205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */; };
 		8F405736205CBB0700963936 /* VPShortVideoCustomPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405735205CBB0700963936 /* VPShortVideoCustomPlayerView.swift */; };
 		8F405738205CBC6400963936 /* VPShortVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F405737205CBC6400963936 /* VPShortVideoPlayerViewController.swift */; };
+		8F72B579205F97E7001796FE /* activity_main_head_white.json in Resources */ = {isa = PBXBuildFile; fileRef = 8F72B578205F97E7001796FE /* activity_main_head_white.json */; };
+		8F72B57B205F9858001796FE /* VPMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B57A205F9858001796FE /* VPMineViewController.swift */; };
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
 		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
@@ -79,6 +81,8 @@
 		8F405733205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoCollectionViewCell.swift; sourceTree = "<group>"; };
 		8F405735205CBB0700963936 /* VPShortVideoCustomPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoCustomPlayerView.swift; sourceTree = "<group>"; };
 		8F405737205CBC6400963936 /* VPShortVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPShortVideoPlayerViewController.swift; sourceTree = "<group>"; };
+		8F72B578205F97E7001796FE /* activity_main_head_white.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = activity_main_head_white.json; sourceTree = "<group>"; };
+		8F72B57A205F9858001796FE /* VPMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMineViewController.swift; sourceTree = "<group>"; };
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
 		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
@@ -163,6 +167,7 @@
 		8F40572A205CB26F00963936 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				8F72B578205F97E7001796FE /* activity_main_head_white.json */,
 				8F40572B205CB26F00963936 /* emoji_mapping.plist */,
 				8F40572C205CB26F00963936 /* emoji_sort.plist */,
 				8F40572D205CB26F00963936 /* emojis.plist */,
@@ -183,6 +188,7 @@
 		8F92892D205BDB27006ED0BC /* Controller */ = {
 			isa = PBXGroup;
 			children = (
+				8F72B57A205F9858001796FE /* VPMineViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -565,6 +571,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8F72B579205F97E7001796FE /* activity_main_head_white.json in Resources */,
 				8F40572E205CB26F00963936 /* emoji_mapping.plist in Resources */,
 				8FABBFCC20493DA000B60A5F /* LaunchScreen.storyboard in Resources */,
 				8F40572F205CB26F00963936 /* emoji_sort.plist in Resources */,
@@ -609,6 +616,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -623,6 +631,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -681,6 +690,7 @@
 				8FC9C6AB205262B200EB7FF1 /* VPBaseTableViewCell.swift in Sources */,
 				8FA95433204F928D00072999 /* VPNewsVideoDetailViewController.swift in Sources */,
 				8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */,
+				8F72B57B205F9858001796FE /* VPMineViewController.swift in Sources */,
 				8F405734205CB4AE00963936 /* VPShortVideoCollectionViewCell.swift in Sources */,
 				8FABBFC220493DA000B60A5F /* AppDelegate.swift in Sources */,
 				8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */,
