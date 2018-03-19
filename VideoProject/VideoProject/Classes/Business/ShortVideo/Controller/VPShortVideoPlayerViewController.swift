@@ -84,10 +84,10 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         self.collectionView.snp.makeConstraints {
             
 //            if (kiPhoneX){
-//              $0.top.equalTo(kNavigationBarHeight)
-//                $0.left.equalTo(0)
-//                $0.right.equalTo(0)
-//                $0.bottom.equalTo(0)
+              $0.top.equalTo(kNavigationBarHeight)
+                $0.left.equalTo(0)
+                $0.right.equalTo(0)
+                $0.bottom.equalTo(0)
 //            }else{
               $0.edges.equalTo(self.bgView)
 //            }
@@ -113,6 +113,7 @@ extension VPShortVideoPlayerViewController{
                     
 //                    if self.player.isPlaying { self.player.pause() }
                     self.customPlayerView.replayButton.isHidden = true
+                
                     self.removePlayer()
                      let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! VPShortVideoCollectionViewCell
                     cell.addSubview(self.player)
@@ -120,6 +121,7 @@ extension VPShortVideoPlayerViewController{
                     let asset = BMPlayerResource(url: URL(string: response!.url!.absoluteString)!)
                     self.player.setVideo(resource: asset)
                     self.player.autoPlay()
+                    self.customPlayerView.titleLabel.attributedText = smallVideo.raw_data.attrbutedText
                 }
             })
             dataTask.resume()
@@ -129,7 +131,7 @@ extension VPShortVideoPlayerViewController{
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let  offset  = Int(scrollView.contentOffset.x/kScreenWidth)
         print("offset",offset)
-//        self.setupPlayer(index: offset)
+        self.setupPlayer(index: offset)
     }
     
     

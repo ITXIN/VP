@@ -11,7 +11,9 @@ import BMPlayer
 class VPShortVideoCustomPlayerView: BMPlayerControlView {
     override func customizeUIComponents() {
         super.customizeUIComponents()
-//        BMPlayerConf.topBarShowInCase = .none
+        BMPlayerConf.topBarShowInCase = .none
+//        BMPlayerConf.enableVolumeGestures = false
+        BMPlayerConf.enablePlaytimeGestures = false
         playButton.removeFromSuperview()
         currentTimeLabel.removeFromSuperview()
         totalTimeLabel.removeFromSuperview()
