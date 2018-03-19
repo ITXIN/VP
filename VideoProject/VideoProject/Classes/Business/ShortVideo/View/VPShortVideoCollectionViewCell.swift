@@ -55,6 +55,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             self.bgView.addSubview(img)
             img.contentMode = .scaleAspectFill
             img.layer.masksToBounds = true
+            img.backgroundColor = UIColor.vpGrayTextColor()
             return img
         }()
         titleLab = ({ () -> UILabel in
@@ -89,7 +90,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         videoPreImage.snp.remakeConstraints {
             $0.edges.equalTo(self.bgView)
         }
-    
+
         titleLab.snp.remakeConstraints {
             $0.top.equalTo(kStatusBarAndNavigationBarHeight+100)
             $0.left.equalTo(15)

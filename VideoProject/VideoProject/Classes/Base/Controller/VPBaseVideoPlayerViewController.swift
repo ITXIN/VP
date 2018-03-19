@@ -21,6 +21,8 @@ class VPBaseVideoPlayerViewController: VPBaseViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    
     //删除播放器
     func removePlayer() {
         self.player?.pause()

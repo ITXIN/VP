@@ -44,7 +44,9 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
             }
         }
         self.beginRefreshing()
-        
+        self.footerRefreshingBlock = {
+            self.loadVideoData()
+        }
     }
     
     override func setupSubviewsLayout() {

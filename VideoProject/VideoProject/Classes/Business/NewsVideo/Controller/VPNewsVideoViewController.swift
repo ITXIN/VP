@@ -48,18 +48,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         self.beginRefreshing()
     }
     
-    func loadVideoData() {
-        
-        VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
-            if (self.newsVideoModelArr.count > 0){
-                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
-            }else{
-                self.newsVideoModelArr = videoModelArr
-            }
-            self.removePlayer()
-            self.footerEndRefreshing()
-        }
-    }
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {

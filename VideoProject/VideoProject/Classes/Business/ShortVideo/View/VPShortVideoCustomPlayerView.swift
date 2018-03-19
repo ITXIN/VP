@@ -14,6 +14,7 @@ class VPShortVideoCustomPlayerView: BMPlayerControlView {
         BMPlayerConf.topBarShowInCase = .none
 //        BMPlayerConf.enableVolumeGestures = false
         BMPlayerConf.enablePlaytimeGestures = false
+        self.isUserInteractionEnabled = false
         playButton.removeFromSuperview()
         currentTimeLabel.removeFromSuperview()
         totalTimeLabel.removeFromSuperview()

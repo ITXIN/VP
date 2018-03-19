@@ -18,7 +18,9 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         
-        collectionView.scrollToItem(at: scrooToIndex, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        if scrooToIndex.row != 0 {
+            collectionView.scrollToItem(at: scrooToIndex, at: UICollectionViewScrollPosition.centeredHorizontally, animated: true)
+        }
         self.setupPlayer(index: scrooToIndex.row)
         
     }
@@ -66,7 +68,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
             btn.layer.masksToBounds = true
             btn.snp.makeConstraints{
                 $0.left.equalTo(10)
-                $0.top.equalTo(kStatusBarHeight-10)
+                $0.top.equalTo(kStatusBarAndNavigationBarHeight-30)
                 $0.size.equalTo(CGSize.init(width: 30, height: 30))
             }
             btn.addTarget(self, action: #selector(backRootVC), for: .touchUpInside)
@@ -83,14 +85,14 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints {
             
-//            if (kiPhoneX){
-              $0.top.equalTo(kNavigationBarHeight)
-                $0.left.equalTo(0)
-                $0.right.equalTo(0)
-                $0.bottom.equalTo(0)
-//            }else{
-              $0.edges.equalTo(self.bgView)
-//            }
+            //            if (kiPhoneX){
+//            $0.top.equalTo(kNavigationBarHeight)
+//            $0.left.equalTo(0)
+//            $0.right.equalTo(0)
+//            $0.bottom.equalTo(0)
+            //            }else{
+            $0.edges.equalTo(self.bgView)
+            //            }
         }
     }
     
@@ -108,20 +110,19 @@ extension VPShortVideoPlayerViewController{
     func setupPlayer(index:Int)  {
         let smallVideo = self.newsVideoModelArr[index]
         if  let videoURLStr = smallVideo.raw_data.video.play_addr.url_list.first             {
+           
             let dataTask = URLSession.shared.dataTask(with: URL.init(string: videoURLStr)!, completionHandler: { (data, response, error) in
                 DispatchQueue.main.async {
-                    
-//                    if self.player.isPlaying { self.player.pause() }
                     self.customPlayerView.replayButton.isHidden = true
-                
                     self.removePlayer()
-                     let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! VPShortVideoCollectionViewCell
-                    cell.addSubview(self.player)
+                    let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! VPShortVideoCollectionViewCell
+                    cell.bgView.insertSubview(self.player, belowSubview: cell.titleLab)
                     self.player.snp.makeConstraints({ $0.edges.equalTo(cell.bgView) })
+                    
+                    
                     let asset = BMPlayerResource(url: URL(string: response!.url!.absoluteString)!)
                     self.player.setVideo(resource: asset)
                     self.player.autoPlay()
-                    self.customPlayerView.titleLabel.attributedText = smallVideo.raw_data.attrbutedText
                 }
             })
             dataTask.resume()

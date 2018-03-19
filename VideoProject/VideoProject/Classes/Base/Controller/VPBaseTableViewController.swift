@@ -58,6 +58,20 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
 
 extension VPBaseTableViewController{
     
+    
+    func loadVideoData() {
+        VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
+            if (self.newsVideoModelArr.count > 0){
+                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
+            }else{
+                self.newsVideoModelArr = videoModelArr
+            }
+            self.removePlayer()
+            self.footerEndRefreshing()
+        }
+    }
+    
+    
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
             _headerRefreshingBlock = newValue

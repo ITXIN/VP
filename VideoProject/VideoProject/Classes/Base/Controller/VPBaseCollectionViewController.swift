@@ -50,7 +50,17 @@ class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
 
 
 extension VPBaseCollectionViewController{
-    
+    func loadVideoData() {
+        VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
+            if (self.newsVideoModelArr.count > 0){
+                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
+            }else{
+                self.newsVideoModelArr = videoModelArr
+            }
+            self.removePlayer()
+            self.footerEndRefreshing()
+        }
+    }
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
             _headerRefreshingBlock = newValue
@@ -111,7 +121,7 @@ extension VPBaseCollectionViewController{
         }
     }
     func setupFooterView() {
-        if(self.collectionView.contentSize.height < 200){
+        if(self.newsVideoModelArr.count  == 0){
             self.collectionView.mj_footer?.isHidden = true
         }else{
             self.collectionView.mj_footer?.isHidden = false
