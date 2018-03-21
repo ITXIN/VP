@@ -1,7 +1,7 @@
 //
 //  AppDelegate.swift
 //  VideoProject
-//
+// 感谢GitHub原作者贡献，地址:https://github.com/hrscy/TodayNews
 //  Created by avazuholding on 2018/3/2.
 //  Copyright © 2018年 icoin. All rights reserved.
 //
