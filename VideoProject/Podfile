@@ -4,7 +4,7 @@ target 'VideoProject' do
 	use_frameworks!
 	pod 'SwiftyJSON'
 	pod 'Alamofire'
-	pod 'HandyJSON','~>4.0.0-beta.1'
+	pod 'HandyJSON'
 	pod 'SVProgressHUD'
 	pod 'MJRefresh'
 	pod 'BMPlayer'
