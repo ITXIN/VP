@@ -12,5 +12,6 @@ target 'VideoProject' do
     pod 'SDWebImage'
     pod 'RxSwift'
     pod 'RxCocoa'
+    #动画资源地址 https://www.lottiefiles.com/?
     pod 'lottie-ios'
 end

@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2345861A21CA15D100FA7E9C /* win_result_2.json in Resources */ = {isa = PBXBuildFile; fileRef = 2345861521CA15CF00FA7E9C /* win_result_2.json */; };
+		2345861B21CA15D100FA7E9C /* dino_dance.json in Resources */ = {isa = PBXBuildFile; fileRef = 2345861621CA15D000FA7E9C /* dino_dance.json */; };
+		2345861C21CA15D100FA7E9C /* christmas_tree_with_gifts.json in Resources */ = {isa = PBXBuildFile; fileRef = 2345861721CA15D000FA7E9C /* christmas_tree_with_gifts.json */; };
+		2345861D21CA15D100FA7E9C /* hearts_.json in Resources */ = {isa = PBXBuildFile; fileRef = 2345861821CA15D000FA7E9C /* hearts_.json */; };
+		2345861E21CA15D100FA7E9C /* rubberhose_to_ios.json in Resources */ = {isa = PBXBuildFile; fileRef = 2345861921CA15D100FA7E9C /* rubberhose_to_ios.json */; };
 		8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */; };
 		8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */ = {isa = PBXBuildFile; fileRef = 8F37E3942051284C00E7AB20 /* NSData+CRC32.m */; };
 		8F40572E205CB26F00963936 /* emoji_mapping.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F40572B205CB26F00963936 /* emoji_mapping.plist */; };
@@ -69,6 +74,11 @@
 
 /* Begin PBXFileReference section */
 		127DD9C7B48AAF2EAF3D07A5 /* Pods-VideoProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-VideoProject/Pods-VideoProject.debug.xcconfig"; sourceTree = "<group>"; };
+		2345861521CA15CF00FA7E9C /* win_result_2.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = win_result_2.json; sourceTree = "<group>"; };
+		2345861621CA15D000FA7E9C /* dino_dance.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dino_dance.json; sourceTree = "<group>"; };
+		2345861721CA15D000FA7E9C /* christmas_tree_with_gifts.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = christmas_tree_with_gifts.json; sourceTree = "<group>"; };
+		2345861821CA15D000FA7E9C /* hearts_.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = hearts_.json; sourceTree = "<group>"; };
+		2345861921CA15D100FA7E9C /* rubberhose_to_ios.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = rubberhose_to_ios.json; sourceTree = "<group>"; };
 		725EE43B67C34B6B4CFB94ED /* Pods-VideoProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VideoProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-VideoProject/Pods-VideoProject.release.xcconfig"; sourceTree = "<group>"; };
 		8F37E38F20510C4A00E7AB20 /* VPNewsVideoPlayModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoPlayModel.swift; sourceTree = "<group>"; };
 		8F37E391205123CF00E7AB20 /* VideoProject-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VideoProject-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -167,6 +177,11 @@
 		8F40572A205CB26F00963936 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				2345861821CA15D000FA7E9C /* hearts_.json */,
+				2345861921CA15D100FA7E9C /* rubberhose_to_ios.json */,
+				2345861621CA15D000FA7E9C /* dino_dance.json */,
+				2345861521CA15CF00FA7E9C /* win_result_2.json */,
+				2345861721CA15D000FA7E9C /* christmas_tree_with_gifts.json */,
 				8F72B578205F97E7001796FE /* activity_main_head_white.json */,
 				8F40572B205CB26F00963936 /* emoji_mapping.plist */,
 				8F40572C205CB26F00963936 /* emoji_sort.plist */,
@@ -573,9 +588,14 @@
 				8F72B579205F97E7001796FE /* activity_main_head_white.json in Resources */,
 				8F40572E205CB26F00963936 /* emoji_mapping.plist in Resources */,
 				8FABBFCC20493DA000B60A5F /* LaunchScreen.storyboard in Resources */,
+				2345861E21CA15D100FA7E9C /* rubberhose_to_ios.json in Resources */,
 				8F40572F205CB26F00963936 /* emoji_sort.plist in Resources */,
+				2345861D21CA15D100FA7E9C /* hearts_.json in Resources */,
 				8F405730205CB26F00963936 /* emojis.plist in Resources */,
+				2345861B21CA15D100FA7E9C /* dino_dance.json in Resources */,
+				2345861C21CA15D100FA7E9C /* christmas_tree_with_gifts.json in Resources */,
 				8FABBFC920493DA000B60A5F /* Assets.xcassets in Resources */,
+				2345861A21CA15D100FA7E9C /* win_result_2.json in Resources */,
 				8FABBFC720493DA000B60A5F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
