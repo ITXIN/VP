@@ -23,16 +23,19 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.bgView.backgroundColor = UIColor.vpGrayBgColor()
         
         // Do any additional setup after loading the view.
     }
+    
     override func initSubviews() {
         super.initSubviews()
 //        self.player.delegate = self
@@ -128,13 +131,10 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         self.dismiss(animated: true, completion: nil)
     }
     
-    
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
 }
 
@@ -161,6 +161,7 @@ extension VPNewsVideoDetailViewController:UITableViewDelegate,UITableViewDataSou
         //        vpVideoDetailVC.modalTransitionStyle = .coverVertical
         //        self.navigationController?.pushViewController(vpVideoDetailVC, animated: true)
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
         if self.newsVideoModelArr.count > 0 {

@@ -22,6 +22,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         
         // Do any additional setup after loading the view.
     }
+    
     override func initSubviews() {
         super.initSubviews()
         customPlayerView = VPNewsCustomPlayerView()
@@ -47,7 +48,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
         
         self.beginRefreshing()
     }
-    
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {
@@ -126,6 +126,7 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        
     }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
         if self.newsVideoModelArr.count > 0 {

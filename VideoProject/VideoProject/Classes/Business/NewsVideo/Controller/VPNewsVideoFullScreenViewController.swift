@@ -13,8 +13,6 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
     /// 播放器
     var player:BMPlayer!
     var customPlayerView:VPNewsCustomPlayerView!
-    
-    
     var playerBackBlock:((_ player:BMPlayer,_ currentTime:TimeInterval,_ playerView:VPNewsCustomPlayerView)->Void)?
     var curretTime:TimeInterval = 0.0
     
@@ -33,6 +31,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             make.centerY.equalTo(self.customPlayerView.backButton)
         }
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
 //        UIApplication.shared.statusBarOrientation = .portrait
@@ -48,9 +47,11 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         }
 
     }
+    
     override var prefersStatusBarHidden: Bool{
         return true
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -74,6 +75,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         
         
     }
+    
     func disMissVC() {
         self.dismiss(animated: false, completion: {
             self.player.delegate = nil
@@ -82,16 +84,17 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             
         })
     }
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         VPLog("viewWillTransition")
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 }
-
 
 extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
     func controlView(controlView: BMPlayerControlView, didChooseDefition index: Int) {
@@ -140,7 +143,6 @@ extension VPNewsVideoFullScreenViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
 
     }
-    
     
 }
 
