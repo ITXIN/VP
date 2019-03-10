@@ -13,10 +13,10 @@ import SVProgressHUD
 protocol VPNetworkManagerProtocol {
     // MARK: - ---------------------------------- 西瓜视频 ----------------------------------
     static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
+    
     static func parseVideoRealURL(video_id:String,completionHandler:@escaping(_ realVideo:RealVideo)->())
-    
-    
 }
+
 struct VPNetworkManager:VPNetworkManagerProtocol {
     
 }
@@ -53,7 +53,7 @@ extension VPNetworkManagerProtocol{
                 guard let datas = json["data"].array else {
                     return
                 }
-                completionHandler(pullTime,datas.flatMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
+                completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
                 }))
             }
         }
@@ -85,9 +85,5 @@ extension VPNetworkManagerProtocol{
         }
        
     }
-    
-    
-    
-    
 }
 
