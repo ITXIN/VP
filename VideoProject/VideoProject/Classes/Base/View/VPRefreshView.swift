@@ -28,10 +28,10 @@ class VPRefreshGifHeader: MJRefreshGifHeader {
     
     override func placeSubviews() {
         super.placeSubviews()
-        gifView.contentMode = .center
-        gifView.frame = CGRect(x: 0, y: 4, width: mj_w, height: 25)
-        stateLabel.font = UIFont.systemFont(ofSize: 12)
-        stateLabel.frame = CGRect(x: 0, y: 35, width: mj_w, height: 14)
+        gifView?.contentMode = .center
+        gifView?.frame = CGRect(x: 0, y: 4, width: mj_w, height: 25)
+        stateLabel?.font = UIFont.systemFont(ofSize: 12)
+        stateLabel?.frame = CGRect(x: 0, y: 35, width: mj_w, height: 14)
     }
     
     

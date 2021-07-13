@@ -1,27 +1,30 @@
 PODS:
-  - Alamofire (4.7.3)
-  - BMPlayer (1.0.1):
-    - BMPlayer/Full (= 1.0.1)
-  - BMPlayer/Core (1.0.1)
-  - BMPlayer/Full (1.0.1):
+  - Alamofire (5.4.1)
+  - BMPlayer (1.3.2):
+    - BMPlayer/Full (= 1.3.2)
+  - BMPlayer/Core (1.3.2)
+  - BMPlayer/Full (1.3.2):
     - BMPlayer/Core
-    - NVActivityIndicatorView (~> 4.0.0)
-    - SnapKit (~> 4.0.0)
-  - HandyJSON (4.2.0)
-  - lottie-ios (2.5.0)
-  - MJRefresh (3.1.15.7)
-  - NVActivityIndicatorView (4.0.1):
-    - NVActivityIndicatorView/Presenter (= 4.0.1)
-  - NVActivityIndicatorView/Presenter (4.0.1)
-  - RxCocoa (4.3.1):
-    - RxSwift (~> 4.0)
-  - RxSwift (4.3.1)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
-  - SnapKit (4.0.1)
+    - NVActivityIndicatorView (~> 4.7.0)
+    - SnapKit (~> 5.0.0)
+  - HandyJSON (5.0.2)
+  - lottie-ios (3.2.1)
+  - MJRefresh (3.5.0)
+  - NVActivityIndicatorView (4.7.0):
+    - NVActivityIndicatorView/Presenter (= 4.7.0)
+  - NVActivityIndicatorView/Presenter (4.7.0)
+  - RxCocoa (6.1.0):
+    - RxRelay (= 6.1.0)
+    - RxSwift (= 6.1.0)
+  - RxRelay (6.1.0):
+    - RxSwift (= 6.1.0)
+  - RxSwift (6.1.0)
+  - SDWebImage (5.10.4):
+    - SDWebImage/Core (= 5.10.4)
+  - SDWebImage/Core (5.10.4)
+  - SnapKit (5.0.1)
   - SVProgressHUD (2.2.5)
-  - SwiftyJSON (4.2.0)
+  - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - Alamofire
@@ -37,7 +40,7 @@ DEPENDENCIES:
   - SwiftyJSON
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - BMPlayer
     - HandyJSON
@@ -45,6 +48,7 @@ SPEC REPOS:
     - MJRefresh
     - NVActivityIndicatorView
     - RxCocoa
+    - RxRelay
     - RxSwift
     - SDWebImage
     - SnapKit
@@ -52,19 +56,20 @@ SPEC REPOS:
     - SwiftyJSON
 
 SPEC CHECKSUMS:
-  Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
-  BMPlayer: 44eebf06eb01450dd14ea74b27d07c5222f0eed1
-  HandyJSON: 9dfc026c7d7adc1f0f8ba8b181495f0e0763b0f4
-  lottie-ios: d699fdee68d7b63e721d949388b015fef1aaa4ac
-  MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
-  NVActivityIndicatorView: 77ed6d7b571643e24899e7858bf9ae2ee4c21f31
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
-  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  Alamofire: 2291f7d21ca607c491dd17642e5d40fdcda0e65c
+  BMPlayer: e4b241bd088644d7b89d991a1a65d1b1615d19b3
+  HandyJSON: 9e4e236f5d2dbefad5155a77417bbea438201c03
+  lottie-ios: 106e92eaf11fbed0a76590b4cdb9b5ec26123ff7
+  MJRefresh: 6afc955813966afb08305477dd7a0d9ad5e79a16
+  NVActivityIndicatorView: b19ddab2576f805cbe0fb2306cba3476e09a1dea
+  RxCocoa: 5c51f02d562cbd94629f6c26cf0c80fe4ab8d343
+  RxRelay: 483e1a19fad961b41f0b0c0bee506f46c1ae14fe
+  RxSwift: a834e5c538e89eca0cae86f403f4fbf0336786ce
+  SDWebImage: c666b97e1fa9c64b4909816a903322018f0a9c84
+  SnapKit: 97b92857e3df3a0c71833cce143274bf6ef8e5eb
   SVProgressHUD: 1428aafac632c1f86f62aa4243ec12008d7a51d6
-  SwiftyJSON: c4bcba26dd9ec7a027fc8eade48e2c911f229e96
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 84e30ac2ca306112684b5e0e6a7b85df0ffe50c2
+PODFILE CHECKSUM: c3454e4134f90da5c1ad3a3062b6059610707b2e
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.2

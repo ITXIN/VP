@@ -38,23 +38,27 @@ extension VPNetworkManagerProtocol{
                       "refresh_reason": 1,
                       "tt_from": "pull",
                       "iid": iid] as [String: Any]
-        
-       
-        Alamofire.request(url, parameters: params).responseJSON { (response) in
-            
-            guard response.result.isSuccess else {
+   
+        AF.request(url,method:.post, parameters: params).responseString { (response) in
+            guard (response.value != nil) else {
                 return
             }
-            if let value = response.result.value{
-                let json = JSON(value)
-                guard json["message"] == "success" else {
+//            guard response.result.isSuccess else {
+//                return
+//            }
+            if let value = response.value{
+//                let json = JSON(value)
+                let jsonData:Data = value.data(using: .utf8)!
+
+                let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+                guard (dict as!Dictionary)["message"] == "success" else {
                     return
                 }
-                guard let datas = json["data"].array else {
-                    return
-                }
-                completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
-                }))
+//                guard let datas = (dict as!Dictionary)["data"].array else {
+//                    return
+//                }
+//                completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
+//                }))
             }
         }
     }
@@ -74,11 +78,11 @@ extension VPNetworkManagerProtocol{
 //        let realURL = "https://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
         let realURL = NEWS_VIDEO_BASE_URL+NEWS_VIDEO_REAL_PLAY_PATH+"\(video_id)?r=\(r)&s=\(crc32)"
         
-        Alamofire.request(realURL).responseJSON { (response) in
+        AF.request(realURL).responseJSON { (response) in
     
-            guard response.result.isSuccess else{return}
+            guard (response.value != nil) else{return}
             
-            if let value = response.result.value {
+            if let value = response.value {
                 completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
             }
             

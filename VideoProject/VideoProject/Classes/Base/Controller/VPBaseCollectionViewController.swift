@@ -69,7 +69,7 @@ extension VPBaseCollectionViewController{
                     self.headerRefresh()
                 }
                 self.collectionView.mj_header = self.header
-                self.header.lastUpdatedTimeLabel.isHidden = true
+                self.header.lastUpdatedTimeLabel?.isHidden = true
                 
             }
         }

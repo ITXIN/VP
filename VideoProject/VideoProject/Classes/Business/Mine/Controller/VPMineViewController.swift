@@ -13,8 +13,8 @@ class VPMineViewController: VPBaseViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         for view  in self.bgView.subviews {
-            if(view.isKind(of: LOTAnimationView.self)){
-                let tem =  view as? LOTAnimationView
+            if(view.isKind(of: AnimationView.self)){
+                let tem =  view as? AnimationView
                 tem?.play()
                 
             }
@@ -27,7 +27,7 @@ class VPMineViewController: VPBaseViewController {
         // 动画
         let arr = ["rubberhose_to_ios","dino_dance","hearts_"]
         for index in 0..<arr.count {
-            let headWhiteAnimation = LOTAnimationView(name: arr[index])
+            let headWhiteAnimation = AnimationView(name: arr[index])
             headWhiteAnimation.contentMode = .scaleAspectFill
             
             if(index == 0){
@@ -42,14 +42,15 @@ class VPMineViewController: VPBaseViewController {
             self.bgView.backgroundColor = UIColor.black
             self.bgView.addSubview(headWhiteAnimation)
             headWhiteAnimation.play()
-            headWhiteAnimation.loopAnimation = true
+//            headWhiteAnimation.loopAnimation = true
+            headWhiteAnimation.loopMode = LottieLoopMode.loop
             headWhiteAnimation.tag = 100 + index
         }
         
         // Do any additional setup after loading the view.
     }
     
-    func danceAnimation(_ headWhiteAnimation :LOTAnimationView){
+    func danceAnimation(_ headWhiteAnimation :AnimationView){
         let popTime = DispatchTime.now() + Double(Int64( Double(NSEC_PER_SEC) * 1.0 )) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: popTime) {
             headWhiteAnimation.frame = CGRect(x: -200, y: 100, width: 200, height: 200)

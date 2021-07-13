@@ -10,6 +10,8 @@ import Foundation
 
 public class BMSubtitles {
     public var groups: [Group] = []
+    /// subtitles delay, positive:fast, negative:forward
+    public var delay: TimeInterval = 0
     
     public struct Group: CustomStringConvertible {
         var index: Int
@@ -43,7 +45,7 @@ public class BMSubtitles {
     }
     
     public init(url: URL, encoding: String.Encoding? = nil) {
-        DispatchQueue.global(qos: .background).async {
+        DispatchQueue.global(qos: .background).async {[weak self] in
             do {
                 let string: String
                 if let encoding = encoding {
@@ -51,8 +53,7 @@ public class BMSubtitles {
                 } else {
                     string = try String(contentsOf: url)
                 }
-                
-                self.groups = BMSubtitles.parseSubRip(string) ?? []
+                self?.groups = BMSubtitles.parseSubRip(string) ?? []
             } catch {
                 print("| BMPlayer | [Error] failed to load \(url.absoluteString) \(error.localizedDescription)")
             }
@@ -68,7 +69,7 @@ public class BMSubtitles {
      */
     public func search(for time: TimeInterval) -> Group? {
         let result = groups.first(where: { group -> Bool in
-            if group.start <= time && group.end >= time {
+            if group.start - delay <= time && group.end - delay >= time {
                 return true
             }
             return false
@@ -98,7 +99,6 @@ public class BMSubtitles {
             
             var endString: NSString?
             scanner.scanUpToCharacters(from: .newlines, into: &endString)
-            
             
             var textString: NSString?
             scanner.scanUpTo("\r\n\r\n", into: &textString)

@@ -80,7 +80,7 @@ extension VPBaseTableViewController{
                     self.headerRefresh()
                 }
                 self.tableView.mj_header = self.header
-                self.header.lastUpdatedTimeLabel.isHidden = true
+                self.header.lastUpdatedTimeLabel?.isHidden = true
                 
             }
         }

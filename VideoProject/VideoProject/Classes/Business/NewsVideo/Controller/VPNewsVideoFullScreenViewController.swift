@@ -20,7 +20,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
         self.customPlayerView.backButton.isHidden = false
-        self.customPlayerView.chooseDefitionView.isHidden = true
+        self.customPlayerView.chooseDefinitionView.isHidden = true
         self.customPlayerView.titleLabel.font = UIFont.systemFont(ofSize: 15)
         self.player.snp.makeConstraints {
             $0.edges.equalTo(self.bgView)
@@ -97,7 +97,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
 }
 
 extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
-    func controlView(controlView: BMPlayerControlView, didChooseDefition index: Int) {
+    func controlView(controlView: BMPlayerControlView, didChooseDefinition index: Int) {
        VPLog(index)
     }
     

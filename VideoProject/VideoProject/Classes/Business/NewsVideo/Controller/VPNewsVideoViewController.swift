@@ -60,7 +60,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 
                 self.customPlayerView.delegate = self
                 self.customPlayerView.replayButton.isHidden = true;
-                self.customPlayerView.chooseDefitionView.isHidden = true
+                self.customPlayerView.chooseDefinitionView.isHidden = true
                 
                 let playurl = response.video_list.video_1.mainURL
                 let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel.title, cover: nil, subtitle: nil)
@@ -151,7 +151,7 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
 
 // MARK: - ---------------------------------- BMPlayerControlViewDelegate ----------------------------------
 extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
-    func controlView(controlView: BMPlayerControlView, didChooseDefition index: Int) {
+    func controlView(controlView: BMPlayerControlView, didChooseDefinition index: Int) {
         VPLog("didChooseDefition")
     }
     
@@ -183,7 +183,7 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                     self.currentCell.bgView.addSubview(fullScreenPlayer)
                     fullScreenPlayer.delegate = self
                     fullScreenCustomPlayerView.delegate = self
-                    fullScreenCustomPlayerView.chooseDefitionView.isHidden = true
+                    fullScreenCustomPlayerView.chooseDefinitionView.isHidden = true
                     fullScreenCustomPlayerView.titleLabel.font = UIFont.systemFont(ofSize: 15)
                     fullScreenPlayer.snp.makeConstraints({ (make) in
                         make.edges.equalTo(self.currentCell.videoPreImage)
