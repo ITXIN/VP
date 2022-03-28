@@ -16,12 +16,22 @@ class VPNewsVideoCell: VPBaseTableViewCell {
     var videoPreImage:UIImageView!
     var videoPlayHudBtn:UIButton!
     var followBtn:UIButton!
-    var newsVideoModel = VPNewsVideoModel(){
+    var newsVideoModel: VPNewsVideoModel? = VPNewsVideoModel(){
         didSet{
-            titleLab.text = newsVideoModel.title
-            avatarIcon.sd_setImage(with: URL.init(string: newsVideoModel.user_info.avatar_url), for: .normal, completed: nil)
-            avatarNameLab.text = newsVideoModel.user_info.name
-            videoPreImage.sd_setImage(with: URL.init(string: newsVideoModel.video_detail_info.detail_video_large_image.urlString), completed: nil)
+            
+            titleLab.text = newsVideoModel?.title
+            if let url = newsVideoModel?.user_info.avatar_url {
+                avatarIcon.sd_setImage(with: URL.init(string: url), for: .normal, completed: nil)
+            }
+            
+            if let name = newsVideoModel?.user_info.name {
+                avatarNameLab.text = name
+            }
+            
+            if let img = newsVideoModel?.video_detail_info.detail_video_large_image.urlString {
+                videoPreImage.sd_setImage(with: URL.init(string: img), completed: nil)
+            }
+           
         }
     }
     

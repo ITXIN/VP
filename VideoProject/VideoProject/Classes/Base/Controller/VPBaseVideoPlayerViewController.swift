@@ -10,7 +10,7 @@ import UIKit
 import BMPlayer
 class VPBaseVideoPlayerViewController: VPBaseViewController {
 
-    var newsVideoModelArr = [VPNewsVideoModel]()
+    var newsVideoModelArr = [VPNewsVideoModel?]()
     var customPlayerView:BMPlayerControlView!
     var categary = "video"
     /// 播放器

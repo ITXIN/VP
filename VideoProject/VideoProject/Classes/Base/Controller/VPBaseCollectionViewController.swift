@@ -53,9 +53,9 @@ extension VPBaseCollectionViewController{
     func loadVideoData() {
         VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
             if (self.newsVideoModelArr.count > 0){
-                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
+                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr as! [VPNewsVideoModel]
             }else{
-                self.newsVideoModelArr = videoModelArr
+                self.newsVideoModelArr = videoModelArr as! [VPNewsVideoModel]
             }
             self.removePlayer()
             self.footerEndRefreshing()

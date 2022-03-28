@@ -108,7 +108,11 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
 extension VPShortVideoPlayerViewController{
     
     func setupPlayer(index:Int)  {
-        let smallVideo = self.newsVideoModelArr[index]
+        
+        guard  let smallVideo = self.newsVideoModelArr[index] else {
+            return
+        }
+    
         if  let videoURLStr = smallVideo.raw_data.video.play_addr.url_list.first             {
            
             let dataTask = URLSession.shared.dataTask(with: URL.init(string: videoURLStr)!, completionHandler: { (data, response, error) in
@@ -156,8 +160,12 @@ extension VPShortVideoPlayerViewController:UICollectionViewDelegate,UICollection
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shortVideoPlayerCellIdentifier, for: indexPath) as! VPShortVideoCollectionViewCell
-        cell.smallVideo = self.newsVideoModelArr[indexPath.row]
         cell.setupPlayerSubviewsLayout()
+        guard let video = self.newsVideoModelArr[indexPath.row] else {
+            return cell
+        }
+        cell.smallVideo = video
+     
         
         return cell
         

@@ -35,10 +35,18 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         self.categary = "ugc_video_beauty"
         self.headerRefreshingBlock = {
             VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
-                if videoModelArr.count > 0{
-                    self.newsVideoModelArr.removeAll()
-                }
-                self.newsVideoModelArr = videoModelArr
+                //TODO: 数据没有处理
+//                if videoModelArr.count > 0{
+//                    self.newsVideoModelArr.removeAll()
+//                }
+                
+                
+                self.newsVideoModelArr = videoModelArr as? [VPNewsVideoModel] ?? [VPNewsVideoModel]()
+//                if let arr = videoModelArr {
+//                    self.newsVideoModelArr.removeAll()
+//                    self.newsVideoModelArr = arr
+//                }
+               
                 self.removePlayer()
                 self.headerEndRefreshing()
             }
@@ -87,7 +95,10 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shortVideoCellIdentifier, for: indexPath) as! VPShortVideoCollectionViewCell
-        cell.smallVideo = self.newsVideoModelArr[indexPath.row]
+        guard let video = self.newsVideoModelArr[indexPath.row] else {
+            return cell
+        }
+        cell.smallVideo = video
         
 //        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
         return cell

@@ -36,7 +36,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 if videoModelArr.count > 0{
                     self.newsVideoModelArr.removeAll()
                 }
-                self.newsVideoModelArr = videoModelArr
+                self.newsVideoModelArr = videoModelArr as! [VPNewsVideoModel]
                 self.removePlayer()
                 self.headerEndRefreshing()
             }
@@ -51,7 +51,10 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {
-        VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
+        guard let videoID = cell.newsVideoModel?.video_detail_info.video_id  else {
+            return
+        }
+        VPNetworkManager.parseVideoRealURL(video_id: videoID, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
                 self.currentCell = cell
                 self.removePlayer()
@@ -63,7 +66,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 self.customPlayerView.chooseDefinitionView.isHidden = true
                 
                 let playurl = response.video_list.video_1.mainURL
-                let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel.title, cover: nil, subtitle: nil)
+                let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel?.title ?? "", cover: nil, subtitle: nil)
                 self.player.setVideo(resource: res)
             
                 self.player.snp.makeConstraints {
@@ -131,7 +134,10 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
         let  cell = tableView.dequeueReusableCell(withIdentifier: newsVideoCellIdentifier, for: indexPath) as! VPNewsVideoCell
         if self.newsVideoModelArr.count > 0 {
             let newsVideoModel = self.newsVideoModelArr[indexPath.row]
-            cell.newsVideoModel = newsVideoModel
+            if let mode = newsVideoModel {
+                cell.newsVideoModel = mode
+            }
+            
             cell.videoPlayHudBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
                     VPLog("play")

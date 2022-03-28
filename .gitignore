@@ -1,1 +1,21 @@
+
+.svn/**
+# Xcode
+#
+build/
 .DS_Store
+
+xcuserdata
+*.xccheckout
+
+DerivedData
+*.hmap
+*.ipa
+*.xcuserstate
+*.xcscheme
+*.xcuserdatad/**
+
+*.svn-base
+Products/**
+*/output/**
+.idea

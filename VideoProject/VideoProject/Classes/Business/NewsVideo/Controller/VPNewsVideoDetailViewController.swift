@@ -110,8 +110,11 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {
+        guard let videoID = cell.newsVideoModel?.video_detail_info.video_id else {
+            return
+        }
         self.player.removeFromSuperview()
-        VPNetworkManager.parseVideoRealURL(video_id: cell.newsVideoModel.video_detail_info.video_id, completionHandler: { (response) in
+        VPNetworkManager.parseVideoRealURL(video_id: videoID, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
                 cell.bgView.addSubview(self.player)
                 let playurl = response.video_list.video_1.mainURL

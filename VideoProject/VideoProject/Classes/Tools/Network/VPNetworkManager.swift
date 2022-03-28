@@ -8,23 +8,26 @@
 
 import Foundation
 import Alamofire
-import SwiftyJSON
+//import SwiftyJSON
 import SVProgressHUD
 protocol VPNetworkManagerProtocol {
     // MARK: - ---------------------------------- 西瓜视频 ----------------------------------
-    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->())
+    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel?])->())
     
     static func parseVideoRealURL(video_id:String,completionHandler:@escaping(_ realVideo:RealVideo)->())
 }
 
-struct VPNetworkManager:VPNetworkManagerProtocol {
-    
-}
-
-
-extension VPNetworkManagerProtocol{
+struct VPNetworkManager: VPNetworkManagerProtocol {
+//    static func loadNewsVideo(categary: String, completionHandler: @escaping (TimeInterval, [VPNewsVideoModel?]) -> ()) {
+//
+//    }
+//
+//}
+//
+//
+//extension VPNetworkManagerProtocol{
     // MARK: - ---------------------------------- 视频列表 ----------------------------------
-    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel])->()){
+    static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel?])->()){
       
         let pullTime = Date().timeIntervalSince1970
         let url = NEWS_VIDEO_BASE_URL + NEWS_VIDEO_LIST_PATH
@@ -51,9 +54,51 @@ extension VPNetworkManagerProtocol{
                 let jsonData:Data = value.data(using: .utf8)!
 
                 let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-                guard (dict as!Dictionary)["message"] == "success" else {
-                    return
+               
+                if dict is Dictionary<String, Any> {
+                    print("-----dict")
+//                    print(dict.message)
                 }
+ 
+                let dict1 = (dict as! Dictionary<String, Any>)
+                
+                for item:String in dict1.keys{
+                    if "data" == item {
+                        print("---data")
+                        //                        print(item)
+                        //                        print(dict1[item]!)
+                        //                        guard let datas = (dict1[item]! as AnyObject).array else {
+                        //                            return
+                        //                        }
+                        let datas = dict1[item]! as! Array<Any>
+                       
+                       
+//                        let model = datas.compactMap({
+//                            VPNewsVideoModel.deserialize(from: ($0 as! NSDictionary))
+//                            //                            return ($0 as! NSDictionary)["content"]
+//                        })
+//                        print("data1")
+//                        print(model)
+                        if let videArr = [VPNewsVideoModel].deserialize(from: datas) {
+                            completionHandler(pullTime,videArr)
+                        }else{
+                            
+                        }
+                       
+//                        completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: ($0 as! NSDictionary))
+//                        }))
+                        break
+                    }
+                    
+                }
+//                for  ob in dict1 {
+//                    print("ob\n",ob)
+//                }
+                
+//                let dict1 = dict
+//                guard (dict as!Dictionary)["message"] == "success" else {
+//                    return
+//                }
 //                guard let datas = (dict as!Dictionary)["data"].array else {
 //                    return
 //                }
@@ -83,7 +128,7 @@ extension VPNetworkManagerProtocol{
             guard (response.value != nil) else{return}
             
             if let value = response.value {
-                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
+//                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
             }
             
         }
