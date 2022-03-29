@@ -85,6 +85,8 @@ struct VPNetworkManager: VPNetworkManagerProtocol {
                 
                 break
             case let .failure(error):
+                VPLog("error: \(error)")
+                completionHandler(pullTime,[])
                 break
                 
             }
@@ -110,12 +112,37 @@ struct VPNetworkManager: VPNetworkManagerProtocol {
             
             guard (response.value != nil) else{return}
             
-            if let value = response.value {
-                //                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
+            switch response.result {
+            case let .success(body):
+                
+                let dic = (body as? Dictionary<String, Any>)
+                if let keyArr = dic?.keys {
+                    for item:String in keyArr {
+                        if "data" == item {
+                            
+                            guard let datas = dic?[item] as? Dictionary<String,Any> else {
+                                continue;
+                            }
+                            if let video = RealVideo.deserialize(from: datas) {
+                                completionHandler(video)
+                            }
+                            break
+                        }
+                    }
+                }
+                
+                break
+            case let .failure(error):
+                VPLog("error: \(error)")
+                if let video = RealVideo.deserialize(from: ["data":""]) {
+                    completionHandler(video)
+                }
+                break
+                
             }
-            
         }
         
     }
+    
 }
 

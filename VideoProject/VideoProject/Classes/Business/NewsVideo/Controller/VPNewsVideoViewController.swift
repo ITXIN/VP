@@ -141,7 +141,7 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
             cell.videoPlayHudBtn.rx.tap
                 .subscribe(onNext: { [weak self] in
                     VPLog("play")
-                    if self!.player.isPlaying{
+                    if let isPlay = self?.player.isPlaying,isPlay == true {
                         self?.removePlayer()
                         
                     }
