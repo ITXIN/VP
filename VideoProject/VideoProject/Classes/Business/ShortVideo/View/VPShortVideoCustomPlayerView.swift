@@ -2,7 +2,7 @@
 //  VPShortVideoCustomPlayerView.swift
 //  VideoProject
 //
-//  Created by avazuholding on 2018/3/17.
+//  Created by ITXX on 2018/3/17.
 //  Copyright © 2018年 icoin. All rights reserved.
 //
 

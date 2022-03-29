@@ -2,7 +2,7 @@
 //  VPNewsVideoPlayModel.swift
 //  VideoProject
 //
-//  Created by avazuholding on 2018/3/8.
+//  Created by ITXX on 2018/3/8.
 //  Copyright © 2018年 icoin. All rights reserved.
 //
 

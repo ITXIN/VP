@@ -2,7 +2,7 @@
 //  VPNetworkManager.swift
 //  VideoProject
 //
-//  Created by avazuholding on 2018/3/7.
+//  Created by ITXX on 2018/3/7.
 //  Copyright © 2018年 icoin. All rights reserved.
 //
 
@@ -18,17 +18,10 @@ protocol VPNetworkManagerProtocol {
 }
 
 struct VPNetworkManager: VPNetworkManagerProtocol {
-//    static func loadNewsVideo(categary: String, completionHandler: @escaping (TimeInterval, [VPNewsVideoModel?]) -> ()) {
-//
-//    }
-//
-//}
-//
-//
-//extension VPNetworkManagerProtocol{
+    
     // MARK: - ---------------------------------- 视频列表 ----------------------------------
     static func loadNewsVideo(categary:String,completionHandler:@escaping(_ maxBehotTime:TimeInterval,_ newsVideo:[VPNewsVideoModel?])->()){
-      
+        
         let pullTime = Date().timeIntervalSince1970
         let url = NEWS_VIDEO_BASE_URL + NEWS_VIDEO_LIST_PATH
         let params = ["device_id": device_id,
@@ -41,69 +34,59 @@ struct VPNetworkManager: VPNetworkManagerProtocol {
                       "refresh_reason": 1,
                       "tt_from": "pull",
                       "iid": iid] as [String: Any]
-   
+        
         AF.request(url,method:.post, parameters: params).responseString { (response) in
             guard (response.value != nil) else {
                 return
             }
-//            guard response.result.isSuccess else {
-//                return
-//            }
-            if let value = response.value{
-//                let json = JSON(value)
-                let jsonData:Data = value.data(using: .utf8)!
-
-                let dict = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
-               
-                if dict is Dictionary<String, Any> {
-                    print("-----dict")
-//                    print(dict.message)
-                }
- 
-                let dict1 = (dict as! Dictionary<String, Any>)
+            
+            switch response.result {
+            case let .success(body):
                 
-                for item:String in dict1.keys{
-                    if "data" == item {
-                        print("---data")
-                        //                        print(item)
-                        //                        print(dict1[item]!)
-                        //                        guard let datas = (dict1[item]! as AnyObject).array else {
-                        //                            return
-                        //                        }
-                        let datas = dict1[item]! as! Array<Any>
-                       
-                       
-//                        let model = datas.compactMap({
-//                            VPNewsVideoModel.deserialize(from: ($0 as! NSDictionary))
-//                            //                            return ($0 as! NSDictionary)["content"]
-//                        })
-//                        print("data1")
-//                        print(model)
-                        if let videArr = [VPNewsVideoModel].deserialize(from: datas) {
-                            completionHandler(pullTime,videArr)
-                        }else{
+                let jsonData:Data = body.data(using: .utf8)!
+                
+                let tempDic = try? JSONSerialization.jsonObject(with: jsonData, options: .mutableContainers)
+                
+                let dic = (tempDic as? Dictionary<String, Any>)
+                if let keyArr = dic?.keys {
+                    for item:String in keyArr {
+                        if "data" == item {
                             
+                            guard let datas = dic?[item] as? Array<Any> else {
+                                continue;
+                            }
+                            var listArr = [Any]()
+                            for item in datas {
+                                
+                                if let dicCon = (item as! Dictionary<String, Any>)["content"] as? String {
+                                    
+                                    let contentJsonData:Data = dicCon.data(using: .utf8)!
+                                    
+                                    let contentDicTemp = try? JSONSerialization.jsonObject(with: contentJsonData, options: .mutableContainers)
+                                    
+                                    
+                                    let contentDic = (contentDicTemp as! Dictionary<String, Any>)
+                                    
+                                    listArr.append(contentDic)
+                                }
+                                
+                            }
+                            
+                            if let videArr = [VPNewsVideoModel].deserialize(from: listArr) {
+                                completionHandler(pullTime,videArr)
+                            }else{
+                                
+                            }
+                            break
                         }
-                       
-//                        completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: ($0 as! NSDictionary))
-//                        }))
-                        break
                     }
                     
                 }
-//                for  ob in dict1 {
-//                    print("ob\n",ob)
-//                }
                 
-//                let dict1 = dict
-//                guard (dict as!Dictionary)["message"] == "success" else {
-//                    return
-//                }
-//                guard let datas = (dict as!Dictionary)["data"].array else {
-//                    return
-//                }
-//                completionHandler(pullTime,datas.compactMap({ VPNewsVideoModel.deserialize(from: $0["content"].string)
-//                }))
+                break
+            case let .failure(error):
+                break
+                
             }
         }
     }
@@ -120,19 +103,19 @@ struct VPNetworkManager: VPNetworkManagerProtocol {
             crc32 += 0x100000000
         }
         // 拼接 url
-//        let realURL = "https://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
+        //        let realURL = "https://i.snssdk.com/video/urls/v/1/toutiao/mp4/\(video_id)?r=\(r)&s=\(crc32)"
         let realURL = NEWS_VIDEO_BASE_URL+NEWS_VIDEO_REAL_PLAY_PATH+"\(video_id)?r=\(r)&s=\(crc32)"
         
         AF.request(realURL).responseJSON { (response) in
-    
+            
             guard (response.value != nil) else{return}
             
             if let value = response.value {
-//                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
+                //                completionHandler(RealVideo.deserialize(from: JSON(value)["data"].dictionaryObject)!)
             }
             
         }
-       
+        
     }
 }
 
