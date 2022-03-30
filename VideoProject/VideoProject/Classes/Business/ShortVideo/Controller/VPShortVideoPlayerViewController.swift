@@ -78,7 +78,9 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         
     }
     @objc func backRootVC() {
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
+
+        self.navigationController?.popViewController(animated: true)
     }
     
     override func setupSubviewsLayout() {

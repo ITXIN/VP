@@ -9,14 +9,14 @@
 import UIKit
 import MJRefresh
 class VPShotVideoViewController: VPBaseCollectionViewController {
-
+    
     let shortVideoCellIdentifier = "shortVideoCellIdentifier"
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func initSubviews() {
         super.initSubviews()
         self.bgView.backgroundColor = UIColor.vpGrayBgColor()
@@ -33,21 +33,16 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         self.collectionView.backgroundColor = UIColor.vpGrayBgColor()
         
         self.categary = "ugc_video_beauty"
+        self.categary = "video"
         self.headerRefreshingBlock = {
             VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
                 //TODO: 数据没有处理
-//                if videoModelArr.count > 0{
-//                    self.newsVideoModelArr.removeAll()
-//                }
+                if videoModelArr.count > 0{
+                    self.newsVideoModelArr.removeAll()
+                    self.newsVideoModelArr = videoModelArr
+                    self.removePlayer()
+                }
                 
-                
-                self.newsVideoModelArr = videoModelArr as? [VPNewsVideoModel] ?? [VPNewsVideoModel]()
-//                if let arr = videoModelArr {
-//                    self.newsVideoModelArr.removeAll()
-//                    self.newsVideoModelArr = arr
-//                }
-               
-                self.removePlayer()
                 self.headerEndRefreshing()
             }
         }
@@ -67,20 +62,20 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
 extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDataSource{
     
     //UICollectionDelegate
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let smallVieo = self.newsVideoModelArr[indexPath.row]
+        //        let smallVieo = self.newsVideoModelArr[indexPath.row]
         let playVC = VPShortVideoPlayerViewController()
         playVC.newsVideoModelArr = self.newsVideoModelArr
         playVC.scrooToIndex = indexPath
-//        self.navigationController?.pushViewController(playVC, animated: true)
-        self.present(playVC, animated: true, completion: nil)
+                self.navigationController?.pushViewController(playVC, animated: true)
+//        self.present(playVC, animated: true, completion: nil)
         
     }
     
@@ -100,7 +95,7 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
         }
         cell.smallVideo = video
         
-//        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
+        //        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
         return cell
         
     }

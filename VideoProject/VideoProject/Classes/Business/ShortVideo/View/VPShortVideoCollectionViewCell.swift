@@ -17,16 +17,16 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
     var smallVideo = VPNewsVideoModel(){
         didSet{
 //            titleLab.attributedText = samllVideo.raw_data.attrbutedText
-            titleLab.attributedText = smallVideo.raw_data.attrbutedText
-            if let largeImage = smallVideo.raw_data.large_image_list.first {
-                videoPreImage.sd_setImage(with: URL(string:largeImage.urlString), completed:{ (image, error, type, url) in
-//                    if let sdImage = image {
-//                        self.sliderValueChanged(sdImage)
-//                    }
+            titleLab.text = smallVideo.title
+             let largeImage = smallVideo.video_detail_info.detail_video_large_image.url
+            videoPreImage.sd_setImage(with: URL(string:largeImage as String), completed:{ (image, error, type, url) in
+                    if let sdImage = image {
+                        self.sliderValueChanged(sdImage)
+                    }
                 })
-            }else if let firstImage = smallVideo.raw_data.first_frame_image_list.first{
-                 videoPreImage.sd_setImage(with: URL(string:firstImage.urlString), completed: nil)
-            }
+//            }else if let firstImage = smallVideo.raw_data.first_frame_image_list.first{
+//                 videoPreImage.sd_setImage(with: URL(string:firstImage.urlString), completed: nil)
+//            }
             diggCountLab.text = smallVideo.raw_data.action.diggCount + "赞"
             playCountLab.text = smallVideo.raw_data.action.playCount + "次播放"
             
