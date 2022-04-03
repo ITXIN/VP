@@ -61,9 +61,9 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 cell.contentView.addSubview(self.player)
                 self.player.delegate = self
                 
-                self.customPlayerView.delegate = self
-                self.customPlayerView.replayButton.isHidden = true;
-                self.customPlayerView.chooseDefinitionView.isHidden = true
+                self.customPlayerView?.delegate = self
+                self.customPlayerView?.replayButton.isHidden = true;
+                self.customPlayerView?.chooseDefinitionView.isHidden = true
                 
                 let playurl = response.video_list.video_1.mainURL
                 let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel?.title ?? "", cover: nil, subtitle: nil)

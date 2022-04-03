@@ -11,8 +11,8 @@ import BMPlayer
 class VPNewsVideoFullScreenViewController: VPBaseViewController {
     
     /// 播放器
-    var player:BMPlayer!
-    var customPlayerView:VPNewsCustomPlayerView!
+//    var player:BMPlayer!
+//    var customPlayerView:VPNewsCustomPlayerView!
     var playerBackBlock:((_ player:BMPlayer,_ currentTime:TimeInterval,_ playerView:VPNewsCustomPlayerView)->Void)?
     var curretTime:TimeInterval = 0.0
     
@@ -80,7 +80,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         self.dismiss(animated: false, completion: {
             self.player.delegate = nil
             self.customPlayerView.delegate = nil
-            self.playerBackBlock?(self.player,self.curretTime,self.customPlayerView)
+            self.playerBackBlock?(self.player,self.curretTime,self.customPlayerView as! VPNewsCustomPlayerView)
             
         })
     }

@@ -9,7 +9,7 @@
 import UIKit
 import MJRefresh
 
-class VPBaseTableViewController: VPBaseVideoPlayerViewController {
+class VPBaseTableViewController: VPBaseViewController {
     lazy var tableView:UITableView  = ({ () -> UITableView in
         let tableView = UITableView.init(frame: self.view.bounds, style: UITableViewStyle.plain)
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
@@ -38,7 +38,7 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
     
     override func initSubviews() {
         super.initSubviews()
-        self.dataArr = NSMutableArray.init()
+//        self.dataArr = NSMutableArray.init()
         
     }
     

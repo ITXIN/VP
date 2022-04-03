@@ -8,7 +8,7 @@
 
 import UIKit
 import BMPlayer
-class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
+class VPShortVideoPlayerViewController: VPBaseViewController {
     
     var scrooToIndex:IndexPath!
     var collectionView:UICollectionView!

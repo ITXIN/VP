@@ -8,7 +8,7 @@
 
 import UIKit
 import MJRefresh
-class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
+class VPBaseCollectionViewController: VPBaseViewController {
     
     lazy var collectionView:UICollectionView  = ({ () -> UICollectionView in
         let flowLayout = UICollectionViewFlowLayout.init()
@@ -34,7 +34,7 @@ class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
     
     override func initSubviews() {
         super.initSubviews()
-        self.dataArr = NSMutableArray.init()
+//        self.dataArr = NSMutableArray.init()
         
     }
     

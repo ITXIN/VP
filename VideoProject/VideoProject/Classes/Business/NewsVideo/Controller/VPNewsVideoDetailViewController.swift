@@ -88,25 +88,6 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         VPLog(self.player.gestureRecognizers)
     }
 
-//    func loadVideoData() {
-//        VPNetworkManager.loadNewsVideo(categary:"video") { (pull, videoModelArr) in
-//            if (self.newsVideoModelArr.count > 0){
-//                self.newsVideoModelArr = self.newsVideoModelArr + videoModelArr
-//            }else{
-//                self.newsVideoModelArr = videoModelArr
-//                
-//            }
-//            VPLog(self.newsVideoModelArr.count)
-//            
-////            for  newsVideoModel  in  self.newsVideoModelArr {
-////                print("abstract:"+newsVideoModel.abstract+"displayurl:"+newsVideoModel.display_url+"video_id:"+newsVideoModel.video_detail_info.video_id)
-////            }
-//            if (self.index == 0){
-//                self.tableView.setContentOffset(CGPoint.init(x: 0, y: -kScreenHeight/2+187/2), animated: true)
-//            }
-//            self.footerEndRefreshing()
-//        }
-//    }
     
     // MARK: - ---------------------------------- addPlayer  ----------------------------------
     func addPlayer(on cell:VPNewsVideoCell) {

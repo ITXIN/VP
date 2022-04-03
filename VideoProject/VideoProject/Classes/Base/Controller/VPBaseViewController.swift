@@ -8,6 +8,7 @@
 
 import UIKit
 import MJRefresh
+import BMPlayer
 typealias VPRefreshComponentRefreshingBlock = ()->Void
 
 class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
@@ -16,7 +17,19 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
     public var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     public var header: VPRefreshGifHeader!
     public var footer: MJRefreshAutoNormalFooter!
-    public var dataArr:NSMutableArray!
+//    public var dataArr:NSMutableArray!
+    var newsVideoModelArr = [VPNewsVideoModel?]()
+    var customPlayerView:BMPlayerControlView!
+    var categary = "video"
+    /// 播放器
+    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
+    
+
+    //删除播放器
+    func removePlayer() {
+        self.player.pause()
+        self.player.removeFromSuperview()
+    }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

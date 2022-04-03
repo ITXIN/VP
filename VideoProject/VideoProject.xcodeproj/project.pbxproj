@@ -25,7 +25,6 @@
 		8F72B57B205F9858001796FE /* VPMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B57A205F9858001796FE /* VPMineViewController.swift */; };
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
-		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
 		8F92892B205BDA3F006ED0BC /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92892A205BDA3F006ED0BC /* Emoji.swift */; };
 		8F928931205BDB52006ED0BC /* VPUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */; };
 		8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */; };
@@ -95,7 +94,6 @@
 		8F72B57A205F9858001796FE /* VPMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMineViewController.swift; sourceTree = "<group>"; };
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
-		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		8F92892A205BDA3F006ED0BC /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPUserInfoModel.swift; sourceTree = "<group>"; };
 		8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
@@ -378,7 +376,6 @@
 				8FABBFF82049448A00B60A5F /* VPBaseNavigationViewController.swift */,
 				8FABC00D2049511D00B60A5F /* VPBaseTableViewController.swift */,
 				8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */,
-				8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -693,7 +690,6 @@
 				8F96AAD6205920E400C07004 /* VPNewsVideoFullScreenViewController.swift in Sources */,
 				8FABC00C20494D6100B60A5F /* VPMainTabBar.swift in Sources */,
 				8FABBFFB2049479E00B60A5F /* AppHeader.swift in Sources */,
-				8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */,
 				8FABC00E2049511D00B60A5F /* VPBaseTableViewController.swift in Sources */,
 				8F405736205CBB0700963936 /* VPShortVideoCustomPlayerView.swift in Sources */,
 				8FABBFF92049448A00B60A5F /* VPBaseNavigationViewController.swift in Sources */,
