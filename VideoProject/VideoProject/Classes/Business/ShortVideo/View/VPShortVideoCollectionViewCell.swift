@@ -52,7 +52,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         super.initSubviews()
         videoPreImage = {
             let img =  UIImageView.init()
-            self.bgView.addSubview(img)
+            self.contentView.addSubview(img)
             img.contentMode = .scaleAspectFill
             img.layer.masksToBounds = true
             img.backgroundColor = UIColor.vpGrayTextColor()
@@ -60,7 +60,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         }()
         titleLab = ({ () -> UILabel in
             let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
+            self.contentView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.systemFont(ofSize: 15)
             lab.numberOfLines = 0
@@ -69,7 +69,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             }())
         diggCountLab = ({ () -> UILabel in
             let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
+            self.contentView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.systemFont(ofSize: 13)
             lab.textAlignment = .right
@@ -77,7 +77,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             }())
         playCountLab = ({ () -> UILabel in
             let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
+            self.contentView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.systemFont(ofSize: 13)
             return lab
@@ -88,7 +88,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
     
     func setupPlayerSubviewsLayout()  {
         videoPreImage.snp.remakeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.contentView)
         }
 
         titleLab.snp.remakeConstraints {
@@ -109,7 +109,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         videoPreImage.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.contentView)
         }
         playCountLab.snp.makeConstraints {
             $0.bottom.equalTo(-15)

@@ -52,7 +52,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         collectionView.dataSource = self
         collectionView.register(VPShortVideoCollectionViewCell.self, forCellWithReuseIdentifier: shortVideoPlayerCellIdentifier)
         collectionView.isPagingEnabled = true
-        self.bgView.addSubview(collectionView)
+        self.view.addSubview(collectionView)
         self.collectionView.backgroundColor = UIColor.vpGrayBgColor()
         if #available(iOS 11.0, *) {
             collectionView.contentInsetAdjustmentBehavior = .never
@@ -61,7 +61,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         }
         backBtn = ({ () -> UIButton in
             let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
+            self.view.addSubview(btn)
             btn.setImage(UIImage.init(named: "icon_navigation_back"), for: .normal)
             btn.backgroundColor = UIColor.vpThemColor()
             btn.layer.cornerRadius = 30/2
@@ -86,15 +86,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints {
-            
-            //            if (kiPhoneX){
-//            $0.top.equalTo(kNavigationBarHeight)
-//            $0.left.equalTo(0)
-//            $0.right.equalTo(0)
-//            $0.bottom.equalTo(0)
-            //            }else{
-            $0.edges.equalTo(self.bgView)
-            //            }
+            $0.edges.equalTo(self.view)
         }
     }
     
@@ -102,8 +94,6 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
     
 }
 
@@ -122,8 +112,8 @@ extension VPShortVideoPlayerViewController{
                     self.customPlayerView.replayButton.isHidden = true
                     self.removePlayer()
                     let cell = self.collectionView.cellForItem(at: IndexPath(item: index, section: 0)) as! VPShortVideoCollectionViewCell
-                    cell.bgView.insertSubview(self.player, belowSubview: cell.titleLab)
-                    self.player.snp.makeConstraints({ $0.edges.equalTo(cell.bgView) })
+                    cell.contentView.insertSubview(self.player, belowSubview: cell.titleLab)
+                    self.player.snp.makeConstraints({ $0.edges.equalTo(cell.contentView) })
                     
                     
                     let asset = BMPlayerResource(url: URL(string: response!.url!.absoluteString)!)
