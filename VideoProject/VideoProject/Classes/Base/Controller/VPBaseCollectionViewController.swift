@@ -18,7 +18,7 @@ class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
         
         let collectionView = UICollectionView.init(frame: self.view.bounds, collectionViewLayout: flowLayout)
         
-        self.bgView.addSubview(collectionView)
+        self.view.addSubview(collectionView)
         return collectionView
         }())
     override func viewDidLoad() {
@@ -38,7 +38,7 @@ class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.view)
         }
     }
     override func didReceiveMemoryWarning() {

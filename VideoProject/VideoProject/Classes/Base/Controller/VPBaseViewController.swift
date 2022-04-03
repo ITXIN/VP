@@ -11,7 +11,7 @@ import MJRefresh
 typealias VPRefreshComponentRefreshingBlock = ()->Void
 
 class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
-    var bgView:UIView!
+
     public var _headerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     public var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     public var header: VPRefreshGifHeader!
@@ -56,19 +56,10 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
     
     func initSubviews() {
         
-        self.bgView = {
-            let view =  UIView.init()
-            self.view.addSubview(view)
-            return view
-        }()
-        
     }
     
     func setupSubviewsLayout() {
 
-        self.bgView.snp.makeConstraints {
-            $0.edges.equalTo(self.view)
-        }
     }
     
     func popToViewController(_ controller:UIViewController) {

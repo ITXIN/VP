@@ -31,7 +31,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bgView.backgroundColor = UIColor.vpGrayBgColor()
+        self.view.backgroundColor = UIColor.vpGrayBgColor()
         
         // Do any additional setup after loading the view.
     }
@@ -55,7 +55,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         
         let _:UIButton = {
             let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
+            self.view.addSubview(btn)
             btn.setImage(UIImage.init(named: "icon_navigation_back"), for: .normal)
             btn.backgroundColor = UIColor.red
             btn.layer.cornerRadius = 30/2

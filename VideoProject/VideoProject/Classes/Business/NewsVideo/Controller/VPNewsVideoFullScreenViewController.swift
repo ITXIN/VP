@@ -23,7 +23,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         self.customPlayerView.chooseDefinitionView.isHidden = true
         self.customPlayerView.titleLabel.font = UIFont.systemFont(ofSize: 15)
         self.player.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.view)
         }
         
         self.customPlayerView.titleLabel.snp.remakeConstraints { (make) in
@@ -56,12 +56,12 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         self.view.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi/2))
-        self.bgView.addSubview(self.player)
+        self.view.addSubview(self.player)
 //        print("viewDidLoad",self.player.playerLayer,self.player.playerLayer?.player)
         self.customPlayerView.delegate = self
         
         self.player.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.view)
         }
 //        self.player.playTimeDidChange = {(currentTime,totalTime )in
 //            VPLog(currentTime)

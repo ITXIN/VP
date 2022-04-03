@@ -19,7 +19,7 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
     
     override func initSubviews() {
         super.initSubviews()
-        self.bgView.backgroundColor = UIColor.vpGrayBgColor()
+        self.view.backgroundColor = UIColor.vpGrayBgColor()
         let flowLayout = UICollectionViewFlowLayout.init()
         flowLayout.scrollDirection = UICollectionViewScrollDirection.vertical
         flowLayout.itemSize = CGSize.init(width: (kScreenWidth-30)/2, height: 200)
@@ -29,7 +29,7 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         collectionView.delegate = self
         collectionView.dataSource = self
         self.collectionViewRegisterClass(cellClass: VPShortVideoCollectionViewCell.self, identifier: shortVideoCellIdentifier)
-        self.bgView.addSubview(collectionView)
+        self.view.addSubview(collectionView)
         self.collectionView.backgroundColor = UIColor.vpGrayBgColor()
         
         self.categary = "ugc_video_beauty"
@@ -55,7 +55,7 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints { (make) in
-            make.edges.equalTo(self.bgView)
+            make.edges.equalTo(self.view)
         }
     }
     override func didReceiveMemoryWarning() {

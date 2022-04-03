@@ -12,7 +12,7 @@ class VPMineViewController: VPBaseViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        for view  in self.bgView.subviews {
+        for view  in self.view.subviews {
             if(view.isKind(of: AnimationView.self)){
                 let tem =  view as? AnimationView
                 tem?.play()
@@ -39,8 +39,8 @@ class VPMineViewController: VPBaseViewController {
             }else{
                 headWhiteAnimation.frame = CGRect(x:210, y: 150, width: 100, height: 100)
             }
-            self.bgView.backgroundColor = UIColor.black
-            self.bgView.addSubview(headWhiteAnimation)
+            self.view.backgroundColor = UIColor.black
+            self.view.addSubview(headWhiteAnimation)
             headWhiteAnimation.play()
 //            headWhiteAnimation.loopAnimation = true
             headWhiteAnimation.loopMode = LottieLoopMode.loop

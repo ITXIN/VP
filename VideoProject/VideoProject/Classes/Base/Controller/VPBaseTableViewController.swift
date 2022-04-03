@@ -16,7 +16,7 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView.showsVerticalScrollIndicator = true
         tableView.backgroundColor = UIColor.clear
-        self.bgView.addSubview(tableView)
+        self.view.addSubview(tableView)
         return tableView
         }())
     
@@ -45,7 +45,7 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.tableView.snp.makeConstraints {
-            $0.edges.equalTo(self.bgView)
+            $0.edges.equalTo(self.view)
         }
     }
     
