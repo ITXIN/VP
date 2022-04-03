@@ -116,7 +116,7 @@ class VPNewsVideoDetailViewController: VPBaseTableViewController {
         self.player.removeFromSuperview()
         VPNetworkManager.parseVideoRealURL(video_id: videoID, completionHandler: { (response) in
             UIView.animate(withDuration: 0.2, animations: {
-                cell.bgView.addSubview(self.player)
+                cell.contentView.addSubview(self.player)
                 let playurl = response.video_list.video_1.mainURL
                 self.player.setVideo(resource: BMPlayerResource.init(url: URL.init(string: playurl)!))
                 self.player.snp.makeConstraints {

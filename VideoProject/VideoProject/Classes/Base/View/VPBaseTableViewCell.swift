@@ -10,8 +10,6 @@ import UIKit
 
 class VPBaseTableViewCell: UITableViewCell {
 
-    var bgView:UIView!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -30,17 +28,13 @@ class VPBaseTableViewCell: UITableViewCell {
     }
     
     func initSubviews() {
-        self.bgView = {
-            let view =  UIView.init()
-            self.contentView.addSubview(view)
-            return view
-        }()
+        
     }
+    
     func setupSubviewsLayout() {
-        self.bgView.snp.makeConstraints {
-            $0.edges.equalTo(self.contentView)
-        }
+    
     }
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }

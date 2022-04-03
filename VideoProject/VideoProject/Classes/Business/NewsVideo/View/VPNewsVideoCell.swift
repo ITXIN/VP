@@ -49,10 +49,9 @@ class VPNewsVideoCell: VPBaseTableViewCell {
     override func initSubviews() {
         super.initSubviews()
         
-        
         self.avatarIcon = {
             let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
+            self.contentView.addSubview(btn)
             btn.layer.cornerRadius = 30/2;
             btn.layer.masksToBounds = true
             btn.backgroundColor = UIColor.vpGrayBgColor()
@@ -61,7 +60,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         
         self.avatarNameLab = ({ () -> UILabel in
             let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
+            self.contentView.addSubview(lab)
             lab.textColor = UIColor.vpGrayTextColor()
             lab.font = UIFont.systemFont(ofSize: 15)
             return lab
@@ -69,7 +68,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         
         self.followBtn = {
             let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
+            self.contentView.addSubview(btn)
 //            btn.layer.cornerRadius = 10
 //            btn.layer.masksToBounds = true
 //            btn.backgroundColor = UIColor.vpGrayBgColor()
@@ -79,14 +78,14 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         }()
         self.videoPreImage = {
             let img =  UIImageView.init()
-            self.bgView.addSubview(img)
+            self.contentView.addSubview(img)
             img.contentMode = .scaleToFill
 
             return img
         }()
         self.videoPlayHudBtn = {
             let btn =  UIButton.init(type: UIButtonType.custom)
-            self.bgView.addSubview(btn)
+            self.contentView.addSubview(btn)
             btn.setBackgroundImage(UIImage.init(named: "titlebar_shadow_20x64_"), for: .normal)
             btn.setImage(UIImage.init(named: "video_play_icon_44x44_"), for: .normal)
             //            btn.layer.cornerRadius = 45/2;
@@ -97,7 +96,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         
         self.titleLab = {
             let lab =  UILabel.init()
-            self.bgView.addSubview(lab)
+            self.contentView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.boldSystemFont(ofSize: 14)
             return lab
@@ -123,7 +122,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         }
         self.videoPreImage.snp.makeConstraints {
             $0.top.equalTo(self.avatarIcon.snp.bottom).offset(10)
-            $0.leading.trailing.equalTo(self.bgView)
+            $0.leading.trailing.equalTo(self.contentView)
             $0.height.equalTo(187)
         }
         self.videoPlayHudBtn.snp.makeConstraints {

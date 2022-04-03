@@ -63,10 +63,9 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
         }()
         
     }
+    
     func setupSubviewsLayout() {
-//        self.bgView.snp.makeConstraints { (make) in
-//            make.edges.equalTo(self.view)
-//        }
+
         self.bgView.snp.makeConstraints {
             $0.edges.equalTo(self.view)
         }

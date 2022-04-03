@@ -58,7 +58,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
             UIView.animate(withDuration: 0.2, animations: {
                 self.currentCell = cell
                 self.removePlayer()
-                cell.bgView.addSubview(self.player)
+                cell.contentView.addSubview(self.player)
                 self.player.delegate = self
                 
                 self.customPlayerView.delegate = self
@@ -186,7 +186,7 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                    
                     self.player = fullScreenPlayer
                     self.customPlayerView = fullScreenCustomPlayerView
-                    self.currentCell.bgView.addSubview(fullScreenPlayer)
+                    self.currentCell.contentView.addSubview(fullScreenPlayer)
                     fullScreenPlayer.delegate = self
                     fullScreenCustomPlayerView.delegate = self
                     fullScreenCustomPlayerView.chooseDefinitionView.isHidden = true

@@ -34,8 +34,8 @@ class VPRefreshGifHeader: MJRefreshGifHeader {
         stateLabel?.frame = CGRect(x: 0, y: 35, width: mj_w, height: 14)
     }
     
-    
 }
+
 class VPRefreshAutoGifFooter: MJRefreshAutoGifFooter {
     /// 初始化
     override func prepare() {
