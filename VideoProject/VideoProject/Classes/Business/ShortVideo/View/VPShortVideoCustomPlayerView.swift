@@ -22,6 +22,5 @@ class VPShortVideoCustomPlayerView: BMPlayerControlView {
         fullscreenButton.removeFromSuperview()
         progressView.removeFromSuperview()
     }
-  
 
 }

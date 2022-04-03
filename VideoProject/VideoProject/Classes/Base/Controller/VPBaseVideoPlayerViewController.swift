@@ -14,25 +14,23 @@ class VPBaseVideoPlayerViewController: VPBaseViewController {
     var customPlayerView:BMPlayerControlView!
     var categary = "video"
     /// 播放器
-//    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
-    var player:BMPlayer!
+    lazy var player: BMPlayer = BMPlayer(customControlView: customPlayerView)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
-    
     //删除播放器
     func removePlayer() {
-        self.player?.pause()
-        self.player?.removeFromSuperview()
+        self.player.pause()
+        self.player.removeFromSuperview()
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
 
 }

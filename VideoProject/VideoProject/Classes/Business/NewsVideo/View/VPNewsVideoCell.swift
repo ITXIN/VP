@@ -31,7 +31,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             if let img = newsVideoModel?.video_detail_info.detail_video_large_image.urlString {
                 videoPreImage.sd_setImage(with: URL.init(string: img), completed: nil)
             }
-           
+            
         }
     }
     
@@ -46,6 +46,7 @@ class VPNewsVideoCell: VPBaseTableViewCell {
         
         // Configure the view for the selected state
     }
+    
     override func initSubviews() {
         super.initSubviews()
         
@@ -64,23 +65,23 @@ class VPNewsVideoCell: VPBaseTableViewCell {
             lab.textColor = UIColor.vpGrayTextColor()
             lab.font = UIFont.systemFont(ofSize: 15)
             return lab
-            }())
+        }())
         
         self.followBtn = {
             let btn =  UIButton.init(type: UIButtonType.custom)
             self.contentView.addSubview(btn)
-//            btn.layer.cornerRadius = 10
-//            btn.layer.masksToBounds = true
-//            btn.backgroundColor = UIColor.vpGrayBgColor()
-//            btn.setTitle("follow", for: .normal)
+            //            btn.layer.cornerRadius = 10
+            //            btn.layer.masksToBounds = true
+            //            btn.backgroundColor = UIColor.vpGrayBgColor()
+            //            btn.setTitle("follow", for: .normal)
             btn.setImage(UIImage.init(named: "video_add_24x24_"), for: .normal)
             return btn
         }()
         self.videoPreImage = {
             let img =  UIImageView.init()
             self.contentView.addSubview(img)
-            img.contentMode = .scaleToFill
-
+            //            img.contentMode = .scaleToFill
+            
             return img
         }()
         self.videoPlayHudBtn = {

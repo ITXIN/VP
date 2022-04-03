@@ -34,9 +34,9 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(true)
-//        UIApplication.shared.statusBarOrientation = .portrait
+        //        UIApplication.shared.statusBarOrientation = .portrait
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-//        UIApplication.shared.isStatusBarHidden = false
+        //        UIApplication.shared.isStatusBarHidden = false
         
         self.customPlayerView.backButton.isHidden = true
         self.customPlayerView.titleLabel.snp.remakeConstraints { (make) in
@@ -45,7 +45,7 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
             make.top.equalTo(10)
             make.height.equalTo(20)
         }
-
+        
     }
     
     override var prefersStatusBarHidden: Bool{
@@ -57,20 +57,20 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
         // Do any additional setup after loading the view.
         self.view.transform = CGAffineTransform.init(rotationAngle: CGFloat(Double.pi/2))
         self.view.addSubview(self.player)
-//        print("viewDidLoad",self.player.playerLayer,self.player.playerLayer?.player)
+        //        print("viewDidLoad",self.player.playerLayer,self.player.playerLayer?.player)
         self.customPlayerView.delegate = self
         
         self.player.snp.makeConstraints {
             $0.edges.equalTo(self.view)
         }
-//        self.player.playTimeDidChange = {(currentTime,totalTime )in
-//            VPLog(currentTime)
-//            self.curretTime = currentTime
-//        }
-//        self.player.playStateDidChange = { (isPlaying) in
-//
-//            print(isPlaying)
-//        }
+        //        self.player.playTimeDidChange = {(currentTime,totalTime )in
+        //            VPLog(currentTime)
+        //            self.curretTime = currentTime
+        //        }
+        //        self.player.playStateDidChange = { (isPlaying) in
+        //
+        //            print(isPlaying)
+        //        }
         
         
         
@@ -98,16 +98,16 @@ class VPNewsVideoFullScreenViewController: VPBaseViewController {
 
 extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
     func controlView(controlView: BMPlayerControlView, didChooseDefinition index: Int) {
-       VPLog(index)
+        VPLog(index)
     }
     
     func controlView(controlView: BMPlayerControlView, didPressButton button: UIButton) {
         //这里不能实现，否则self.player.playerLayer?.player 为nill
-//        controlView.player?.controlView(controlView: controlView, didPressButton: button)
+        //        controlView.player?.controlView(controlView: controlView, didPressButton: button)
         if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
             switch action {
             case .back,.fullscreen:
-              self.disMissVC()
+                self.disMissVC()
             case .play,.pause,.replay:
                 controlView.player?.controlView(controlView: controlView, didPressButton: button)
             }
@@ -118,7 +118,7 @@ extension VPNewsVideoFullScreenViewController:BMPlayerControlViewDelegate{
     func controlView(controlView: BMPlayerControlView, slider: UISlider, onSliderEvent event: UIControlEvents) {
         
     }
-
+    
 }
 
 extension VPNewsVideoFullScreenViewController:BMPlayerDelegate{
@@ -129,19 +129,19 @@ extension VPNewsVideoFullScreenViewController:BMPlayerDelegate{
     }
     
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-
+        
     }
-
+    
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-
+        
     }
-
+    
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-
+        
     }
-
+    
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
-
+        
     }
     
 }

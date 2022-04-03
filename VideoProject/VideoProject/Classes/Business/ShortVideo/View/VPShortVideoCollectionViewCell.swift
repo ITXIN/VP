@@ -13,25 +13,24 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
     var diggCountLab:UILabel!
     var playCountLab:UILabel!
     var videoPreImage:UIImageView!
-  
+    
     var smallVideo = VPNewsVideoModel(){
         didSet{
-//            titleLab.attributedText = samllVideo.raw_data.attrbutedText
+            //            titleLab.attributedText = samllVideo.raw_data.attrbutedText
             titleLab.text = smallVideo.title
-             let largeImage = smallVideo.video_detail_info.detail_video_large_image.url
+            let largeImage = smallVideo.video_detail_info.detail_video_large_image.url
             videoPreImage.sd_setImage(with: URL(string:largeImage as String), completed:{ (image, error, type, url) in
-                    if let sdImage = image {
-                        self.sliderValueChanged(sdImage)
-                    }
-                })
-//            }else if let firstImage = smallVideo.raw_data.first_frame_image_list.first{
-//                 videoPreImage.sd_setImage(with: URL(string:firstImage.urlString), completed: nil)
-//            }
+                if let sdImage = image {
+                    self.sliderValueChanged(sdImage)
+                }
+            })
+            
             diggCountLab.text = smallVideo.raw_data.action.diggCount + "赞"
             playCountLab.text = smallVideo.raw_data.action.playCount + "次播放"
             
         }
     }
+    
     func sliderValueChanged(_ sender: UIImage) {
         //获取原始图片
         let inputImage =  CIImage(image: sender)
@@ -53,7 +52,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         videoPreImage = {
             let img =  UIImageView.init()
             self.contentView.addSubview(img)
-            img.contentMode = .scaleAspectFill
+            //            img.contentMode = .scaleAspectFill
             img.layer.masksToBounds = true
             img.backgroundColor = UIColor.vpGrayTextColor()
             return img
@@ -66,7 +65,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             lab.numberOfLines = 0
             lab.lineBreakMode = .byWordWrapping
             return lab
-            }())
+        }())
         diggCountLab = ({ () -> UILabel in
             let lab =  UILabel.init()
             self.contentView.addSubview(lab)
@@ -74,14 +73,14 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             lab.font = UIFont.systemFont(ofSize: 13)
             lab.textAlignment = .right
             return lab
-            }())
+        }())
         playCountLab = ({ () -> UILabel in
             let lab =  UILabel.init()
             self.contentView.addSubview(lab)
             lab.textColor = UIColor.white
             lab.font = UIFont.systemFont(ofSize: 13)
             return lab
-            }())
+        }())
         
         
     }
@@ -90,7 +89,7 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
         videoPreImage.snp.remakeConstraints {
             $0.edges.equalTo(self.contentView)
         }
-
+        
         titleLab.snp.remakeConstraints {
             $0.top.equalTo(kStatusBarAndNavigationBarHeight+100)
             $0.left.equalTo(15)
@@ -125,8 +124,5 @@ class VPShortVideoCollectionViewCell: VPBaseCollectionViewCell {
             $0.right.equalTo(-15)
         }
     }
-    
-    
-    
     
 }

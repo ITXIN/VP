@@ -68,7 +68,7 @@ class VPNewsVideoViewController: VPBaseTableViewController {
                 let playurl = response.video_list.video_1.mainURL
                 let res =  BMPlayerResource.init(url: URL.init(string: playurl)!, name: cell.newsVideoModel?.title ?? "", cover: nil, subtitle: nil)
                 self.player.setVideo(resource: res)
-            
+                
                 self.player.snp.makeConstraints {
                     $0.edges.equalTo(cell.videoPreImage)
                 }
@@ -108,8 +108,6 @@ class VPNewsVideoViewController: VPBaseTableViewController {
     
 }
 
-
-
 // MARK: - ---------------------------------- VPNewsVideoViewController UITableviewDelegate datasource ----------------------------------
 extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -127,7 +125,7 @@ extension VPNewsVideoViewController:UITableViewDelegate,UITableViewDataSource{
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-       
+        
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -167,12 +165,12 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
     
     func controlView(controlView: BMPlayerControlView, didPressButton button: UIButton) {
         
-         controlView.player?.controlView(controlView: controlView, didPressButton: button)
+        controlView.player?.controlView(controlView: controlView, didPressButton: button)
         
         if let action = BMPlayerControlView.ButtonType(rawValue: button.tag) {
             switch action {
             case .fullscreen:
-
+                
                 self.player.delegate = nil
                 self.customPlayerView.delegate = nil
                 let vpVideoDetailVC = VPNewsVideoFullScreenViewController()
@@ -180,10 +178,10 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                 vpVideoDetailVC.modalPresentationStyle = .fullScreen
                 vpVideoDetailVC.player = self.player
                 vpVideoDetailVC.customPlayerView = self.customPlayerView as! VPNewsCustomPlayerView!
-            
+                
                 
                 vpVideoDetailVC.playerBackBlock = { (fullScreenPlayer,currentTime,fullScreenCustomPlayerView)in
-                   
+                    
                     self.player = fullScreenPlayer
                     self.customPlayerView = fullScreenCustomPlayerView
                     self.currentCell.contentView.addSubview(fullScreenPlayer)
@@ -194,7 +192,7 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                     fullScreenPlayer.snp.makeConstraints({ (make) in
                         make.edges.equalTo(self.currentCell.videoPreImage)
                     })
-
+                    
                 }
                 
                 self.navigationController?.present(vpVideoDetailVC, animated: true, completion: nil)
@@ -205,8 +203,7 @@ extension VPNewsVideoViewController:BMPlayerControlViewDelegate{
                 VPLog("[Error] unhandled Action")
             }
         }
-      
-    
+        
     }
 }
 
@@ -215,32 +212,32 @@ extension VPNewsVideoViewController:BMPlayerDelegate{
     func bmPlayer(player: BMPlayer, playerStateDidChange state: BMPlayerState) {
         
         VPLog(state)
-//        switch state {
-//        case .playedToTheEnd:
-//            if self.player.isPlaying{
-//                self.removePlayer()
-//                VPLog("end")
-//            }
-//        default:
-//            print("")
-//        }
+        //        switch state {
+        //        case .playedToTheEnd:
+        //            if self.player.isPlaying{
+        //                self.removePlayer()
+        //                VPLog("end")
+        //            }
+        //        default:
+        //            print("")
+        //        }
     }
     
     func bmPlayer(player: BMPlayer, loadedTimeDidChange loadedDuration: TimeInterval, totalDuration: TimeInterval) {
-//            print("loadedTimeDidChange",totalDuration)
+        //            print("loadedTimeDidChange",totalDuration)
     }
     
     func bmPlayer(player: BMPlayer, playTimeDidChange currentTime: TimeInterval, totalTime: TimeInterval) {
-//        print("playTimeDidChange",currentTime)
+        //        print("playTimeDidChange",currentTime)
     }
     
     func bmPlayer(player: BMPlayer, playerIsPlaying playing: Bool) {
-//        VPLog(playing)
-//        player.play()
+        //        VPLog(playing)
+        //        player.play()
     }
     
     func bmPlayer(player: BMPlayer, playerOrientChanged isFullscreen: Bool) {
-//        VPLog(isFullscreen)
+        //        VPLog(isFullscreen)
     }
     
 }

@@ -16,7 +16,6 @@ class VPMainTabBar: UITabBar {
             if (self.superview != nil && !(self.superview?.bounds.maxY == frame.maxY))  {
                 frame.origin.y = (self.superview?.bounds.height)! - frame.height
             }
-            
         }
     }
     

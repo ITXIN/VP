@@ -9,19 +9,20 @@
 import UIKit
 
 class VPMainViewController: UITabBarController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.initTabbarItems()
     }
+    
     func initTabbarItems() {
         self.setValue(VPMainTabBar.init(), forKey: "tabBar")
         self.tabBar.backgroundImage = UIImage.getImageWithColor(color: UIColor.white,rect: CGRect.init(x: 0, y: 0, width: 1, height: 1 ))
         let navigationsArr = NSMutableArray()
         
-        var imagesNormalArr = ["video_tabbar_32x32_","huoshan_tabbar_32x32_","video_tabbar_32x32_","video_tabbar_32x32_"]
+        let imagesNormalArr = ["video_tabbar_32x32_","huoshan_tabbar_32x32_","video_tabbar_32x32_","video_tabbar_32x32_"]
         
         let imagesSeletedArr = ["video_tabbar_press_32x32_","huoshan_tabbar_press_32x32_","video_tabbar_press_32x32_","video_tabbar_press_32x32_"]
         let tabBarTitlesArr = ["西瓜视频","小视频","视频","个人中心"]
@@ -40,21 +41,9 @@ class VPMainViewController: UITabBarController {
         self.setViewControllers((navigationsArr as! [UIViewController]), animated: true)
     }
     
-
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -11,21 +11,22 @@ import MJRefresh
 typealias VPRefreshComponentRefreshingBlock = ()->Void
 
 class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
-
+    
     public var _headerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     public var _footerRefreshingBlock:VPRefreshComponentRefreshingBlock?
     public var header: VPRefreshGifHeader!
     public var footer: MJRefreshAutoNormalFooter!
     public var dataArr:NSMutableArray!
-
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
         self.navigationController?.interactivePopGestureRecognizer?.delegate = self
     }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+        
         self.view.backgroundColor = UIColor.white
         self.automaticallyAdjustsScrollViewInsets = false
         // Do any additional setup after loading the view.
@@ -39,7 +40,7 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
         }
         
     }
-
+    
     func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
         let count:Int = (self.navigationController?.viewControllers.count)!
         if (count > 1) {
@@ -47,7 +48,7 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
         }else{
             return false
         }
-
+        
     }
     
     @objc func leftBarButtonBackAction() {
@@ -59,7 +60,7 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
     }
     
     func setupSubviewsLayout() {
-
+        
     }
     
     func popToViewController(_ controller:UIViewController) {
@@ -71,21 +72,9 @@ class VPBaseViewController: UIViewController,UIGestureRecognizerDelegate {
         }
     }
     
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

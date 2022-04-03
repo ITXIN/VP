@@ -9,7 +9,6 @@
 import UIKit
 import MJRefresh
 
-
 class VPBaseTableViewController: VPBaseVideoPlayerViewController {
     lazy var tableView:UITableView  = ({ () -> UITableView in
         let tableView = UITableView.init(frame: self.view.bounds, style: UITableViewStyle.plain)
@@ -25,23 +24,24 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
         
         // Do any additional setup after loading the view.
     }
+    
     func  tableViewRegisterClass(cellClass:AnyClass,identifier:String) {
         self.tableView.register(cellClass, forCellReuseIdentifier: identifier)
     }
+    
     //必须设置frame否则偏移
     func setupTableviewDelegate(delegate:Any ,frame:CGRect) {
         self.tableView.delegate = (delegate as! UITableViewDelegate)
         self.tableView.dataSource = (delegate as! UITableViewDataSource)
         self.view.frame = frame
-        
     }
-    
     
     override func initSubviews() {
         super.initSubviews()
         self.dataArr = NSMutableArray.init()
         
     }
+    
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.tableView.snp.makeConstraints {
@@ -58,7 +58,6 @@ class VPBaseTableViewController: VPBaseVideoPlayerViewController {
 
 extension VPBaseTableViewController{
     
-    
     func loadVideoData() {
         VPNetworkManager.loadNewsVideo(categary:self.categary){ (pull, videoModelArr) in
             if (self.newsVideoModelArr.count > 0){
@@ -70,7 +69,6 @@ extension VPBaseTableViewController{
             self.footerEndRefreshing()
         }
     }
-    
     
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
@@ -88,6 +86,7 @@ extension VPBaseTableViewController{
             return _headerRefreshingBlock
         }
     }
+    
     var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?{
         set{
             _footerRefreshingBlock = newValue
@@ -116,6 +115,7 @@ extension VPBaseTableViewController{
         print("加载更多")
         self.footerRefreshingBlock!()
     }
+    
     func headerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
@@ -124,6 +124,7 @@ extension VPBaseTableViewController{
             self.setupFooterView()
         }
     }
+    
     func footerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
@@ -131,6 +132,7 @@ extension VPBaseTableViewController{
             self.tableView.reloadData()
         }
     }
+    
     func setupFooterView() {
         if(self.tableView.contentSize.height < 200){
             self.tableView.mj_footer?.isHidden = true
@@ -138,6 +140,7 @@ extension VPBaseTableViewController{
             self.tableView.mj_footer?.isHidden = false
         }
     }
+    
     func beginRefreshing() {
         self.tableView.mj_header?.beginRefreshing()
     }

@@ -61,9 +61,9 @@ class VPRefreshAutoGifFooter: MJRefreshAutoGifFooter {
     
     override func placeSubviews() {
         super.placeSubviews()
-//        gifView.x = 135
-//        gifView.centerY = stateLabel.centerY
-//        gifView.x = 135
+        //        gifView.x = 135
+        //        gifView.centerY = stateLabel.centerY
+        //        gifView.x = 135
     }
 }
 

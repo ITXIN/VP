@@ -9,10 +9,10 @@
 import UIKit
 
 class VPBaseNavigationViewController: UINavigationController,UINavigationControllerDelegate,UIGestureRecognizerDelegate {
-   
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
         self.delegate = self
         self.navigationBar.isTranslucent = false;
@@ -23,7 +23,7 @@ class VPBaseNavigationViewController: UINavigationController,UINavigationControl
         self.navigationBar.titleTextAttributes = {[
             NSAttributedStringKey.foregroundColor: UIColor.white,
             //            NSAttributedStringKey.font: UIFont.systemFont(ofSize: 15)
-            ]}()
+        ]}()
         self.navigationBar.shadowImage = UIImage.init()
         self.navigationBar.setBackgroundImage(UIImage.getImageWithColor(color: UIColor.vpThemColor(), rect: CGRect.init(x: 0, y: 0, width: 1, height: 1)), for: UIBarMetrics.default)
         
@@ -45,21 +45,10 @@ class VPBaseNavigationViewController: UINavigationController,UINavigationControl
         super.pushViewController(viewController, animated: animated)
     }
     
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -14,6 +14,7 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
     var collectionView:UICollectionView!
     let shortVideoPlayerCellIdentifier = "shortVideoPlayerCellIdentifier"
     var backBtn:UIButton!
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(true, animated: true)
@@ -24,18 +25,19 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
         self.setupPlayer(index: scrooToIndex.row)
         
     }
+    
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
     }
+    
     override func initSubviews() {
         super.initSubviews()
         self.automaticallyAdjustsScrollViewInsets = false
@@ -74,12 +76,13 @@ class VPShortVideoPlayerViewController: VPBaseVideoPlayerViewController {
             btn.addTarget(self, action: #selector(backRootVC), for: .touchUpInside)
             
             return btn
-            }())
+        }())
         
     }
+    
     @objc func backRootVC() {
-//        self.dismiss(animated: true, completion: nil)
-
+        //        self.dismiss(animated: true, completion: nil)
+        
         self.navigationController?.popViewController(animated: true)
     }
     
@@ -104,9 +107,9 @@ extension VPShortVideoPlayerViewController{
         guard  let smallVideo = self.newsVideoModelArr[index] else {
             return
         }
-    
+        
         if  let videoURLStr = smallVideo.raw_data.video.play_addr.url_list.first             {
-           
+            
             let dataTask = URLSession.shared.dataTask(with: URL.init(string: videoURLStr)!, completionHandler: { (data, response, error) in
                 DispatchQueue.main.async {
                     self.customPlayerView.replayButton.isHidden = true
@@ -131,7 +134,6 @@ extension VPShortVideoPlayerViewController{
         self.setupPlayer(index: offset)
     }
     
-    
 }
 
 extension VPShortVideoPlayerViewController:UICollectionViewDelegate,UICollectionViewDataSource{
@@ -141,14 +143,13 @@ extension VPShortVideoPlayerViewController:UICollectionViewDelegate,UICollection
         
     }
     
-    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return newsVideoModelArr.count
     }
-    
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: shortVideoPlayerCellIdentifier, for: indexPath) as! VPShortVideoCollectionViewCell
@@ -157,8 +158,6 @@ extension VPShortVideoPlayerViewController:UICollectionViewDelegate,UICollection
             return cell
         }
         cell.smallVideo = video
-     
-        
         return cell
         
     }

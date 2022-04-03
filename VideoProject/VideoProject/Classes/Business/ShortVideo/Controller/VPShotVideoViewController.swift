@@ -63,7 +63,6 @@ class VPShotVideoViewController: VPBaseCollectionViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    
 }
 
 extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDataSource{
@@ -74,8 +73,8 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
         let playVC = VPShortVideoPlayerViewController()
         playVC.newsVideoModelArr = self.newsVideoModelArr
         playVC.scrooToIndex = indexPath
-                self.navigationController?.pushViewController(playVC, animated: true)
-//        self.present(playVC, animated: true, completion: nil)
+        self.navigationController?.pushViewController(playVC, animated: true)
+        //        self.present(playVC, animated: true, completion: nil)
         
     }
     
@@ -83,6 +82,7 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.newsVideoModelArr.count
     }
@@ -94,12 +94,9 @@ extension VPShotVideoViewController:UICollectionViewDelegate,UICollectionViewDat
             return cell
         }
         cell.smallVideo = video
-        
-        //        cell.backgroundColor = RGB(CGFloat(100+indexPath.row*2), G: CGFloat(110+indexPath.row*2), B: (CGFloat(90+indexPath.row*2)))
         return cell
         
     }
-    
     
 }
 

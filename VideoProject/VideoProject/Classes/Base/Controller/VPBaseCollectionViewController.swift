@@ -20,34 +20,37 @@ class VPBaseCollectionViewController: VPBaseVideoPlayerViewController {
         
         self.view.addSubview(collectionView)
         return collectionView
-        }())
+    }())
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
+    
     func  collectionViewRegisterClass(cellClass:AnyClass,identifier:String) {
         self.collectionView.register(cellClass, forCellWithReuseIdentifier: identifier)
     }
+    
     override func initSubviews() {
         super.initSubviews()
         self.dataArr = NSMutableArray.init()
         
     }
+    
     override func setupSubviewsLayout() {
         super.setupSubviewsLayout()
         self.collectionView.snp.makeConstraints {
             $0.edges.equalTo(self.view)
         }
     }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
 }
-
 
 extension VPBaseCollectionViewController{
     func loadVideoData() {
@@ -61,6 +64,7 @@ extension VPBaseCollectionViewController{
             self.footerEndRefreshing()
         }
     }
+    
     var headerRefreshingBlock: VPRefreshComponentRefreshingBlock?{
         set{
             _headerRefreshingBlock = newValue
@@ -77,6 +81,7 @@ extension VPBaseCollectionViewController{
             return _headerRefreshingBlock
         }
     }
+    
     var footerRefreshingBlock:VPRefreshComponentRefreshingBlock?{
         set{
             _footerRefreshingBlock = newValue
@@ -105,6 +110,7 @@ extension VPBaseCollectionViewController{
         print("加载更多")
         self.footerRefreshingBlock!()
     }
+    
     func headerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
@@ -113,6 +119,7 @@ extension VPBaseCollectionViewController{
             self.setupFooterView()
         }
     }
+    
     func footerEndRefreshing() {
         // 结束刷新
         DispatchQueue.main.async {
@@ -120,6 +127,7 @@ extension VPBaseCollectionViewController{
             self.collectionView.reloadData()
         }
     }
+    
     func setupFooterView() {
         if(self.newsVideoModelArr.count  == 0){
             self.collectionView.mj_footer?.isHidden = true
@@ -127,6 +135,7 @@ extension VPBaseCollectionViewController{
             self.collectionView.mj_footer?.isHidden = false
         }
     }
+    
     func beginRefreshing() {
         self.collectionView.mj_header?.beginRefreshing()
     }
