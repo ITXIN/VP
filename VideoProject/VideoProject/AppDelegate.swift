@@ -8,19 +8,31 @@
 
 import UIKit
 import SVProgressHUD
+
+import FlutterPluginRegistrant
+import Flutter
+import flutter_boost
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
+    let boostDelegate = BoostDelegate()
+    
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        //创建代理，做初始化操作
+        FlutterBoost.instance().setup(application, delegate: boostDelegate, callback: { engine in
+
+        })
+     VPFlutterMannager.shared.addFlutterEventListener()
         self.setupAppConfiger()
         let mainVC = VPMainViewController()
         self.window?.rootViewController = mainVC
         return true
     }
+   
     func setupAppConfiger() {
         SVProgressHUD.setForegroundColor(.white)
         SVProgressHUD.setMinimumDismissTimeInterval(1.5)
@@ -30,33 +42,72 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if #available(iOS 11, *) {
             UIScrollView.appearance().contentInsetAdjustmentBehavior = .never
         }else{
-            
+
         }
-       
+
     }
     
-    func applicationWillResignActive(_ application: UIApplication) {
-        // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
-    }
+    func flutter_application(
+        _ application: UIApplication,
+        didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
+    ) -> Bool {
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        self.window?.makeKeyAndVisible()
+        
+        //创建代理，做初始化操作
+//        let delegate = BoostDelegate()
+        FlutterBoost.instance().setup(application, delegate: boostDelegate, callback: { engine in
+            
+        })
+        
+        //下面开始做四个Tab页面，一个native，三个flutter
+        //native主页
+        let homeViewController = HomeViewController()
+        homeViewController.tabBarItem = UITabBarItem(title: "首页", image: nil, tag: 0)
+         
+        //下面是三个flutter vc
+        let fvc1  = FBFlutterViewContainer()!
+        fvc1.setName("mineTab", uniqueId: nil, params: nil, opaque: true)
+        fvc1.tabBarItem = UITabBarItem(title: "flutter_tab1", image: nil, tag: 1)
 
-    func applicationDidEnterBackground(_ application: UIApplication) {
-        // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-    }
+        let fvc2  = FBFlutterViewContainer()!
+        fvc2.setName("tab2", uniqueId: nil, params: nil, opaque: true)
+        fvc2.tabBarItem = UITabBarItem(title: "flutter_tab2", image: nil, tag: 2)
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        let tabBarController = UITabBarController()
+        tabBarController.setViewControllers([homeViewController,fvc1,fvc2], animated: false)
+       
+        let navigationViewController = UINavigationController(rootViewController: tabBarController)
+        navigationViewController.navigationBar.isHidden = true
+        self.window?.rootViewController = navigationViewController
+        
+       
+        //这里将navigationController 给delegate，让delegate具有导航能力
+        boostDelegate.navigationController = navigationViewController
+        
+        
+        //在主窗口上放一个button，用来给flutter侧发送自定义事件
+        let sendEventButton = UIButton()
+        sendEventButton.addTarget(self, action: #selector(self.onTapSendEventButton), for:.touchUpInside)
+        sendEventButton.setTitle("Send event to flutter", for: .normal)
+        
+        self.window?.addSubview(sendEventButton)
+        
+        sendEventButton.snp.makeConstraints { (mkr) in
+            mkr.centerX.equalToSuperview()
+            mkr.top.equalToSuperview().offset(120)
+        }
+        sendEventButton.backgroundColor = UIColor.red
+        
+        return true
     }
-
-    func applicationDidBecomeActive(_ application: UIApplication) {
-        // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    
+    @objc func onTapSendEventButton(){
+        //发送自定义事件
+        FlutterBoost.instance().sendEventToFlutter(with: "event", arguments: ["data":"event from native"])
     }
-
-    func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    }
-
+    
 
 }
+
 

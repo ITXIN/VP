@@ -25,6 +25,7 @@
 		8F72B57B205F9858001796FE /* VPMineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F72B57A205F9858001796FE /* VPMineViewController.swift */; };
 		8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928924205B9058006ED0BC /* VPPlayerManager.swift */; };
 		8F928927205BCDAD006ED0BC /* VPBaseCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */; };
+		8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */; };
 		8F92892B205BDA3F006ED0BC /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F92892A205BDA3F006ED0BC /* Emoji.swift */; };
 		8F928931205BDB52006ED0BC /* VPUserInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */; };
 		8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */; };
@@ -52,6 +53,12 @@
 		8FC9C6AB205262B200EB7FF1 /* VPBaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */; };
 		8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FC9C6AC2052640D00EB7FF1 /* VPNewsVideoCell.swift */; };
 		8FEA97EBB2A45EC9089BF341 /* Pods_VideoProject.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */; };
+		A457AFDD2840739000AFDE7C /* VPRxSwiftSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A457AFDC2840739000AFDE7C /* VPRxSwiftSearchViewController.swift */; };
+		A4B3B71C281BC104006F3F74 /* VPFlutterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3B71B281BC104006F3F74 /* VPFlutterViewController.swift */; };
+		A4B3B71E2823D56F006F3F74 /* VPFlutterMannager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3B71D2823D56F006F3F74 /* VPFlutterMannager.swift */; };
+		A4B3B72028251089006F3F74 /* VPFlutterBoostDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3B71F28251088006F3F74 /* VPFlutterBoostDelegate.swift */; };
+		A4B3B7272828F821006F3F74 /* HybridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3B7252828F821006F3F74 /* HybridViewController.swift */; };
+		A4B3B7282828F821006F3F74 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4B3B7262828F821006F3F74 /* HomeViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +101,7 @@
 		8F72B57A205F9858001796FE /* VPMineViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPMineViewController.swift; sourceTree = "<group>"; };
 		8F928924205B9058006ED0BC /* VPPlayerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPPlayerManager.swift; sourceTree = "<group>"; };
 		8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseCollectionViewController.swift; sourceTree = "<group>"; };
+		8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseVideoPlayerViewController.swift; sourceTree = "<group>"; };
 		8F92892A205BDA3F006ED0BC /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
 		8F928930205BDB52006ED0BC /* VPUserInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPUserInfoModel.swift; sourceTree = "<group>"; };
 		8F928932205BDCDE006ED0BC /* Foundation+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Foundation+Extension.swift"; sourceTree = "<group>"; };
@@ -127,6 +135,12 @@
 		8FC9C6AA205262B200EB7FF1 /* VPBaseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPBaseTableViewCell.swift; sourceTree = "<group>"; };
 		8FC9C6AC2052640D00EB7FF1 /* VPNewsVideoCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNewsVideoCell.swift; sourceTree = "<group>"; };
 		94B025DB35D1D8E70DC8B54D /* Pods_VideoProject.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VideoProject.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A457AFDC2840739000AFDE7C /* VPRxSwiftSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPRxSwiftSearchViewController.swift; sourceTree = "<group>"; };
+		A4B3B71B281BC104006F3F74 /* VPFlutterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPFlutterViewController.swift; sourceTree = "<group>"; };
+		A4B3B71D2823D56F006F3F74 /* VPFlutterMannager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPFlutterMannager.swift; sourceTree = "<group>"; };
+		A4B3B71F28251088006F3F74 /* VPFlutterBoostDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPFlutterBoostDelegate.swift; sourceTree = "<group>"; };
+		A4B3B7252828F821006F3F74 /* HybridViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HybridViewController.swift; sourceTree = "<group>"; };
+		A4B3B7262828F821006F3F74 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +225,7 @@
 			isa = PBXGroup;
 			children = (
 				8F72B57A205F9858001796FE /* VPMineViewController.swift */,
+				A457AFDC2840739000AFDE7C /* VPRxSwiftSearchViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -329,6 +344,7 @@
 		8FABBFEF2049416B00B60A5F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				A4B3B71A281BC03B006F3F74 /* Flutter */,
 				8F40572A205CB26F00963936 /* Resource */,
 				8FABBFF02049416B00B60A5F /* Base */,
 				8FABBFF12049416B00B60A5F /* Business */,
@@ -376,6 +392,7 @@
 				8FABBFF82049448A00B60A5F /* VPBaseNavigationViewController.swift */,
 				8FABC00D2049511D00B60A5F /* VPBaseTableViewController.swift */,
 				8F928926205BCDAD006ED0BC /* VPBaseCollectionViewController.swift */,
+				8F928928205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -480,6 +497,26 @@
 			path = View;
 			sourceTree = "<group>";
 		};
+		A4B3B71A281BC03B006F3F74 /* Flutter */ = {
+			isa = PBXGroup;
+			children = (
+				A4B3B7242828F821006F3F74 /* Controllers */,
+				A4B3B71B281BC104006F3F74 /* VPFlutterViewController.swift */,
+				A4B3B71D2823D56F006F3F74 /* VPFlutterMannager.swift */,
+				A4B3B71F28251088006F3F74 /* VPFlutterBoostDelegate.swift */,
+			);
+			path = Flutter;
+			sourceTree = "<group>";
+		};
+		A4B3B7242828F821006F3F74 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				A4B3B7252828F821006F3F74 /* HybridViewController.swift */,
+				A4B3B7262828F821006F3F74 /* HomeViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -488,6 +525,7 @@
 			buildConfigurationList = 8FABBFE620493DA000B60A5F /* Build configuration list for PBXNativeTarget "VideoProject" */;
 			buildPhases = (
 				83D3F8E2059D32FB034F25BE /* [CP] Check Pods Manifest.lock */,
+				1A35D67FB1A503AF964758B4 /* [CP-User] Run Flutter Build flutter_module Script */,
 				8FABBFBA20493DA000B60A5F /* Sources */,
 				8FABBFBB20493DA000B60A5F /* Frameworks */,
 				8FABBFBC20493DA000B60A5F /* Resources */,
@@ -551,7 +589,7 @@
 					8FABBFBD20493DA000B60A5F = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 0920;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 					8FABBFD120493DA000B60A5F = {
 						CreatedOnToolsVersion = 9.2;
@@ -622,6 +660,16 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1A35D67FB1A503AF964758B4 /* [CP-User] Run Flutter Build flutter_module Script */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "[CP-User] Run Flutter Build flutter_module Script";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nset -u\nsource \"${SRCROOT}/../flutter_module/.ios/Flutter/flutter_export_environment.sh\"\nexport VERBOSE_SCRIPT_LOGGING=1 && \"$FLUTTER_ROOT\"/packages/flutter_tools/bin/xcode_backend.sh build";
+		};
 		4580015DA128C156680392A6 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -631,31 +679,41 @@
 				"${PODS_ROOT}/Target Support Files/Pods-VideoProject/Pods-VideoProject-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/BMPlayer/BMPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/Differentiator/Differentiator.framework",
 				"${BUILT_PRODUCTS_DIR}/HandyJSON/HandyJSON.framework",
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
+				"${BUILT_PRODUCTS_DIR}/RxDataSources/RxDataSources.framework",
 				"${BUILT_PRODUCTS_DIR}/RxRelay/RxRelay.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/flutter_boost/flutter_boost.framework",
+				"${PODS_ROOT}/../../flutter_module/.ios/Flutter/App.framework",
 				"${BUILT_PRODUCTS_DIR}/lottie-ios/Lottie.framework",
+				"${PODS_XCFRAMEWORKS_BUILD_DIR}/Flutter/Flutter.framework/Flutter",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BMPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Differentiator.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/HandyJSON.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxDataSources.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxRelay.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/flutter_boost.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/App.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Lottie.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Flutter.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -688,8 +746,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F96AAD6205920E400C07004 /* VPNewsVideoFullScreenViewController.swift in Sources */,
+				A4B3B7272828F821006F3F74 /* HybridViewController.swift in Sources */,
 				8FABC00C20494D6100B60A5F /* VPMainTabBar.swift in Sources */,
 				8FABBFFB2049479E00B60A5F /* AppHeader.swift in Sources */,
+				A4B3B71C281BC104006F3F74 /* VPFlutterViewController.swift in Sources */,
+				8F928929205BD26D006ED0BC /* VPBaseVideoPlayerViewController.swift in Sources */,
 				8FABC00E2049511D00B60A5F /* VPBaseTableViewController.swift in Sources */,
 				8F405736205CBB0700963936 /* VPShortVideoCustomPlayerView.swift in Sources */,
 				8FABBFF92049448A00B60A5F /* VPBaseNavigationViewController.swift in Sources */,
@@ -704,8 +765,10 @@
 				8F928925205B9058006ED0BC /* VPPlayerManager.swift in Sources */,
 				8FB341C5204E71B800622EE5 /* VPNewsCustomPlayerView.swift in Sources */,
 				8F405738205CBC6400963936 /* VPShortVideoPlayerViewController.swift in Sources */,
+				A4B3B72028251089006F3F74 /* VPFlutterBoostDelegate.swift in Sources */,
 				8FC9C6AD2052640D00EB7FF1 /* VPNewsVideoCell.swift in Sources */,
 				8F405732205CB3A400963936 /* VPBaseCollectionViewCell.swift in Sources */,
+				A4B3B7282828F821006F3F74 /* HomeViewController.swift in Sources */,
 				8F96AAD42058CEC800C07004 /* VPRefreshView.swift in Sources */,
 				8F928933205BDCDE006ED0BC /* Foundation+Extension.swift in Sources */,
 				8F37E39020510C4A00E7AB20 /* VPNewsVideoPlayModel.swift in Sources */,
@@ -714,7 +777,9 @@
 				8FA9543E204FCE0E00072999 /* VPNewsVideoModel.swift in Sources */,
 				8F928931205BDB52006ED0BC /* VPUserInfoModel.swift in Sources */,
 				8F37E3952051284C00E7AB20 /* NSData+CRC32.m in Sources */,
+				A457AFDD2840739000AFDE7C /* VPRxSwiftSearchViewController.swift in Sources */,
 				8FABC00A20494D0600B60A5F /* VPMainViewController.swift in Sources */,
+				A4B3B71E2823D56F006F3F74 /* VPFlutterMannager.swift in Sources */,
 				8FABC00420494A5C00B60A5F /* UIKit+Extension.swift in Sources */,
 				8FABBFF7204942AC00B60A5F /* VPBaseViewController.swift in Sources */,
 			);
@@ -884,16 +949,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2TZYL6238V;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8YWZ28ZAPR;
 				INFOPLIST_FILE = VideoProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.icoin.VideoProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.icoin.VideoProject02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12576d4b-3571-47cf-b02b-f8e88fed0956";
-				PROVISIONING_PROFILE_SPECIFIER = test_dev_pro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoProject/Classes/Tools/Extension/VideoProject-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.0;
@@ -907,16 +973,18 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Manual;
-				DEVELOPMENT_TEAM = 2TZYL6238V;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 8YWZ28ZAPR;
+				"EXCLUDED_ARCHS[sdk=*]" = "";
 				INFOPLIST_FILE = VideoProject/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = com.test.icoin.VideoProject;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.icoin.VideoProject02;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "12576d4b-3571-47cf-b02b-f8e88fed0956";
-				PROVISIONING_PROFILE_SPECIFIER = test_dev_pro;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VideoProject/Classes/Tools/Extension/VideoProject-Bridging-Header.h";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
